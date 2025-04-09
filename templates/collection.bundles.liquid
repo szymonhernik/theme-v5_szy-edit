@@ -1,0 +1,178 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>BUNDLES ← SLATE + ASH</title>
+
+	<!-- ------------------------------ head ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white); color: var(--blue);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/collections/bundles/">BUNDLES</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ items - desktop ------------------------------ -->
+
+	<div class="desktop">
+		<div class="row">
+			{% for product in collection.products %}
+				{% assign productIndex = forloop.index | minus: 1 | modulo: 2 %}
+				{% if productIndex == 0 %}
+					<div style="background-color: {{ product.metafields.custom.bundle_background_color }}; color: {{ product.metafields.custom.bundle_title_color }}">
+						<div class="column-square">
+							<div class="image-top-left" style="width: 100%;">
+								<a href="{{ product.url }}"><img src="{{ product.images[0] | img_url: "2500x" }}" style="width: 100%;"></a>
+							</div>
+						</div>
+						<div class="column-square">
+							<div class="text-top-right title scroll-fade-in">
+								<a href="{{ product.url }}">{{ product.title | upcase }}</a>
+								<br><span style="color: {{ product.metafields.custom.bundle_compare_at_color }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></span>
+								<br><span style="color: {{ product.metafields.custom.bundle_price_color }}">{{ product.price | money_without_trailing_zeros }}</span>
+								<div><button id="add-to-cart-button" class="add-to-cart-button" data-bundle-variant-id="{{ product.variants[0].id }}" data-highlight-color="{{ product.metafields.custom.bundle_compare_at_color }}" data-return-color="{{ product.metafields.custom.bundle_title_color }}">+ TO CART</button></div>
+							</div>
+							<a href="{{ product.url }}">
+								<div class="text-bottom-right paragraph-large scroll-fade-in">
+									<a href="{{ product.url }}">→ MORE INFO</a>
+								</div>
+							</a>
+						</div>
+					</div>
+				{% endif %}
+				{% if productIndex == 1 %}
+					<div style="background-color: {{ product.metafields.custom.bundle_background_color }}; color: {{ product.metafields.custom.bundle_title_color }}">
+						<div class="column-square">
+							<div class="text-top-left title scroll-fade-in">
+								<a href="{{ product.url }}">{{ product.title | upcase }}</a>
+								<br><span style="color: {{ product.metafields.custom.bundle_compare_at_color }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></span>
+								<br><span style="color: {{ product.metafields.custom.bundle_price_color }}">{{ product.price | money_without_trailing_zeros }}</span>
+								<div><button id="add-to-cart-button" class="add-to-cart-button" data-bundle-variant-id="{{ product.variants[0].id }}" data-highlight-color="{{ product.metafields.custom.bundle_compare_at_color }}" data-return-color="{{ product.metafields.custom.bundle_title_color }}">+ TO CART</button></div>
+							</div>
+							<a href="{{ product.url }}">
+								<div class="text-bottom-left paragraph-large scroll-fade-in">
+									<a href="{{ product.url }}">→ MORE INFO</a>
+								</div>
+							</a>
+						</div>
+						<div class="column-square">
+							<div class="image-top-left" style="width: 100%;">
+								<a href="{{ product.url }}"><img src="{{ product.images[0] | img_url: "2500x" }}" style="width: 100%;"></a>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+
+	<!-- ------------------------------ items - mobile ------------------------------ -->
+
+	<div class="mobile">
+		{% for product in collection.products %}
+			{% assign productIndex = forloop.index | minus: 1 | modulo: 2 %}
+			{% if productIndex == 0 %}
+				<div style="background-color: {{ product.metafields.custom.bundle_background_color }}; color: {{ product.metafields.custom.bundle_title_color }};">
+					<div class="general-container title scroll-fade-in">
+						<a href="{{ product.url }}">
+							{{ product.title | upcase }}
+						</a>
+					</div>
+					<div class="gap"></div>
+					<div class="mobile-image-right scroll-fade-in">
+						<a href="{{ product.url }}">
+							<img src="{{ product.images[0] | img_url: "1280x" }}" style="width: 100%;">
+						</a>
+					</div>
+					<div class="gap"></div>
+				</div>
+			{% endif %}
+			{% if productIndex == 1 %}
+				<div style="background-color: {{ product.metafields.custom.bundle_background_color }}; color: {{ product.metafields.custom.bundle_title_color }};">
+					<div class="general-container title scroll-fade-in" style="float: right; text-align: right;">
+						<a href="{{ product.url }}">
+							{{ product.title | upcase }}
+						</a>
+					</div>
+					<div class="gap"></div>
+					<div class="mobile-image-left scroll-fade-in">
+						<a href="{{ product.url }}">
+							<img src="{{ product.images[0] | img_url: "1280x" }}" style="width: 100%;">
+						</a>
+					</div>
+					<div class="gap"></div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	// variables for add to cart action
+
+	var selectedVariant
+	let highlightColor = ""
+	let returnColor = ""
+
+	// add to cart buttons
+
+	document.querySelectorAll('.add-to-cart-button').forEach(button => {
+		button.addEventListener('click', () => {
+
+			selectedVariant = Number(button.getAttribute('data-bundle-variant-id'));
+			highlightColor = button.getAttribute('data-highlight-color');
+			returnColor = button.getAttribute('data-return-color');
+
+			cartIsEmpty = 0;
+			document.getElementById('cart-items').style.display = 'block';
+			document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+			document.getElementById('cart-empty-message').style.display = 'none';
+
+			// get variant id
+			variantId = selectedVariant;
+
+			// change text of add to cart button
+			button.innerHTML = "ADDING..."
+
+			// axois post cart add
+			axios.post('/cart/add.js', {
+				id: variantId,
+				quantity: 1,
+			}).then(res => {
+				console.log(res.data)
+
+				// update cart button
+				axios.get('/cart.js', {
+				}).then(res => {
+					console.log(res.data);
+					updateCartButton(res.data.item_count);
+					button.innerHTML = "ADDED"
+					button.style.color = highlightColor
+					if(res.data.item_count === 1) {
+						document.getElementById("cart-button").style.visibility = "visible";
+						document.getElementById("cart-button").classList.add("header-button-bounce-in");
+						document.getElementById("cart-button").style.transform = "translateY(0)";
+					} else if(res.data.item_count > 1) {
+						document.getElementById("cart-button").style.color = "#c38839"
+						document.getElementById("cart-button").style.backgroundColor = "#284289"
+					}
+					setTimeout(function(){
+					    button.innerHTML = "+ TO CART"
+					    button.style.color = returnColor
+					    document.getElementById("cart-button").style.color = "#284289"
+						document.getElementById("cart-button").style.backgroundColor = "#c38839"
+					}, 750);
+
+					// update cart
+					updateCart(res.data)
+				});
+			});
+		});
+	});
+</script>

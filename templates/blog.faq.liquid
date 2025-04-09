@@ -1,0 +1,99 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<body style="background-color: var(--white);">
+
+	<title>SUPPORT ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color:  var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → SUPPORT
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+	<div style="background-color: var(--mid-grey);">
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ intro + filter ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					Please take a look at the following information to see if you can find a solution to your problem. If not, feel free to get in touch at <a style="color: var(--white)" href="mailto:support@slateandash.com">support@slateandash.com</a>.
+				</div>
+				<div class="gap"></div>
+				<div class="grid-paragraph title-small scroll-fade-in" id="faq-filters">
+					{% assign number_of_tags = current_tags | size %}
+					{% if number_of_tags == 0 %}
+						<div style="color: var(--white)"><a href="{{ blog.url }}">→ ALL</a></div>
+					{% else %}
+						<div><a href="{{ blog.url }}">ALL</a></div>
+					{% endif %}
+					{% for tag in blog.all_tags %}
+						{% if current_tags contains tag %}
+							<div style="color: var(--white)">→ {{ tag | upcase | link_to_tag: tag }}</div>
+						{% else %}
+							{% assign colour-index = forloop.index | minus: 1 %}
+							<div>{{ tag | upcase | link_to_tag: tag }}</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ articles ------------------------------ -->
+
+		{% for tag in blog.all_tags %}
+			<div class="grid-container">
+				<div class="grid-item">
+					<div class="grid-paragraph title scroll-fade-in">
+						{% if current_tags contains tag or number_of_tags == 0 %}
+							{{ tag | upcase }}
+						{% endif %}
+					</div>
+				</div>
+				<div class="grid-item-empty">
+					<div class="grid-paragraph scroll-fade-in">
+						{% for article in blog.articles %}
+							{% if article.tags contains tag %}
+								<div class="title-small">{{ article.title | upcase }}</div>
+								<div class="gap"></div>
+								<div class="paragraph">{{ article.content }}</div>
+								<div class="gap"></div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</body>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	// retain scroll position on refresh/filter
+    // var scrollpos = localStorage.getItem('scrollpos');
+    // if (scrollpos) window.scrollTo(0, scrollpos);
+    // window.onbeforeunload = function(e) {
+    //     localStorage.setItem('scrollpos', window.scrollY);
+    // };
+
+	// const faqIndexButtons = document.querySelectorAll(".faq-index-button")
+	// for (const button of faqIndexButtons) {
+	// 	button.addEventListener('click', function(event) {
+	// 		console.log("clicked")
+	// 		document.getElementById("faq-filters").scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+	// 	})
+	// }
+
+</script>

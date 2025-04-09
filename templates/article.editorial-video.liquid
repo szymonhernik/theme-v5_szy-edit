@@ -1,0 +1,30 @@
+<html>
+
+	<title>{{ article.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="/blogs/editorial/">EDITORIAL</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title-with-subtitle title scroll-fade-in">
+			{{ article.title | upcase}}
+		</div>
+	</div>
+	<div class="gap-subtitle"></div>
+	<div class="header-subtitle paragraph-large scroll-fade-in">
+		{{ article.excerpt }}
+	</div>
+	<div class="gap"></div>
+
+	<div style="background-color: {{ article.metafields.custom.editorial_background_color }}; color: {{ article.metafields.custom.editorial_text_color }};">
+
+		<!-- ------------------------------ article content ------------------------------ -->
+
+		{{ article.content }}
+	</div>
+</html>

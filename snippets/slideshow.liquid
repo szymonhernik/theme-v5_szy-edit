@@ -1,0 +1,136 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+    <!-- import swiper js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    {% assign slides = "" | append: slide-1-url | append: "," | append: slide-2-url | append: "," | append: slide-3-url | append: "," | append: slide-4-url | append: "," | append: slide-5-url | append: "," | append: slide-6-url | append: "," | append: slide-7-url | append: "," | append: slide-8-url | append: "," | append: slide-9-url | append: "," | split: ',' %}
+
+    <div style="width: 100vw; overflow: hidden;">
+
+        <!-- Slider main container -->
+        <div class="swiper{{ slide-id }}">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                {% for slide in slides %}
+        			<div class="swiper-slide">
+        	            <img class="swiper-image" src="{{ slide }}">
+        	        </div>
+        		{% endfor %}
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="swiper-caption paragraph-large">
+               <button id="swiper-next{{ slide-id }}">Next</button>
+            </div>
+        </div>
+    </div>
+
+</html>
+
+<!-- ------------------------------ style ------------------------------ -->
+
+<style>
+
+    .swiper{{ slide-id }} {
+        width: 100vw;
+        height: 50vw;
+    }
+
+    @media screen and (max-width: 600px) {
+        .swiper{{ slide-id }} {
+            height: min-content;
+        }
+    }
+
+    .swiper-image {
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    @media screen and (max-width: 600px) {
+        .swiper-image {
+            width: 90%;
+            height: auto;
+        }
+    }
+
+    .swiper-caption {
+        padding-top: 15px;
+        text-align: right;
+    }
+
+    @media screen and (max-width: 1420px) {
+        .swiper-caption {
+            padding-top: 13px;
+        }
+    }
+
+    @media screen and (max-width: 1250px) {
+        .swiper-caption {
+            padding-top: 11px;
+        }
+    }
+
+    @media screen and (max-width: 1080px) {
+        .swiper-caption {
+            padding-top: 9px;
+        }
+    }
+
+    @media screen and (max-width: 920px) {
+        .swiper-caption {
+            padding-top: 7px;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .swiper-caption {
+            padding-top: 6px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .swiper-caption {
+            padding-top: 9px;
+            padding-left: 9px;
+            text-align: left;
+        }
+    }
+
+</style>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+    // initialise swiper
+
+    const swiper{{ slide-id }} = new Swiper('.swiper{{ slide-id }}', {
+        direction: 'horizontal',
+        loop: true,
+    });
+
+    // next button on load
+
+    document.getElementById('swiper-next{{ slide-id }}').innerHTML = (swiper{{ slide-id }}.realIndex + 1)+`/`+(swiper{{ slide-id }}.slides.length - 2)+` <span style="font-family: arrow;">→</span>`;
+
+    // next button
+
+    document.getElementById('swiper-next{{ slide-id }}').addEventListener('click', () => {
+        swiper{{ slide-id }}.slideNext();
+        document.getElementById('swiper-next{{ slide-id }}').innerHTML = (swiper{{ slide-id }}.realIndex + 1)+`/`+(swiper{{ slide-id }}.slides.length - 2)+` <span style="font-family: arrow;">→</span>`;
+    });
+
+    // slide/drag
+
+    swiper{{ slide-id }}.on('slideChange', function(){
+        document.getElementById('swiper-next{{ slide-id }}').innerHTML = (swiper{{ slide-id }}.realIndex + 1)+`/`+(swiper{{ slide-id }}.slides.length - 2)+` <span style="font-family: arrow;">→</span>`;
+    });
+
+</script>

@@ -1,0 +1,95 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<body style="background-color: var(--white);">
+
+	<title>CAREERS ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color:  var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="/blogs/careers/">CAREERS</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+
+	<div style="background-color: var(--mid-grey);">
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ intro ------------------------------ -->
+
+		<!-- <div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					SLATE + ASH creates world-class software instruments and sound production tools, designed to inspire and empower music creators across any genre and at any stage of their musical journey — from film composers to electronic producers. We collaborate with the world's best composers, sound artists, engineers and musicians, capturing stunning sounds in iconic sound studios and spaces, from AIR Studios to Abbey Road — to create plugins at the forefront of technology.
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div> -->
+
+		<!-- ------------------------------ title ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					CURRENT OPPORTUNITIES
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+
+		<!-- ------------------------------ posts ------------------------------ -->
+
+		{% if blog.articles_count == 0 %}
+
+			<div class="grid-container">
+				<div class="grid-item-empty">
+				</div>
+				<div class="grid-item">
+					<div class="grid-paragraph paragraph scroll-fade-in">
+						There are currently no career opportunities.
+					</div>
+				</div>
+			</div>
+			<div class="gap-desktop"></div>
+
+		{% else %}
+
+			{% for article in blog.articles %}
+				<div class="grid-container">
+					<div class="grid-item-empty">
+					</div>
+					<div class="grid-item">
+						<div class="grid-paragraph title-small scroll-fade-in">
+							<a href="{{ article.url }}">{{ article.title | upcase }}</a>
+						</div>
+						<div class="gap-small"></div>
+						<div class="grid-paragraph paragraph scroll-fade-in">
+							{{ article.excerpt }}
+						</div>
+						<div class="gap-small"></div>
+						<div class="grid-paragraph paragraph scroll-fade-in">
+							<a style="color: var(--white);" href="{{ article.url }}">+ LEARN MORE</a>
+						</div>
+					</div>
+				</div>
+				<div class="gap-desktop"></div>
+			{% endfor %}
+
+		{% endif %}
+
+		
+	</div>
+</body>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+</script>

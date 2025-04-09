@@ -1,0 +1,83 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/account">ACCOUNT</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+	<div style="background-color: var(--mid-grey);">
+		<div class="gap-tiny"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					CREATE AN ACCOUNT
+					<div class="gap-form"></div>
+					{%- if customer -%}
+						Thanks for registering an account — you are now logged in.
+						<div class="gap-form"></div>
+						<div class="paragraph"><a href="/account/">→ GO TO ACCOUNT</a></div>
+					{%- else -%}
+						{%- form 'create_customer', return_to: routes.account_register_url -%}
+						{% if form.errors %}
+							<span class="paragraph" style="color: var(--orange)"> {{ form.errors | default_errors }}</span>
+							<div class="gap-form"></div>
+						{% endif %}
+						<div>
+							<input
+								class="account-input" 
+								type="text"
+								name="customer[first_name]"
+								placeholder="First Name*"
+								autocapitalize="words"
+							>
+						</div>
+						<div class="gap-form"></div>
+						<div>
+							<input
+								class="account-input"
+								type="text"
+								name="customer[last_name]"
+								placeholder="Last Name*"
+								autocapitalize="words"
+							>
+						</div>
+						<div class="gap-form"></div>
+						<div>
+							<input
+								class="account-input" 
+								type="email"
+								name="customer[email]"
+								placeholder="Email*"
+								autocapitalize="off"
+							>
+						</div>
+						<div class="gap-form"></div>
+						<div>
+							<input
+								class="account-input" 
+								name="customer[password]"
+								placeholder="Password*"
+								type="password"
+							>
+						</div>
+						<div class="gap-form"></div>
+						<div class="paragraph"><button type="submit">→ SUBMIT</button></div>
+						<div class="paragraph"><a href="/account/login/">← BACK</a></div>
+					{%- endform -%}
+				{%- endif -%}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+	</div>
+</html>

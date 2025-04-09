@@ -1,0 +1,486 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>{{ product.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white); color: var(--blue);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="/collections/packs/">PACKS / 3 FOR 2</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ product.title | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: var(--off-black); color: var(--white);">
+
+		<!-- ------------------------------ image ------------------------------ -->
+
+		{% assign num_product_images = product.images | size %}
+		{% if num_product_images > 1 %}
+			<img class="feature-image scroll-fade-in" src="{{ product.images[1] | img_url: "master" }}">
+		{% else %}
+			<img class="feature-image scroll-fade-in" src="{{ product.images[0] | img_url: "master" }}">
+		{% endif %}
+		<div class="gap"></div>
+
+		<!-- ------------------------------ variant id (hidden) ------------------------------ -->
+
+		<input type="hidden" id="first-variant-id" value="{{ product.variants[0].id }}">
+
+		<!-- ------------------------------ description + buy ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ product.description }}
+				</div>
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					{% if product.has_only_default_variant == true %}
+						{{ product.title | upcase}}
+					{% else %}
+						{% for variant in product.variants %}
+							{% if forloop.index == 1 %}
+								<button style="color: var(--white)" class="object-variant-selector" data-object-id="{{ variant.id }}" data-object-price ="{{ variant.price | money_without_trailing_zeros }}">{{ variant.title | upcase }}</button>{% if forloop.index != product.variants.size %},{% endif %}
+							{% else %}
+								<button class="object-variant-selector" data-object-id="{{ variant.id }}" data-object-price ="{{ variant.price | money_without_trailing_zeros }}">{{ variant.title | upcase }}</button>{% if forloop.index != product.variants.size %},{% endif %}
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+					<br><span style="color: var(--turquoise);" id="object-price">{{ product.price | money_without_trailing_zeros }}</span>
+					{% if product.available %}
+						<div><button id="add-to-cart-button">+ TO CART</button></div>
+					{% else %}
+						<div>SOLD OUT</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ audio demos ------------------------------ -->
+
+		{% assign audio_demos = product.metafields.custom.pack_audio_demos.value %}
+		{% assign audio_demo_names = product.metafields.custom.pack_audio_demo_names.value %}
+		{% assign num_audio_demos = 0 %}
+
+		{% for audio_demo in audio_demos %}
+  			{% if forloop.index == 1 %}
+  				{% assign track-1-url = audio_demo.url %}
+  				{% assign track-1-name = audio_demo_names[0] %}
+  			{% endif %}
+  			{% if forloop.index == 2 %}
+  				{% assign track-2-url = audio_demo.url %}
+  				{% assign track-2-name = audio_demo_names[1] %}
+  			{% endif %}
+  			{% if forloop.index == 3 %}
+  				{% assign track-3-url = audio_demo.url %}
+  				{% assign track-3-name = audio_demo_names[2] %}
+  			{% endif %}
+  			{% if forloop.index == 4 %}
+  				{% assign track-4-url = audio_demo.url %}
+  				{% assign track-4-name = audio_demo_names[3] %}
+  			{% endif %}
+  			{% if forloop.index == 5 %}
+  				{% assign track-5-url = audio_demo.url %}
+  				{% assign track-5-name = audio_demo_names[4] %}
+  			{% endif %}
+  			{% capture num_audio_demos %}{% increment num_audio_demos %}{% endcapture %}
+		{% endfor %}
+
+		<div class="grid-container">
+			<div class="grid-item scroll-fade-in">
+				{% assign num-tracks = num_audio_demos | plus: 1 %}
+				{% assign highlight-color = "var(--turquoise)" %}
+				{% render "audio-demos-4", num-tracks: num-tracks, highlight-color: highlight-color, track-1-url: track-1-url, track-1-name: track-1-name, track-2-url: track-2-url, track-2-name: track-2-name, track-3-url: track-3-url, track-3-name: track-3-name, track-4-url: track-4-url, track-4-name: track-4-name, track-5-url: track-5-url, track-5-name: track-5-name, track-6-url: track-6-url, track-6-name: track-6-name, track-7-url: track-7-url, track-7-name: track-7-name, track-8-url: track-8-url, track-8-name: track-8-name, track-9-url: track-9-url, track-9-name: track-9-name %}
+			</div>
+			<div class="grid-item-empty">
+			</div>
+		</div>
+
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ secondary info ------------------------------ -->
+
+		{% if product.metafields.custom.pack_secondary_title %}
+			<div class="grid-container">
+				<div class="grid-item-empty">
+					<div class="grid-title-no-top title scroll-fade-in">
+						{{ product.metafields.custom.pack_secondary_title }}
+					</div>
+				</div>
+			</div>
+
+			<div class="gap"></div>
+
+			<div class="grid-container">
+				<div class="grid-item-empty">
+				</div>
+				<div class="grid-item">
+	                <div class="grid-paragraph paragraph scroll-fade-in">
+	                   {{ product.metafields.custom.pack_secondary_paragraph }}
+	                </div>
+				</div>
+			</div>
+
+			<div class="gap-desktop"></div>
+		{% endif %}
+
+		<!-- ------------------------------ secondary image ------------------------------ -->
+
+		{% if product.metafields.custom.pack_secondary_image %}
+			<img class="image-62 scroll-fade-in" style="float: right;" src="{{ product.metafields.custom.pack_secondary_image.value | img_url: "master" }}">
+			<div class="gap"></div>
+		{% endif %}
+
+		<!-- ------------------------------ secondary youtube ------------------------------ -->
+
+		{% if product.metafields.custom.pack_youtube_embed %}
+			<div class="youtube-62 scroll-fade-in" style="float: right">
+				<div id="youtube-container">
+					<iframe src="{{ product.metafields.custom.pack_youtube_embed }}" frameborder="0" allowfullscreen=""></iframe>
+				</div>
+			</div>
+			<div class="gap"></div>
+		{% endif %}
+		
+		<!-- ------------------------------ tech specs ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					TECHNICAL SPECIFICATIONS
+				</div>
+			</div>
+		</div>
+
+		<div class="gap"></div>
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                	<span class="title-small">CREATED BY</span>
+					<div class="gap-small"></div>
+					{{ product.metafields.custom.pack_created_by }}
+					<div class="gap-small"></div>
+					<span class="title-small">CONTENTS</span>
+					<div class="gap-small"></div>
+					{{ product.metafields.custom.pack_includes }}
+					<div class="gap-small"></div>
+					<span class="title-small">INCLUDED FORMATS</span>
+					<div class="gap-small"></div>
+					{{ product.metafields.custom.pack_formats }}
+					<div class="gap-small"></div>
+					<span class="title-small">COMPATIBILITY</span>
+					<div class="gap-small"></div>
+					{{ product.metafields.custom.pack_compatible_with }}
+                </div>
+			</div>
+		</div>
+
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ related products - desktop ------------------------------ -->
+
+		{% assign related_products = product.metafields.custom.pack_related_products | remove: '[' | remove: ']' | remove: '"' | remove: 'gid://shopify/Product/' | remove: ' ' %}
+		{% assign split_related_products = related_products | split: ',' %}
+		{% assign productCount = 0 %}
+
+		<div class="desktop">
+			<div style="background-color: inherit; position: relative">
+				<div class="gap"></div>
+				{% for item in split_related_products %}
+					{% assign productIndex = forloop.index | minus: 1 | modulo: 8 %}
+					{% assign item_id = item | plus: 0 %}
+					{% for product in collections['all'].products %}
+						{% if product.id == item_id %}
+							{% if productIndex == 0 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% if productIndex == 1 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; left: 0;">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% if productIndex == 2 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 0; left: 0;">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% if productIndex == 3 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% if productIndex == 4 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 0; right: 0;">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% if productIndex == 5 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; right: 0;">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% if productIndex == 6 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; right: 0;">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% if productIndex == 7 %}
+								<div class="column-square">
+									<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+										<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+									</div>
+								</div>
+							{% endif %}
+							{% capture productCount %}{% increment productCount %}{% endcapture %}
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+
+				{% assign productCountMod =  productCount | modulo: 2 %}
+				{% if productCountMod == 0 %}
+					<div class="column-square">
+					</div>
+				{% endif %}
+
+				<div style="position: absolute; top: 0;" class="grid-container">
+					<div class="grid-item">
+						<div class="grid-paragraph title scroll-fade-in">
+							3 FOR 2 ON PACKS
+						</div>
+					</div>
+					<div class="grid-item">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ------------------------------ related products - mobile ------------------------------ -->
+
+		<div class="mobile">
+			<div class="grid-container">
+				<div class="grid-item">
+					<div class="grid-paragraph title scroll-fade-in">
+						3 FOR 2 ON PACKS
+					</div>
+				</div>
+			</div>
+			{% for item in split_related_products %}
+				{% assign productIndex = forloop.index | minus: 1 | modulo: 7 %}
+				{% assign item_id = item | plus: 0 %}
+				{% for product in collections['all'].products %}
+					{% if product.id == item_id %}
+						{% if productIndex == 0 %}
+							<div>
+								<div class="scroll-fade-in" style="width: 50%; position: relative; left: 50%; -webkit-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); transform: translate(-50%, 0%);">
+									<a href="{{ product.url | within: collection }}">
+										<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+									</a>
+								</div>
+							</div>
+							<div class="gap"></div>
+						{% endif %}
+						{% if productIndex == 1 %}
+							<div>
+								<div class="scroll-fade-in" style="width: 50%;">
+									<a href="{{ product.url | within: collection }}">
+										<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+									</a>
+								</div>
+							</div>
+							<div class="gap"></div>
+						{% endif %}
+						{% if productIndex == 2 %}
+							<div style="text-align: right">
+								<div class="scroll-fade-in" style="width: 80%; display: inline-block">
+									<a href="{{ product.url | within: collection }}">
+										<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: left">{{ product.title | upcase }}</div>
+									</a>
+								</div>
+							</div>
+							<div class="gap"></div>
+						{% endif %}
+						{% if productIndex == 3 %}
+							<div>
+								<div class="scroll-fade-in" style="width: 50%;">
+									<a href="{{ product.url | within: collection }}">
+										<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+									</a>
+								</div>
+							</div>
+							<div class="gap"></div>
+						{% endif %}
+						{% if productIndex == 4 %}
+							<div>
+								<div class="scroll-fade-in" style="width: 50%; position: relative; left: 50%; -webkit-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); transform: translate(-50%, 0%);">
+									<a href="{{ product.url | within: collection }}">
+										<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+									</a>
+								</div>
+							</div>
+							<div class="gap"></div>
+						{% endif %}
+						{% if productIndex == 5 %}
+							<div style="text-align: left">
+								<div class="scroll-fade-in" style="width: 80%; display: inline-block">
+									<a href="{{ product.url | within: collection }}">
+										<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+									</a>
+								</div>
+							</div>
+							<div class="gap"></div>
+						{% endif %}
+						{% if productIndex == 6 %}
+							<div style="text-align: right">
+								<div class="scroll-fade-in" style="width: 50%; display: inline-block">
+									<a href="{{ product.url | within: collection }}">
+										<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+										<div class="gap-tiny"></div>
+										<div class="paragraph" style="text-align: left">{{ product.title | upcase }}</div>
+									</a>
+								</div>
+							</div>
+							<div class="gap"></div>
+						{% endif %}
+						{% capture productCount %}{% increment productCount %}{% endcapture %}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</div>
+
+		<div class="gap"></div>
+		<div class="previous-next title-small scroll-fade-in">
+			<div class="previous">
+				<a href="/collections/packs/">← PACKS</a>
+			</div>
+		</div>
+		<div class="gap"></div>
+	</div>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	var selectedVariant = {{ product.variants[0].id }};
+
+	// select variant buttons
+
+	document.querySelectorAll('.object-variant-selector').forEach(button => {
+		button.addEventListener('click', () => {
+			document.querySelectorAll('.object-variant-selector').forEach(button => {
+				button.style.color = "var(--blue)";
+			});
+			selectedVariant = Number(button.getAttribute('data-object-id'));
+			button.style.color = "var(--white)";
+			document.getElementById("object-price").innerHTML = button.getAttribute('data-object-price');
+		});
+	});
+
+	// add to cart
+
+	document.getElementById("add-to-cart-button").addEventListener("click", function() {
+
+		cartIsEmpty = 0;
+		document.getElementById('cart-items').style.display = 'block';
+		document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+		document.getElementById('cart-empty-message').style.display = 'none';
+
+		// get variant id
+		variantId = selectedVariant;
+
+		// change text of add to cart button
+		document.getElementById("add-to-cart-button").innerHTML = "ADDING..."
+
+		// axois post cart add
+		axios.post('/cart/add.js', {
+			id: variantId,
+			quantity: 1,
+		}).then(res => {
+			console.log(res.data)
+
+			// update cart button
+			axios.get('/cart.js', {
+			}).then(res => {
+				console.log(res.data);
+				updateCartButton(res.data.item_count);
+				document.getElementById("add-to-cart-button").innerHTML = "ADDED TO CART"
+				document.getElementById("add-to-cart-button").style.color = "#ffffff"
+				if(res.data.item_count === 1) {
+					document.getElementById("cart-button").style.visibility = "visible";
+					document.getElementById("cart-button").classList.add("header-button-bounce-in");
+					document.getElementById("cart-button").style.transform = "translateY(0)";
+				} else if(res.data.item_count > 1) {
+					document.getElementById("cart-button").style.color = "#c38839"
+					document.getElementById("cart-button").style.backgroundColor = "#284289"
+				}
+				setTimeout(function(){
+				    document.getElementById("add-to-cart-button").innerHTML = "+ TO CART"
+				    document.getElementById("add-to-cart-button").style.color = "#ffffff"
+				    document.getElementById("cart-button").style.color = "#284289"
+					document.getElementById("cart-button").style.backgroundColor = "#c38839"
+				}, 750);
+
+				// update cart
+				updateCart(res.data)
+			});
+		});
+	});
+
+</script>

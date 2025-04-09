@@ -1,0 +1,549 @@
+<div class="content" id="content{{ video-id }}">
+
+	<video id="video{{ video-id }}" poster="">
+		<source src="{{ video-url }}#t=0.001" type="video/mp4">
+	</video>
+
+	<div class="main-title {{ video-title-size }}" id="main-title{{ video-id }}">
+		<span class="arrow">→</span> {{ video-title }}
+	</div>
+
+	{% if video-poster != "none" %}
+		<img class="poster" id="poster{{ video-id }}" src="{{ video-poster }}">
+	{% else %}
+		<img class="poster" id="poster{{ video-id }}" src="{{ video-poster }}" style="opacity: 0;">
+	{% endif %}
+
+	<div class="clicker" id="clicker{{ video-id }}"></div>
+
+	<button class="fullscreen" id="fullscreen{{ video-id }}"><div class="{{ video-title-size }}">+</div></button>
+
+	<div class="controls paragraph" id="controls{{ video-id }}">
+		<button style="color: var(--white); left: 0; top: 0; position: absolute;" id="play-button{{ video-id }}">PAUSE</button>
+		<div class="timestamp"><span id="timestamp-time{{ video-id }}">00:00</span> / <span id="timestamp-duration{{ video-id }}">01:25</span></div>
+		<div class="gap-tiny"></div>
+		<div class="playbar-container">
+			<div class="playbar" id="playbar{{ video-id }}"></div>
+			<input class="playbar-slider" id="playbar-slider{{ video-id }}" type="range" min="0" max="1000" value="0">
+		</div>
+	</div>
+
+</div>
+
+<!-- -------------------- style -------------------- -->
+
+<style>
+
+	.poster {
+		width: 100%;
+    	height: 100%;
+    	object-fit: cover;
+    	position: absolute;
+    	top: 0;
+	}
+
+	video{
+		width: 100%;
+		height: auto;
+	}
+
+	.content {
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+		background-color: var(--black);
+	}
+
+	.content video {
+		width: 100%;
+		display: block;
+	}
+
+	.content:before {
+		content: '';
+		position: relative;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	.main-title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		text-align: center;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+		color: var(--white);
+		cursor: pointer;
+	}
+
+	.clicker {
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+	}
+
+	.controls {
+		width: auto;
+		position: absolute;
+		bottom: 15px;
+		left: 15px;
+		right: 15px;
+		display: none;
+		-webkit-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	@media screen and (max-width: 1420px) {
+		.controls {
+			left: 13px;
+			right: 13px;
+			bottom: 13px;
+		}
+	}
+
+	@media screen and (max-width: 1250px) {
+		.controls {
+			left: 11px;
+			right: 11px;
+			bottom: 11px;
+		}
+	}
+
+	@media screen and (max-width: 1080px) {
+		.controls {
+			left: 9px;
+			right: 9px;
+			bottom: 9px;
+		}
+	}
+
+	@media screen and (max-width: 920px) {
+		.controls {
+			left: 7px;
+			right: 7px;
+			bottom: 7px;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		.controls {
+			left: 6px;
+			right: 6px;
+			bottom: 6px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.controls {
+			left: 9px;
+			right: 9px;
+			bottom: 9px;
+			visibility: hidden;
+		}
+	}
+
+	.fullscreen {
+		color: var(--white);
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		display: none;
+		-webkit-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		transition: opacity 450ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	@media screen and (max-width: 1420px) {
+		.fullscreen {
+			right: 13px;
+			top: 13px;
+		}
+	}
+
+	@media screen and (max-width: 1250px) {
+		.fullscreen {
+			right: 11px;
+			top: 11px;
+		}
+	}
+
+	@media screen and (max-width: 1080px) {
+		.fullscreen {
+			right: 9px;
+			top: 9px;
+		}
+	}
+
+	@media screen and (max-width: 920px) {
+		.fullscreen {
+			right: 7px;
+			top: 7px;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		.fullscreen {
+			right: 6px;
+			top: 6px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.fullscreen {
+			left: 9px;
+			right: 9px;
+			bottom: 9px;
+			visibility: hidden;
+		}
+	}
+
+	.video-play-button {
+		color: var(--white);
+		position: absolute;
+		left: 0;
+	}
+
+	.timestamp {
+		color: var(--white);
+		right: 0;
+		text-align: right;
+	}
+
+	.playbar-container {
+		background-color: var(--light-grey);
+		height: 36px;
+		width: 100%;
+	}
+
+	@media screen and (max-width: 1420px) {
+		.playbar-container {
+			height: 32px;
+		}
+	}
+
+	@media screen and (max-width: 1250px) {
+		.playbar-container {
+			height: 27px;
+		}
+	}
+
+	@media screen and (max-width: 1080px) {
+		.playbar-container {
+			height: 23px;
+		}
+	}
+
+	@media screen and (max-width: 920px) {
+		.playbar-container {
+			height: 18px;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		.playbar-container {
+			height: 14px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.playbar-container {
+			height: 26px;
+		}
+	}
+
+	.playbar {
+		background-color: var(--blue);
+		height: 36px;
+		width: 0;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		-webkit-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	@media screen and (max-width: 1420px) {
+		.playbar {
+			height: 32px;
+		}
+	}
+
+	@media screen and (max-width: 1250px) {
+		.playbar {
+			height: 27px;
+		}
+	}
+
+	@media screen and (max-width: 1080px) {
+		.playbar {
+			height: 23px;
+		}
+	}
+
+	@media screen and (max-width: 920px) {
+		.playbar {
+			height: 18px;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		.playbar {
+			height: 14px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.playbar {
+			height: 26px;
+		}
+	}
+
+	.playbar-slider {
+		width: 100%;
+		height: 36px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		opacity: 0;
+	}
+
+	@media screen and (max-width: 1420px) {
+		.playbar-slider {
+			height: 32px;
+		}
+	}
+
+	@media screen and (max-width: 1250px) {
+		.playbar-slider {
+			height: 27px;
+		}
+	}
+
+	@media screen and (max-width: 1080px) {
+		.playbar-slider {
+			height: 23px;
+		}
+	}
+
+	@media screen and (max-width: 920px) {
+		.playbar-slider {
+			height: 18px;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		.playbar-slider {
+			height: 14px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.playbar-slider {
+			height: 26px;
+		}
+	}
+
+</style>
+
+<!-- -------------------- script -------------------- -->
+
+<script>
+
+
+	var video{{ video-id }} = document.getElementById("video{{ video-id }}");
+	var mainTitle{{ video-id }} = document.getElementById("main-title{{ video-id }}");
+	var controls{{ video-id }} = document.getElementById("controls{{ video-id }}");
+	var playButton{{ video-id }} = document.getElementById("play-button{{ video-id }}");
+	var playbarSlider{{ video-id }} = document.getElementById("playbar-slider{{ video-id }}");
+	var playbar{{ video-id }} = document.getElementById("playbar{{ video-id }}");
+	var timestampTime{{ video-id }} = document.getElementById("timestamp-time{{ video-id }}");
+	var timestampDuration{{ video-id }} = document.getElementById("timestamp-duration{{ video-id }}");
+	var content{{ video-id }} = document.getElementById("content{{ video-id }}");
+	var fullscreen{{ video-id }} = document.getElementById("fullscreen{{ video-id }}");
+	var clicker{{ video-id }} = document.getElementById("clicker{{ video-id }}");
+	var poster{{ video-id }} = document.getElementById("poster{{ video-id }}");
+
+	var videoIsFullscreen{{ video-id }} = 0;
+	var mouseMoveTimeout{{ video-id }};
+	var scrollPositionX{{ video-id }};
+	var scrollPositionY{{ video-id }};
+
+	// ---------- main title
+
+	mainTitle{{ video-id }}.addEventListener("click", function() {
+		video{{ video-id }}.play();
+		mainTitle{{ video-id }}.style.display = "none";
+		poster{{ video-id }}.style.display = "none";
+		controls{{ video-id }}.style.display = "block";
+		fullscreen{{ video-id }}.style.display = "block";
+		window.requestAnimationFrame(progress_animation{{ video-id }});
+		console.log("click {{ video-id }}");
+	});
+
+	// ---------- clicker
+
+	clicker{{ video-id }}.addEventListener("click", function() {
+		mainTitle{{ video-id }}.style.display = "none";
+		controls{{ video-id }}.style.display = "block";
+		fullscreen{{ video-id }}.style.display = "block";
+		window.requestAnimationFrame(progress_animation{{ video-id }});
+		if (video{{ video-id }}.paused) {
+			playButton{{ video-id }}.innerHTML = "PAUSE"
+			video{{ video-id }}.play();
+		} else {
+		    video{{ video-id }}.pause();
+		    playButton{{ video-id }}.innerHTML = "PLAY"
+		    controls{{ video-id }}.style.opacity = "100%";
+			fullscreen{{ video-id }}.style.opacity = "100%";
+			clicker{{ video-id }}.style.cursor = "default";
+		}
+	});
+
+	// ---------- clicker double click
+
+	clicker{{ video-id }}.addEventListener("dblclick", function() {
+		if (videoIsFullscreen{{ video-id }} === 0) {
+    		goFullscreen{{ video-id }}()
+    	} else {
+    		leaveFullscreen{{ video-id }}()
+    	}
+	});
+
+	// ---------- function: playbar progress animation
+
+	function progress_animation{{ video-id }}() {
+  		playbar{{ video-id }}.style.setProperty("width", (video{{ video-id }}.currentTime / video{{ video-id }}.duration) * 100 + "%");
+ 		window.requestAnimationFrame(progress_animation{{ video-id }});
+	};
+
+	// ---------- play button
+
+	playButton{{ video-id }}.addEventListener("click", function() {
+		if (video{{ video-id }}.paused) {
+			playButton{{ video-id }}.innerHTML = "PAUSE"
+			video{{ video-id }}.play();
+		} else {
+		    video{{ video-id }}.pause();
+		    playButton{{ video-id }}.innerHTML = "PLAY"
+		}
+	});
+
+	// ---------- slider
+
+	playbarSlider{{ video-id }}.addEventListener("input", function() {
+		video{{ video-id }}.currentTime = (playbarSlider{{ video-id }}.value / 1000) * video{{ video-id }}.duration;
+    });
+
+	// ---------- function: convert time
+
+    var convertTime = function(time) {    
+        var mins = Math.floor(time / 60);
+        if (mins < 10) {
+          mins = '0' + String(mins);
+        }
+        var secs = Math.floor(time % 60);
+        if (secs < 10) {
+          secs = '0' + String(secs);
+        }
+        return mins + ':' + secs;
+    }
+
+    // ---------- update duration on video load
+
+	video{{ video-id }}.addEventListener("loadeddata", () => {
+		timestampDuration{{ video-id }}.textContent = convertTime(video{{ video-id }}.duration);
+	},
+	false
+	);
+
+    // ---------- update time as video plays
+
+	video{{ video-id }}.addEventListener("timeupdate", function() {
+        timestampTime{{ video-id }}.textContent = convertTime(video{{ video-id }}.currentTime);
+        poster{{ video-id }}.style.display = "none";
+    });
+
+    // ---------- mouse over
+
+	content{{ video-id }}.addEventListener('mouseover', function() {
+		if(!video{{ video-id }}.paused) {
+			controls{{ video-id }}.style.opacity = "100%";
+			fullscreen{{ video-id }}.style.opacity = "100%";
+		}
+	});
+
+	content{{ video-id }}.addEventListener('mouseout', function() {
+		if(!video{{ video-id }}.paused) {
+			controls{{ video-id }}.style.opacity = "0%";
+			fullscreen{{ video-id }}.style.opacity = "0%";
+		}
+	});
+
+	// ---------- mouse stationary
+
+	clicker{{ video-id }}.onmousemove = function(){
+		if(!video{{ video-id }}.paused) {
+			controls{{ video-id }}.style.opacity = "100%";
+			fullscreen{{ video-id }}.style.opacity = "100%";
+			clicker{{ video-id }}.style.cursor = "default";
+		}
+  		clearTimeout(mouseMoveTimeout{{ video-id }});
+  		mouseMoveTimeout{{ video-id }} = setTimeout(function(){
+  			if(!video{{ video-id }}.paused) {
+				controls{{ video-id }}.style.opacity = "0%";
+				fullscreen{{ video-id }}.style.opacity = "0%";
+				clicker{{ video-id }}.style.cursor = "none";
+			}
+  		}, 2000);
+	}
+
+	// ---------- reset on video end
+
+    video{{ video-id }}.addEventListener("ended", function() {
+		controls{{ video-id }}.style.display = "none";
+		fullscreen{{ video-id }}.style.display = "none";
+		mainTitle{{ video-id }}.style.display = "block";
+		poster{{ video-id }}.style.display = "block";
+		clicker{{ video-id }}.style.cursor = "default";
+    });
+
+    // ---------- fullscreen button
+
+    fullscreen{{ video-id }}.addEventListener('click', function() {
+    	if (videoIsFullscreen{{ video-id }} === 0) {
+    		goFullscreen{{ video-id }}()
+    	} else {
+    		leaveFullscreen{{ video-id }}()
+    	}
+	});
+
+    // ---------- function: go fullscreen
+
+	function goFullscreen{{ video-id }}() {
+		
+		if (video{{ video-id }}.requestFullscreen) {
+			video{{ video-id }}.requestFullscreen();
+		} else if (video{{ video-id }}.webkitRequestFullscreen) { /* Safari */
+			video{{ video-id }}.webkitRequestFullscreen();
+		} else if (video{{ video-id }}.msRequestFullscreen) { /* IE11 */
+			video{{ video-id }}.msRequestFullscreen();
+		}
+	}
+
+</script>

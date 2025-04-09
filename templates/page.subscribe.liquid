@@ -1,0 +1,79 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>SUBSCRIBE ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → SUBSCRIBE
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+	<div style="background-color: var(--mid-grey);">
+		<div class="gap-tiny"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+				<div id="subscribe-page-content" class="grid-paragraph paragraph scroll-fade-in">
+					MAILING LIST
+					<div class="gap-form"></div>
+					We’ll send our most important signals—about new products in the making, hardware stock ups, tutorials, custom projects, and other activities—by email.
+					<div class="gap-form"></div>
+					{% form 'customer' %}
+						{% if form.errors %}
+							<span class="paragraph" style="color: var(--orange)"> {{ form.errors | default_errors }}</span>
+							<div class="gap-form"></div>
+						{% endif %}
+						<div>
+							<input
+								class="account-input" 
+								type="email"
+								name="contact[email]"
+								placeholder="Email*"
+								autocapitalize="off"
+							>
+						</div>
+						<div class="gap-form"></div>
+						<div class="paragraph"><button type="submit">→ JOIN THE LIST</button></div>
+					{%- endform -%}
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+	</div>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	// show thanks message if form submitted
+	var subscribeQueryString = window.location.search;
+	var subscribeQueryParameters = subscribeQueryString.substring(1);
+	console.log(subscribeQueryParameters);
+	if(subscribeQueryParameters == "customer_posted=true") {
+		console.log("yes!")
+		document.getElementById("subscribe-page-content").innerHTML = `
+			MAILING LIST
+			<div class="gap-form"></div>
+			Thanks for signing up!
+			<div class="gap-form"></div>
+			<a href="/" style="color: var(--white)">← HOME</a>
+		`;
+	}
+
+	// retain scroll position on refresh/filter
+    var scrollpos = localStorage.getItem('scrollpos');
+    if (scrollpos) window.scrollTo(0, scrollpos);
+    window.onbeforeunload = function(e) {
+        localStorage.setItem('scrollpos', window.scrollY);
+    };
+
+</script>

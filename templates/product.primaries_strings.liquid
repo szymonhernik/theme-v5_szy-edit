@@ -1,0 +1,817 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+    <title>{{ product.title | upcase }} ← SLATE + ASH</title>
+
+    <!-- ------------------------------ header ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="header-container">
+            <div class="header-logo title">
+                <a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/collections/instruments/">INSTRUMENTS</a>
+                <br>
+                <a href="/"><span class="header-logo-s">S</span></a>
+            </div>
+            <div class="header-menu-button" id="menu-button">+ MENU</div>
+            <div class="header-title-with-subtitle title scroll-fade-in">
+                {{ product.title | upcase }}
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="header-subtitle paragraph-large scroll-fade-in">
+            {{ product.description }}
+        </div>
+        <div class="gap"></div>
+        <div class="header-subtitle title-small scroll-fade-in">
+            <div>{{ product.title | upcase }}</div>
+            <div style="color: {{ product.metafields.custom.instrument_compare_at_color }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></div>
+            <div style="color: {{ product.metafields.custom.instrument_price_color }}">{{ product.price | money_without_trailing_zeros }}</div>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="text-align: left;"><button id="add-to-cart-button">+ TO CART</button></div>
+                <div style="text-align: right"><a href="/collections/bundles/">→ BUNDLES</a></div>
+            </div>
+        </div>
+        <div class="gap"></div>
+    </div>
+
+    <!-- ------------------------------ youtube modal (hidden) ------------------------------ -->
+
+    <div class="youtube-modal" id="youtube-modal">
+        <div class="player-container" id="player-container">
+            <div id="player">
+            </div>
+        </div>
+    </div>
+
+    <!-- ------------------------------ video ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; display: flex; justify-content: right">
+        <div class="gap"></div>
+        <div class="youtube-video scroll-fade-in" id="youtube-video" data-video-id="Qif5sh64C7o" style="width: 100%">
+            <div class="youtube-video-label title">→ PLAY</div>
+            <img style="width: 100%" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/1.jpg?v=1731066119">
+        </div>
+    </div>
+
+    <!-- ------------------------------ deeper concept + description ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title title scroll-fade-in">
+                    NEW ORCHESTRAL COLOUR
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph-large scroll-fade-in">
+                    With a focus on intricate performance, expanded techniques, and spatial exploration, PRIMARIES / STRINGS blends solo performances into rich, ensemble arrangements.
+                </div>
+                <div class="gap"></div>
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                    Spanning over 100 multisampled articulations and immersed in a variety of distinct spatial environments, each member of the string family — bass, cello, viola, and violin — provides a range of unique tones and experimental performance approaches, capturing an expansive gradient of emotive colour.
+                </div>
+            </div>
+        </div>
+        <div class="gap-desktop"></div>
+        <div class="scroll-fade-in">
+            {% assign slide-id = "slideshowinstrument" %}
+            {% assign slide-1-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/GUI_1.jpg?v=1725883939" %}
+            {% assign slide-2-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/GUI_2.jpg?v=1725883939" %}
+            {% assign slide-3-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/GUI_3.jpg?v=1725884187" %}
+            {% assign slide-4-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/GUI_4.jpg?v=1725884187" %}
+            {% assign slide-5-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/GUI_5.jpg?v=1725884187" %}
+            {% assign slide-6-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/GUI_6.jpg?v=1725884187" %}
+            {% render "slideshowinstrument", slide-id: slide-id, num-slides: num-slides, slide-1-url: slide-1-url, slide-2-url: slide-2-url, slide-3-url: slide-3-url, slide-4-url: slide-4-url, slide-5-url: slide-5-url, slide-6-url: slide-6-url, slide-7-url: slide-7-url, slide-8-url: slide-8-url, slide-9-url: slide-9-url,%}
+        </div>
+        <div class="gap"></div>
+    </div>
+
+    <!-- ------------------------------ about the samples + recordings ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    REFRACTED IMPRINTS
+                </div>
+            </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph-large scroll-fade-in">
+                    Beginning at our state-of-the-art Bristol studio, articulations were recorded as concept-led explorations, each capturing a naturally unfolding performance in hyper-detail.
+                </div>
+            </div>
+        </div>
+
+        <div class="gap-desktop"></div>
+
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                   Each articulation is a standalone exploration: a fluid, organic encounter — every note a freeform performance that disrupts the confines of mechanical reproduction. Space, silence and human nuance play an active role in shaping each sound, adding depth and texture that thrives in the margins.
+                </div>
+            </div>
+        </div>
+
+        <div class="gap-desktop"></div>
+
+        <div>
+            <div class="youtube-video scroll-fade-in" id="youtube-video" data-video-id="ZiFTJ7rMw4c">
+                <div class="youtube-video-label title">→ WALKTHROUGH</div>
+                <img style="width: 100%" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/1_alt3.jpg?v=1731067732">
+            </div>
+        </div>
+        
+        <div class="gap"></div>
+    </div>
+
+    <!-- ------------------------------ spaces + perspectives ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    EXPANDING THE CANVAS
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph-large scroll-fade-in">
+                    Every recording was re-amplified through a series of iconic spaces and physical processes, transforming them into an extended palette of shade and tonality.
+                </div>
+                <div class="gap"></div>
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                    Each space unlocks a new perspective, refracting and imprinting its presence onto the string recordings, expanding the spatial palette of each articulation.
+                </div>
+                <div class="gap"></div>
+                <div class="grid-paragraph scroll-fade-in">
+
+                    {% assign list-1-title = "FUNKHAUS" %}
+                    {% assign list-1-description = "The iconic Funkhaus studios in East Berlin, designed by Bauhaus architect Franz Erlich, was historically used as a broadcast complex for German radio. Its cavernous echo chamber is a cathedral of brutalist concrete and cubist angles, imbuing recordings with industrial reflections that are simultaneously haunting and beautiful." %}
+                    {% assign list-1-image = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Funkhaus_eb681279-d7b2-4f8a-84e9-83292977d246.jpg?v=1731065201" %}
+
+                    {% assign list-2-title = "REAL WORLD" %}
+                    {% assign list-2-description = "Founded by Peter Gabriel, Real World Studios is renowned for its blend of natural acoustic environments. Its Wood Room offers a beautifully naturalistic resonance, with  timber surfaces that create a warm, organic ambience. This space allows sound to breathe, imbuing recordings with an earthy, intimate character that feels both inviting and rich in texture." %}
+                    {% assign list-2-image = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Real_World.jpg?v=1731065141" %}
+
+                    {% assign list-3-title = "EMT 140" %}
+                    {% assign list-3-description = "The EMT 140 plate reverb at Bristol’s Invada Studios is revered for its lush, metallic bloom. Steeped in analogue recording history, its reflective quality gives the string recordings a luminous texture, full of vintage warmth and shimmering resonance." %}
+                    {% assign list-3-image = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/EMT.jpg?v=1731065201" %}
+
+                    {% assign list-4-title = "BRICASTI M7" %}
+                    {% assign list-4-description = "The iconic Bricasti M7 reverb unit is celebrated for its spatial authenticity, pure tonal clarity, and widescreen sophistication. Known for its crystal clear realism, the M7 preserves the warmth and character of the strings while enhancing their scale within an expansive hall sound." %}
+                    {% assign list-4-image = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Bricasti.jpg?v=1731065340" %}
+
+                    {% assign list-5-title = "" %}
+                    {% assign list-5-description = "." %}
+                    {% assign list-5-image = "" %}
+
+                    {% assign list-6-title = "" %}
+                    {% assign list-6-description = "." %}
+                    {% assign list-6-image = "" %}
+
+                    {% assign list-7-title = "" %}
+                    {% assign list-7-description = "." %}
+                    {% assign list-7-image = "" %}
+
+                    {% assign list-8-title = "" %}
+                    {% assign list-8-description = "." %}
+                    {% assign list-8-image = "" %}
+
+                    {% assign list-9-title = "" %}
+                    {% assign list-9-description = "." %}
+                    {% assign list-9-image = "" %}
+
+                    {% assign list-10-title = "" %}
+                    {% assign list-10-description = "." %}
+                    {% assign list-10-image = "" %}
+
+                    {% assign list-11-title = "" %}
+                    {% assign list-11-description = "." %}
+                    {% assign list-11-image = "" %}
+
+                    {% assign list-12-title = "" %}
+                    {% assign list-12-description = "." %}
+                    {% assign list-12-image = "" %}
+
+                    {% assign list-13-title = "" %}
+                    {% assign list-13-description = "." %}
+                    {% assign list-13-image = "" %}
+
+                    {% assign list-14-title = "" %}
+                    {% assign list-14-description = "." %}
+                    {% assign list-14-image = "" %}
+
+                    {% assign list-15-title = "" %}
+                    {% assign list-15-description = "." %}
+                    {% assign list-15-image = "" %}
+
+                    {% assign list-16-title = "" %}
+                    {% assign list-16-description = "" %}
+                    {% assign list-16-image = "" %}
+
+                    {% assign list-17-title = "" %}
+                    {% assign list-17-description = "" %}
+                    {% assign list-17-image = "" %}
+
+                    {% assign list-18-title = "" %}
+                    {% assign list-18-description = "" %}
+                    {% assign list-18-image = "" %}
+
+                    {% assign list-19-title = "" %}
+                    {% assign list-19-description = "" %}
+                    {% assign list-19-image = "" %}
+
+                    {% assign list-20-title = "" %}
+                    {% assign list-20-description = "" %}
+                    {% assign list-20-image = "" %}
+
+                    {% render "expander-list", list-1-title: list-1-title,  list-1-description: list-1-description,  list-1-image: list-1-image, list-2-title: list-2-title,  list-2-description: list-2-description,  list-2-image: list-2-image, list-3-title: list-3-title,  list-3-description: list-3-description,  list-3-image: list-3-image, list-4-title: list-4-title,  list-4-description: list-4-description,  list-4-image: list-4-image, list-5-title: list-5-title,  list-5-description: list-5-description,  list-5-image: list-5-image, list-6-title: list-6-title,  list-6-description: list-6-description,  list-6-image: list-6-image, list-7-title: list-7-title,  list-7-description: list-7-description,  list-7-image: list-7-image, list-8-title: list-8-title,  list-8-description: list-8-description,  list-8-image: list-8-image, list-9-title: list-9-title,  list-9-description: list-9-description,  list-9-image: list-9-image, list-10-title: list-10-title,  list-10-description: list-10-description,  list-10-image: list-10-image, list-11-title: list-11-title,  list-11-description: list-11-description,  list-11-image: list-11-image, list-12-title: list-12-title,  list-12-description: list-12-description,  list-12-image: list-12-image, list-13-title: list-13-title,  list-13-description: list-13-description,  list-13-image: list-13-image, list-14-title: list-14-title,  list-14-description: list-14-description,  list-14-image: list-14-image, list-15-title: list-15-title,  list-15-description: list-15-description,  list-15-image: list-15-image, list-16-title: list-16-title,  list-16-description: list-16-description,  list-16-image: list-16-image, list-17-title: list-17-title,  list-17-description: list-17-description,  list-17-image: list-17-image, list-18-title: list-18-title,  list-18-description: list-18-description,  list-18-image: list-18-image, list-19-title: list-19-title,  list-19-description: list-19-description,  list-19-image: list-19-image, list-20-title: list-20-title,  list-20-description: list-20-description,  list-20-image: list-20-image  %}
+                </div>
+            </div>
+        </div>
+        <div class="gap-desktop"></div>
+    </div>
+
+    <!-- ------------------------------ articulations ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    FULL SPECTRUM PERFORMANCE
+                </div>
+            </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph-large scroll-fade-in">
+                    PRIMARIES / STRINGS is a full-spectrum collection of uniquely expressive string articulations.
+                </div>
+            </div>
+        </div>
+
+        <div class="gap-desktop"></div>
+
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                    It offers everything from layered, evolving textures to lyrical, flowing melodic phrases; from rich, resonant intervallic shifts to deep, cinematic gestures with booming low tones, haunting atonal slides, and percussive pizzicato swarms.
+                    <br><br>
+                    Space is deliberately built into each articulation, enabling phrases and dynamics to intertwine, creating a pointillist interplay where instruments complement each other in a layered, dimensional soundscape. This approach results in an arrangement where each instrument’s voice blends distinctly within the bigger picture.
+                    <br><br>
+                    The full capabilities of the articulations are realised in the EXPRESSIONS presets, enabling unparalleled emotive performance using the mod wheel. Beyond typical dynamic control, each preset creates dynamic gestural moments in real-time. This opens up a new level of natural depth to live performance, shaping sequences that adapt effortlessly to your control.
+                </div>
+            </div>
+        </div>
+
+        <div class="gap-desktop"></div>
+
+        <div>
+            <div class="youtube-video scroll-fade-in" id="youtube-video" data-video-id="OF0nqcW7Vhg">
+                <div class="youtube-video-label title">→ ARTICULATIONS</div>
+                <img style="width: 100%" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/artics.jpg?v=1731067257">
+            </div>
+        </div>
+        
+        <div class="gap"></div>
+    </div>
+
+    <!-- ------------------------------ engine ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    MORE THAN JUST SAMPLE PLAYBACK
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        {% assign title1 = "SPATIAL" %}
+        {% assign title2 = "MODULES" %}
+        {% assign title3 = "EFFECTS" %}
+        {% assign title4 = "LAYERS" %}
+        {% assign title5 = "EXPRESSION" %}
+        {% assign title6 = "OUTPUT" %}
+        {% assign title7 = "" %}
+        {% assign title8 = "" %}
+        {% assign title9 = "" %}
+        {% assign content1 = "The spatial mixer redefines a sound’s environment with an intuitive, creative approach to blending spatial perspectives that opens up new artistic possibilities. Sound sources are positioned within a virtual two-dimensional soundstage and from there can be immersed in rich reverberation, adjusted precisely through parameter controls, isolated for focused detail, or expanded to introduce the resonances of the recording spaces. LFOs and user-defined gestures add further dimension, enabling dynamic, physical movement throughout the space." %}
+        {% assign content2 = "Four flexible input modules offer countless possibilities for transforming patch interactivity. Auto-generated, scale-quantized harmonies bring a new melodic dimension to performances, while pitch-shifting and time-stretching create the effect of detuning sounds through a tape machine. A complex arpeggiator carves out intricate step patterns, while parameter randomisation introduces rich, complex variations." %}
+        {% assign content3 = " Fifteen uniquely programmed macro effects are available to push sound into new sonic territories. An XY pad refines each effect quickly, while deeper controls fine-tune parameters and add modulation. Effect randomisation rejigs the entire setup, uncovering endless happy accidents." %}
+        {% assign content4 = "Beyond a single sound source, two uniquely programmable layers can be fused together to create a performable ensemble, with each layer featuring its own tuning, envelopes, and spatial perspective. Expression controls can be used to interactively modulate between layers with gestural interaction or dynamic LFOs." %}
+        {% assign content5 = "Assignable expression controls offer new ways to design and perform patches. Dynamic swells ebb and flow under user control, enabling natural-sounding transitions between layers, gently evolving filter sweeps, or LFO-driven rhythmic patterns." %}
+        {% assign content6 = "The output effects conclude the signal chain and feature a four-band EQ, a characterful tube compressor, an adjustable delay, a reverb with switchable algorithmic and convolution modes, as well as a low-fidelity tape warbler for warm, analogue-style colour." %}
+        {% assign content7 = "" %}
+        {% assign content8 = "" %}
+        {% assign content9 = "" %}
+        {% assign image1 = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Spatial.jpg?v=1731070825" %}
+        {% assign image2 = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Modules.jpg?v=1731070825" %}
+        {% assign image3 = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Effects.jpg?v=1731070826" %}
+        {% assign image4 = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Layers.jpg?v=1731070934" %}
+        {% assign image5 = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Expression.jpg?v=1731070825" %}
+        {% assign image6 = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Output.jpg?v=1731070825" %}
+        {% assign image7 = "" %}
+        {% assign image8 = "" %}
+        {% assign image9 = "" %}
+        {% render "instrument-go-deeper", title1: title1, title2: title2, title3: title3, title4: title4, title5: title5, title6: title6, title7: title7, title8: title8, title9: title9, content1: content1, content2: content2, content3: content3, content4: content4, content5: content5, content6: content6, content7: content7, content8: content8, content9: content9, image1: image1, image2: image2, image3: image3, image4: image4, image5: image5, image6: image6, image7: image7, image8: image8, image9: image9 %}
+        <div class="gap"></div>
+    </div>
+
+    <!-- ------------------------------ presets ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    A KALEIDOSCOPE OF ORCHESTRAL MANIPULATION
+                </div>
+            </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph-large scroll-fade-in">
+                    Through a multitude of processing options, PRIMARIES / STRINGS opens up avenues of possibilities that blur the line between acoustic and electronic, organic and synthetic.
+                </div>
+            </div>
+        </div>
+
+        <div class="gap-desktop"></div>
+
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                   In over 150 sound-designed presets, the raw string sounds are transformed into a wide palette of reinterpreted textures, drones, statements, and synthetic pulses, each fully malleable ready to be explored.
+                </div>
+            </div>
+        </div>
+
+        <div class="gap-desktop"></div>
+
+        <div>
+            <div class="youtube-video scroll-fade-in" id="youtube-video" data-video-id="WgOIHQamQ6o">
+                <div class="youtube-video-label title">→ PRESETS</div>
+                <img style="width: 100%" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/presets.jpg?v=1731067403">
+            </div>
+        </div>
+        
+        <div class="gap"></div>
+    </div>
+
+    <!-- ------------------------------ import your own samples ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    IMPORT YOUR OWN SAMPLES
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph-large scroll-fade-in">
+                    Simply drop a sample onto the interface to load it into the PRIMARIES / STRINGS engine.
+                </div>
+                <div class="gap"></div>
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                    Up to ten separate samples are supported simultaneously — five for each layer — or individual elements of the native orchestral patches can be swapped with custom samples. From there, samples can be pitch-shifted, mixed, enriched with effects, and transformed through the sound design engine into something entirely new.
+                </div>
+            </div>
+        </div>
+        <div class="gap-desktop"></div>
+        <div class="scroll-fade-in" style="width: 100%; display: flex; justify-content: left;">
+            <img class="instrument-image-small" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/drag_and_drop_66d133ff-6d8e-47db-9fff-65979e3801ca.jpg?v=1731072007">
+        </div>
+        <div class="gap"></div>
+    </div>
+
+    <!-- ---------- audio demos ---------- -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title title scroll-fade-in">
+                    IN CONTEXT
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item scroll-fade-in">
+                {% assign num-tracks = 5 %}
+                {% assign track-1-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Will_Slater_-_Primaries.mp3?v=1730988306" %}
+                {% assign track-1-name = "Will Slater — Primaries" %}
+                {% assign track-2-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Paul_Corley_-_Unity_Frost_Ending_Shortened.mp3?v=1731324082" %}
+                {% assign track-2-name = "Paul Corley — Unity Frost" %}
+                {% assign track-3-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Kai_Whiston_-_Incindigo_in_D_Minor.mp3?v=1730988307" %}
+                {% assign track-3-name = "Kai Whiston — Incindigo In D Minor" %}
+                {% assign track-4-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Max_de_Wardener_-_Canon.mp3?v=1731351329" %}
+                {% assign track-4-name = "Max de Wardener — Canon" %}
+                {% assign track-5-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Paul_Saunderson_-_Out_Of_The_Ashes_Mastered.mp3?v=1731068359" %}
+                {% assign track-5-name = "Paul Saunderson — Out Of The Ashes" %}
+                {% assign track-6-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Derek_Kirkup_-_Necessary_Measures.mp3?v=1730988307" %}
+                {% assign track-6-name = "Derek Kirkup — Neccesary Measures" %}
+                {% render "audio-demos-3", num-tracks: num-tracks, track-1-url: track-1-url, track-1-name: track-1-name, track-2-url: track-2-url, track-2-name: track-2-name, track-3-url: track-3-url, track-3-name: track-3-name, track-4-url: track-4-url, track-4-name: track-4-name, track-5-url: track-5-url, track-5-name: track-5-name, track-6-url: track-6-url, track-6-name: track-6-name, track-7-url: track-7-url, track-7-name: track-7-name, track-8-url: track-8-url, track-8-name: track-8-name, track-9-url: track-9-url, track-9-name: track-9-name %}
+                <div class="gap-desktop"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- what's included ---------- -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    WHAT'S INCLUDED
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                    <span class="title-small">106 × INDIVIDUAL ARTICULATIONS</span>
+                    <div class="gap-small"></div>
+                    22 bass <br>
+                    25 cello <br>
+                    23 viola <br>
+                    36 violin <br>
+                    <div class="gap-small"></div>
+                    <span class="title-small">80 × EXPRESSIONS</span>
+                    <div class="gap-small"></div>
+                    20 bass <br>
+                    18 cello <br>
+                    16 viola <br>
+                    26 violin <br>
+                    <div class="gap-small"></div>
+                    <span class="title-small">139 × SOUND DESIGN PRESETS</span>
+                    <div class="gap-small"></div>
+                    17 arp<br>
+                    12 atmosphere<br>
+                    12 keys<br>
+                    17 motion<br>
+                    30 pads<br>
+                    24 primary<br>
+                    27 texture
+                </div>
+            </div>
+            <div class="gap-desktop"></div>
+        </div>
+    </div>
+
+    <!-- ---------- tech specs ---------- -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container">
+            <div class="grid-item-empty">
+                <div class="grid-title-no-top title scroll-fade-in">
+                    TECHNICAL SPECIFICATIONS
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="grid-container">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item">
+                <div class="grid-paragraph paragraph scroll-fade-in">
+                    <div class="gap-small"></div>
+                    <span class="title-small">SOFTWARE</span>
+                    <div class="gap-small"></div>
+                    Kontakt Player, Kontakt 6.8.0 (or higher)
+                    <br><a style="color: {{ product.metafields.custom.instrument_price_color }}" href="https://www.native-instruments.com/en/products/komplete/samplers/kontakt-7-player/free-download/">Free Kontakt Player</a> included
+                    <div class="gap"></div>
+                    <span class="title-small">SYSTEM</span>
+                    <div class="gap-small"></div>
+                    Intel Macs (i5 or higher): macOS 10.15 or later; Apple Silicon Macs: macOS 11 or later (latest update); Windows 10 or 11, Intel Core i5 or equivalent CPU
+                    <div class="gap"></div>
+                    <span class="title-small">SIZE</span>
+                    <div class="gap-small"></div>
+                    63.5GB samples compressed
+                    <div class="gap"></div>
+                    <span class="title-small">CONTENT</span>
+                    <div class="gap-small"></div>
+                    106 individual articulations
+                    <br>80 expressions
+                    <br>139 sound design presets
+                </div>
+            </div>
+            <div class="gap-desktop"></div>
+        </div>
+    </div>
+
+    <!-- ---------- buy ---------- -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+        <div class="grid-container title">
+            <div class="grid-item-empty">
+                <div class="general-container scroll-fade-in">
+                    {{ product.title | upcase }}
+                    {% if product.compare_at_price %} 
+                        <br><span style="color: {{ product.metafields.custom.instrument_compare_at_color }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></span>
+                    {% endif %}
+                    <br><span style="color: {{ product.metafields.custom.instrument_price_color }}">{{ product.price | money_without_trailing_zeros }}</span>
+                    <br><button id="add-to-cart-button-bottom">+ TO CART</button>
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="grid-container title">
+            <div class="grid-item-empty">
+            </div>
+            <div class="grid-item-empty" style="text-align: right">
+                <div class="general-container scroll-fade-in">
+                    {% assign compareAtColor = product.metafields.custom.instrument_compare_at_color %}
+                    {% assign priceColor = product.metafields.custom.instrument_price_color %}
+                    {% assign featured_bundle = product.metafields.custom.instrument_featured_bundle | remove: '[' | remove: ']' | remove: '"' | remove: 'gid://shopify/Product/' | remove: ' ' %}
+                    {% assign featured_bundle_id = featured_bundle | plus: 0 %}
+                    {% for product in collections['all'].products %}
+                        {% if product.id == featured_bundle_id %}
+                            {% assign featured_bundle_variant_id = product.variants[0].id %}
+                            <a href="{{ product.url }}">{{ product.title | upcase }}</a>
+                            <br><span style="color: {{ compareAtColor }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></span>
+                            <br><span style="color: {{ priceColor }}">{{ product.price | money_without_trailing_zeros }}</span>
+                            <br><button id="add-to-cart-button-bottom-bundle">+ TO CART</button>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+    var selectedVariant = {{ product.variants[0].id }};
+    const highlightColor = "{{ product.metafields.custom.instrument_compare_at_color }}"
+    const returnColor = "{{ product.metafields.custom.instrument_text_color }}"
+    const returnColorInvert = "{{ product.metafields.custom.instrument_background_color }}"
+
+    // add to cart - main
+
+    document.getElementById("add-to-cart-button").addEventListener("click", function() {
+        cartIsEmpty = 0;
+        document.getElementById('cart-items').style.display = 'block';
+        document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+        document.getElementById('cart-empty-message').style.display = 'none';
+        // get variant id
+        variantId = selectedVariant;
+        // change text of add to cart button
+        document.getElementById("add-to-cart-button").innerHTML = "ADDING..."
+        // axois post cart add
+        axios.post('/cart/add.js', {
+            id: variantId,
+            quantity: 1,
+        }).then(res => {
+            console.log(res.data)
+            // update cart button
+            axios.get('/cart.js', {
+            }).then(res => {
+                console.log(res.data);
+                updateCartButton(res.data.item_count);
+                document.getElementById("add-to-cart-button").innerHTML = "ADDED TO CART"
+                document.getElementById("add-to-cart-button").style.color = highlightColor
+                if(res.data.item_count === 1) {
+                    document.getElementById("cart-button").style.visibility = "visible";
+                    document.getElementById("cart-button").classList.add("header-button-bounce-in");
+                    document.getElementById("cart-button").style.transform = "translateY(0)";
+                } else if(res.data.item_count > 1) {
+                    document.getElementById("cart-button").style.color = "#c38839"
+                    document.getElementById("cart-button").style.backgroundColor = "#284289"
+                }
+                setTimeout(function(){
+                    document.getElementById("add-to-cart-button").innerHTML = "+ TO CART"
+                    document.getElementById("add-to-cart-button").style.color = returnColor
+                    document.getElementById("cart-button").style.color = "#284289"
+                    document.getElementById("cart-button").style.backgroundColor = "#c38839"
+                }, 750);
+                // update cart
+                updateCart(res.data)
+            });
+        });
+    });
+
+    // add to cart - bottom
+
+    document.getElementById("add-to-cart-button-bottom").addEventListener("click", function() {
+        cartIsEmpty = 0;
+        document.getElementById('cart-items').style.display = 'block';
+        document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+        document.getElementById('cart-empty-message').style.display = 'none';
+        // get variant id
+        variantId = selectedVariant;
+        // change text of add to cart button
+        document.getElementById("add-to-cart-button-bottom").innerHTML = "ADDING..."
+        // axois post cart add
+        axios.post('/cart/add.js', {
+            id: variantId,
+            quantity: 1,
+        }).then(res => {
+            console.log(res.data)
+            // update cart button
+            axios.get('/cart.js', {
+            }).then(res => {
+                console.log(res.data);
+                updateCartButton(res.data.item_count);
+                document.getElementById("add-to-cart-button-bottom").innerHTML = "ADDED"
+                document.getElementById("add-to-cart-button-bottom").style.color = highlightColor
+                if(res.data.item_count === 1) {
+                    document.getElementById("cart-button").style.visibility = "visible";
+                    document.getElementById("cart-button").classList.add("header-button-bounce-in");
+                    document.getElementById("cart-button").style.transform = "translateY(0)";
+                } else if(res.data.item_count > 1) {
+                    document.getElementById("cart-button").style.color = "#c38839"
+                    document.getElementById("cart-button").style.backgroundColor = "#284289"
+                }
+                setTimeout(function(){
+                    document.getElementById("add-to-cart-button-bottom").innerHTML = "+ TO CART"
+                    document.getElementById("add-to-cart-button-bottom").style.color = returnColor
+                    document.getElementById("cart-button").style.color = "#284289"
+                    document.getElementById("cart-button").style.backgroundColor = "#c38839"
+                }, 750);
+                // update cart
+                updateCart(res.data)
+            });
+        });
+    });
+
+    // add to cart - bottom bundle
+
+    var selectedVariantBundle = {{ product.variants[0].id }};
+
+    document.getElementById("add-to-cart-button-bottom-bundle").addEventListener("click", function() {
+        cartIsEmpty = 0;
+        document.getElementById('cart-items').style.display = 'block';
+        document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+        document.getElementById('cart-empty-message').style.display = 'none';
+        // get variant id
+        variantId = {{ featured_bundle_variant_id }};
+        // change text of add to cart button
+        document.getElementById("add-to-cart-button-bottom-bundle").innerHTML = "ADDING..."
+        // axois post cart add
+        axios.post('/cart/add.js', {
+            id: variantId,
+            quantity: 1,
+        }).then(res => {
+            console.log(res.data)
+            // update cart button
+            axios.get('/cart.js', {
+            }).then(res => {
+                console.log(res.data);
+                updateCartButton(res.data.item_count);
+                document.getElementById("add-to-cart-button-bottom-bundle").innerHTML = "ADDED"
+                document.getElementById("add-to-cart-button-bottom-bundle").style.color = highlightColor
+                if(res.data.item_count === 1) {
+                    document.getElementById("cart-button").style.visibility = "visible";
+                    document.getElementById("cart-button").classList.add("header-button-bounce-in");
+                    document.getElementById("cart-button").style.transform = "translateY(0)";
+                } else if(res.data.item_count > 1) {
+                    document.getElementById("cart-button").style.color = "#c38839"
+                    document.getElementById("cart-button").style.backgroundColor = "#284289"
+                }
+                setTimeout(function(){
+                    document.getElementById("add-to-cart-button-bottom-bundle").innerHTML = "+ TO CART"
+                    document.getElementById("add-to-cart-button-bottom-bundle").style.color = returnColor
+                    document.getElementById("cart-button").style.color = "#284289"
+                    document.getElementById("cart-button").style.backgroundColor = "#c38839"
+                }, 750);
+                // update cart
+                updateCart(res.data)
+            });
+        });
+    });
+
+    // youtube
+
+    var youtubeVideos = document.querySelectorAll(".youtube-video");
+    var youtubeModal = document.getElementById("youtube-modal")
+    var playerContainer = document.getElementById("player-container")
+    var youtubeModalIsShown = 0
+
+    // open youtube modal
+    youtubeVideos.forEach(function(youtubeVideo) {
+        youtubeVideo.addEventListener("click", function() {
+            changeVideo(this.dataset.videoId)
+            youtubeModal.style.visibility = "visible";
+            youtubeModal.classList.add("youtube-fade-in");
+            playerContainer.classList.add("player-container-fade-in");
+            youtubeModal.style.opacity = "100%"
+            playerContainer.style.opacity = "100%"
+            playerContainer.style.visibility = "visible";
+            document.querySelector("body").style.overflow = "hidden";
+        });
+    });
+
+    // close youtube modal
+    youtubeModal.addEventListener("click", function() {
+        if(youtubeModalIsShown == 1) {
+            youtubeModalIsShown = 0
+            this.classList.add("youtube-fade-out");
+            playerContainer.classList.add("player-container-fade-out");
+            this.style.visibility = "hidden";
+            this.style.opacity = "0%";
+            playerContainer.style.opacity = "0%"
+            playerContainer.style.visibility = "hidden";
+            document.querySelector("body").style.overflow = "auto";
+            player.pauseVideo();
+        }
+    });
+
+    // fade transition end
+    youtubeModal.addEventListener("transitionend", function() {
+        if(this.classList.contains("youtube-fade-in")) {
+            this.classList.remove("youtube-fade-in");
+            youtubeModalIsShown = 1
+            console.log(youtubeModalIsShown)
+        }
+        if(this.classList.contains("youtube-fade-out")) {
+            this.classList.remove("youtube-fade-out");
+        }
+    });
+
+    // load youtube api
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    let player
+    let videoId
+    let form = document.getElementById("form")
+
+    function onYouTubeIframeAPIReady(){
+        console.log("api is loaded")
+        player = new YT.Player("player", {
+            height: "100%",
+            width: "100%",
+            videoId: "QPjHCAHfjoU",
+            playerVars: {
+                playsinline: 1,
+                autoplay: 0,
+                controls: 1,
+            },
+            events: {
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange,
+            },
+        })
+    }
+
+    function changeVideo(videoId) {
+        player.loadVideoById({videoId: videoId})
+    }
+
+    function onPlayerReady(){
+    }
+
+    function onPlayerStateChange(event){
+    }
+</script>

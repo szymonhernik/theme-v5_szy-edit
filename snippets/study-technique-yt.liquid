@@ -1,0 +1,100 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<div class="grid-container">
+	<div class="grid-item-empty">
+		<div class="grid-paragraph title-small scroll-fade-in">
+			<button style="text-align: left" class="study-expand-button" id="study-expand-button{{ study-technique-id }}"><span class="study-plus-cross" id="study-plus-cross{{ study-technique-id }}">+</span> {{ study-technique-title }}</button>
+		</div>
+	</div>
+	<div class="grid-item-empty">
+	</div>
+</div>
+
+<div class="study-detail" id="study-detail{{ study-technique-id }}">
+		<div class='study-detail-measuring-wrapper' id='study-detail-measuring-wrapper{{ study-technique-id }}'>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ study-technique-description | raw }}
+				</div>
+			</div>
+			<div class="grid-item-empty"">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					<div class="yt-container-outer">
+						<div class="yt-container">
+							<iframe class="yt-video" src="https://www.youtube.com/embed/{{ study-technique-youtube-id }}" frameborder="0" controls="0" rel="0"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+	</div>
+</div
+
+<!-- ------------------------------ style ------------------------------ -->
+
+<style>
+
+	.study-detail {
+		height: 0px;
+		overflow: hidden;
+		-webkit-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	.yt-container-outer {
+	    width: 100%;
+	    height: auto;
+	}
+
+	.yt-container {
+	    position: relative;
+	    width: 100%;
+	    height: 0;
+	    padding-bottom: 56.25%;
+	}
+
+	.yt-video {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	}
+
+</style>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	studyExpandButton{{ study-technique-id }} = document.getElementById("study-expand-button{{ study-technique-id }}");
+	studyPlusCross{{ study-technique-id }} = document.getElementById("study-plus-cross{{ study-technique-id }}");
+	studyDetail{{ study-technique-id }} = document.getElementById("study-detail{{ study-technique-id }}");
+	studyDetailMeasuringWrapper{{ study-technique-id }} = document.getElementById("study-detail-measuring-wrapper{{ study-technique-id }}");
+
+	const studyReturnColor{{ study-technique-id }} = studyExpandButton{{ study-technique-id }}.style.color;
+	const secondaryTextColor{{ study-technique-id }} = "{{ study-secondary-text-color }}"
+
+	var studyDetailIsShown{{ study-technique-id }} = 0;
+
+	studyExpandButton{{ study-technique-id }}.addEventListener("click", function() {
+    	if(studyDetailIsShown{{ study-technique-id }} === 0) {
+    		studyDetailIsShown{{ study-technique-id }} = 1;
+    		studyDetail{{ study-technique-id }}.style.height = studyDetailMeasuringWrapper{{ study-technique-id }}.clientHeight + "px";
+    		studyPlusCross{{ study-technique-id }}.innerHTML = "✕"
+    		studyExpandButton{{ study-technique-id }}.style.color = secondaryTextColor{{ study-technique-id }}
+    	} else {
+    		studyDetailIsShown{{ study-technique-id }} = 0;
+    		studyDetail{{ study-technique-id }}.style.height = "0px";
+    		studyPlusCross{{ study-technique-id }}.innerHTML = "+"
+    		studyExpandButton{{ study-technique-id }}.style.color = studyReturnColor{{ study-technique-id }}
+    	}
+    });
+
+</script>

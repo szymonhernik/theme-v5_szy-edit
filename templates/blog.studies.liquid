@@ -1,0 +1,278 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>STUDIES ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → STUDIES
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title paragraph">
+			<button id="about-studies-button">+ ABOUT STUDIES</button>
+		</div>
+	</div>
+
+	<!-- ------------------------------ about studies ------------------------------ -->
+
+	<div id="about-studies" class="grid-container about-studies">
+		<div class='about-studies-measuring-wrapper'>
+			<div class="grid-paragraph paragraph">
+				<div class="gap-tiny"></div>
+				Studies are encyclopedias of sound design concepts and techniques. Use them to expand your knowledge of our instruments and inspire new ways of working with them.
+				<div class="gap"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ------------------------------ items - desktop ------------------------------ -->
+
+	<div class="desktop">
+		<div style="background-color: var(--orange);">
+			{% for article in blog.articles %}
+				{% assign studyIndex = forloop.index | minus: 1 | modulo: 8 %}
+				{% if studyIndex == 0 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: right;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+				{% if studyIndex == 1 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; left: 0;">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: left;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+				{% if studyIndex == 2 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 0; left: 0;">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: right;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+				{% if studyIndex == 3 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: left;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+				{% if studyIndex == 4 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 0; right: 0;">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: right;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+				{% if studyIndex == 5 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; right: 0;">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: left;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+				{% if studyIndex == 6 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; right: 0;">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: right;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+				{% if studyIndex == 7 %}
+					<div class="column-square">
+						<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+							<a href={{ article.url }}><img src="{{ article.image | img_url: "1280x" }}" style="width: 100%"></a>
+							<div class="gap-tiny"></div>
+							<div class="title-tiny" style="text-align: left;"><a href={{ article.url }}>{{ article.title | remove: "STUDIES: " | upcase }}</a></div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+			{% assign studyCountMod = blog.articles_count | modulo: 2 == 1 %}
+			{% if studyCountMod == 1 %}
+				<div class="column-square">
+				</div>
+			{% endif %}
+			<div class="gap"></div>
+		</div>
+	</div>
+
+	<!-- ------------------------------ items - mobile ------------------------------ -->
+
+	<div class="mobile">
+		<div style="background-color: var(--orange)">
+			<div class="gap"></div>
+			{% for article in blog.articles %}
+				{% assign studyTagIndex = forloop.index | minus: 1 | modulo: 7 %}
+				{% if studyTagIndex == 0 %}
+					<div>
+						<div class="scroll-fade-in" style="width: 50%; position: relative; left: 50%; -webkit-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); transform: translate(-50%, 0%);">
+							<a href="{{ article.url }}">
+								<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%">
+								<div class="gap-tiny"></div>
+								<div class="title-tiny" style="text-align: right">{{ article.title | remove: "STUDIES: " | upcase }}</div>
+							</a>
+						</div>
+					</div>
+					<div class="gap"></div>
+				{% endif %}
+				{% if studyTagIndex == 1 %}
+					<div>
+						<div class="scroll-fade-in" style="width: 50%;">
+							<a href="{{ article.url }}">
+								<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%">
+								<div class="gap-tiny"></div>
+								<div class="title-tiny" style="text-align: right">{{ article.title | remove: "STUDIES: " | upcase }}</div>
+							</a>
+						</div>
+					</div>
+					<div class="gap"></div>
+				{% endif %}
+				{% if studyTagIndex == 2 %}
+					<div class="scroll-fade-in" style="text-align: right">
+						<div style="width: 80%; display: inline-block">
+							<a href="{{ article.url }}">
+								<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%">
+								<div class="gap-tiny"></div>
+								<div class="title-tiny" style="text-align: left">{{ article.title | remove: "STUDIES: " | upcase }}</div>
+							</a>
+						</div>
+					</div>
+					<div class="gap"></div>
+				{% endif %}
+				{% if studyTagIndex == 3 %}
+					<div>
+						<div class="scroll-fade-in" style="width: 50%;">
+							<a href="{{ article.url }}">
+								<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%">
+								<div class="gap-tiny"></div>
+								<div class="title-tiny" style="text-align: right">{{ article.title | remove: "STUDIES: " | upcase }}</div>
+							</a>
+						</div>
+					</div>
+					<div class="gap"></div>
+				{% endif %}
+				{% if studyTagIndex == 4 %}
+					<div>
+						<div class="scroll-fade-in" style="width: 50%; position: relative; left: 50%; -webkit-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); transform: translate(-50%, 0%);">
+							<a href="{{ article.url }}">
+								<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%">
+								<div class="gap-tiny"></div>
+								<div class="title-tiny" style="text-align: right">{{ article.title | remove: "STUDIES: " | upcase }}</div>
+							</a>
+						</div>
+					</div>
+					<div class="gap"></div>
+				{% endif %}
+				{% if studyTagIndex == 5 %}
+					<div class="scroll-fade-in" style="text-align: left">
+						<div style="width: 80%; display: inline-block">
+							<a href="{{ article.url }}">
+								<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%">
+								<div class="gap-tiny"></div>
+								<div class="title-tiny" style="text-align: right">{{ article.title | remove: "STUDIES: " | upcase }}</div>
+							</a>
+						</div>
+					</div>
+					<div class="gap"></div>
+				{% endif %}
+				{% if studyTagIndex == 6 %}
+					<div class="scroll-fade-in" style="text-align: right">
+						<div style="width: 50%; display: inline-block">
+							<a href="{{ article.url }}">
+								<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%">
+								<div class="gap-tiny"></div>
+								<div class="title-tiny" style="text-align: left">{{ article.title | remove: "STUDIES: " | upcase }}</div>
+							</a>
+						</div>
+					</div>
+					<div class="gap"></div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</body>
+
+<!-- ------------------------------ style ------------------------------ -->
+
+<style>
+
+	.about-studies {
+		background-color: var(--blue);
+		color: var(--white);
+		height: 0px;
+		overflow: hidden;
+	}
+
+	.about-studies-animate {
+		-webkit-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		transition: height 450ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+</style>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	aboutStudiesButton = document.getElementById("about-studies-button");
+	aboutStudies = document.getElementById("about-studies");
+
+	var aboutStudiesIsShown = 0;
+
+	// show filter on load if filtered
+
+	var objectsFiltered = window.location.href.split('?').pop();
+    if(objectsFiltered === "filter") {
+    	aboutStudiesIsShown = 1;
+		aboutStudies.style.height = document.querySelector('.about-studies-measuring-wrapper').clientHeight + "px";
+		aboutStudiesButton.innerHTML = "✕ ABOUT STUDIES"
+    }
+
+    // show/hide filters on click
+
+    aboutStudiesButton.addEventListener("click", function() {
+    	if(aboutStudiesIsShown === 0) {
+    		aboutStudiesIsShown = 1;
+    		aboutStudies.classList.add("about-studies-animate");
+    		aboutStudies.style.height = document.querySelector('.about-studies-measuring-wrapper').clientHeight + "px";
+    		aboutStudiesButton.innerHTML = "✕ ABOUT STUDIES"
+    	} else {
+    		aboutStudiesIsShown = 0;
+    		aboutStudies.classList.add("about-studies-animate");
+    		aboutStudies.style.height = "0px";
+    		aboutStudiesButton.innerHTML = "+ ABOUT STUDIES"
+    		window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
+    	}
+    });
+
+    // retain scroll position on refresh/filter
+    // var scrollpos = localStorage.getItem('scrollpos');
+    // if (scrollpos) window.scrollTo(0, scrollpos);
+    // window.onbeforeunload = function(e) {
+    //     localStorage.setItem('scrollpos', window.scrollY);
+    // };
+</script>

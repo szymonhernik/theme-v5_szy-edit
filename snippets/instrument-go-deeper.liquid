@@ -1,0 +1,91 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+	<div class="grid-container">
+		<div class="grid-item">
+			<div class="grid-paragraph title-small scroll-fade-in">
+				{% if title1 %}
+					<div class="go-deeper-title">{{ title1 }}</div>
+				{% endif %}
+				{% if title2 %}
+					<div class="go-deeper-title">{{ title2 }}</div>
+				{% endif %}
+				{% if title3 %}
+					<div class="go-deeper-title">{{ title3 }}</div>
+				{% endif %}
+				{% if title4 %}
+					<div class="go-deeper-title">{{ title4 }}</div>
+				{% endif %}
+				{% if title5 %}
+					<div class="go-deeper-title">{{ title5 }}</div>
+				{% endif %}
+				{% if title6 %}
+					<div class="go-deeper-title">{{ title6 }}</div>
+				{% endif %}
+				{% if title7 %}
+					<div class="go-deeper-title">{{ title7 }}</div>
+				{% endif %}
+				{% if title8 %}
+					<div class="go-deeper-title">{{ title8 }}</div>
+				{% endif %}
+				{% if title9 %}
+					<div class="go-deeper-title">{{ title9 }}</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="grid-item">
+			<div class="grid-paragraph paragraph go-deeper-content scroll-fade-in">
+				{{ content1 }}
+			</div>
+		</div>
+	</div>
+	<div class="gap-desktop"></div>
+	<div class="go-deeper-image scroll-fade-in" style="width: 100%; height: auto; display: flex; justify-content: right;">
+		<img class="instrument-image-go-deeper" src="{{ image1 }}">
+	</div>
+</html>
+
+<!-- ------------------------------ style ------------------------------ -->
+
+<style>
+
+	.go-deeper-title {
+		cursor: pointer;
+	}
+</style>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	const titles = document.querySelectorAll(".go-deeper-title");
+	const content = document.querySelector(".go-deeper-content");
+	const image = document.querySelector(".go-deeper-image");
+
+	const titleArray = ["{{ title1 }}", "{{ title2 }}", "{{ title3 }}", "{{ title4 }}", "{{ title5 }}", "{{ title6 }}", "{{ title7 }}", "{{ title8 }}", "{{ title9 }}"];
+	const contentArray = ["{{ content1 }}", "{{ content2 }}", "{{ content3 }}", "{{ content4 }}", "{{ content5 }}", "{{ content6 }}", "{{ content7 }}", "{{ content8 }}", "{{ content9 }}"];
+	const imageArray = ["{{ image1 }}", "{{ image2 }}", "{{ image3 }}", "{{ image4 }}", "{{ image5 }}", "{{ image6 }}", "{{ image7 }}", "{{ image8 }}", "{{ image9 }}"];
+
+	// on page load highlight first title
+	titles[0].innerHTML = "→ " + titleArray[0];
+	// titles[0].style.color = "#ffffff";
+
+	// title click
+	titles.forEach.call(titles, function (title, index) {
+		title.addEventListener('click', function () {
+			resetAllTitles();
+			this.innerHTML = "→ " + titleArray[index];
+			// this.style.color = "#ffffff";
+			content.innerHTML = contentArray[index];
+			image.innerHTML = `<img class="instrument-image-go-deeper" src="` + imageArray[index] + `">`
+		})
+	});
+
+	// function: reset all titles
+	function resetAllTitles() {
+    	titles.forEach(async (title, index) => {
+    		title.innerHTML = titleArray[index]
+    		title.style.color = "inherit"
+		});
+	};
+</script>

@@ -1,0 +1,132 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white); color: var(--blue);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="">ACCOUNT</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			ORDER #{{ order.order_number }}
+		</div>
+	</div>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+	<div style="background-color: var(--mid-grey);">
+
+		<div class="gap-tiny"></div>
+
+		<!-- ------------------------------ overview ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title scroll-fade-in">
+					DETAILS
+				</div>
+			</div>
+			<div class="grid-item">
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					ITEM(S)<br>
+					{% for line_item in order.line_items %}
+						{{ line_item.title }} × {{ line_item.quantity }} ({{ line_item.original_price | money_without_trailing_zeros }}){% if forloop.index < order.item_count %}, {% endif %}
+					{% endfor %}<br><br>
+					DISCOUNT<br>
+					{{ order.total_discounts | money_without_trailing_zeros }}<br><br>
+					VAT<br>
+					{{ order.tax_price | money_without_trailing_zeros }}<br><br>
+					<span style="color: var(--white)">TOTAL<br>
+					{{ order.total_price | money_without_trailing_zeros }}</span>
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+
+		<!-- ------------------------------ billing address ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title scroll-fade-in">
+					BILLING ADDRESS
+				</div>
+			</div>
+			<div class="grid-item">
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{% if order.billing_address.address1 != blank %}
+						{{ order.billing_address.address1 }}
+					{% endif %}
+					{% if order.billing_address.address2 != blank %}
+						<br>{{ order.billing_address.address2 }}
+					{% endif %}
+					{% if order.billing_address.city != blank %}
+						<br>{{ order.billing_address.city }}
+					{% endif %}
+					{% if order.billing_address.zip != blank %}
+						<br>{{ order.billing_address.zip }}
+					{% endif %}
+					{% if order.billing_address.country != blank %}
+						<br>{{ order.billing_address.country }}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<!-- ------------------------------ shipping address ------------------------------ -->
+
+		{% if order.shipping_address != blank %}
+			<div class="grid-container">
+				<div class="grid-item">
+					<div class="grid-paragraph title scroll-fade-in">
+						SHIPPING ADDRESS
+					</div>
+				</div>
+				<div class="grid-item">
+				</div>
+			</div>
+			<div class="gap"></div>
+			<div class="grid-container">
+				<div class="grid-item">
+				</div>
+				<div class="grid-item">
+					<div class="grid-paragraph paragraph scroll-fade-in">
+						{% if order.shipping_address.address1 != blank %}
+							{{ order.shipping_address.address1 }}
+						{% endif %}
+						{% if order.shipping_address.address2 != blank %}
+							<br>{{ order.shipping_address.address2 }}
+						{% endif %}
+						{% if order.shipping_address.city != blank %}
+							<br>{{ order.shipping_address.city }}
+						{% endif %}
+						{% if order.shipping_address.zip != blank %}
+							<br>{{ order.shipping_address.zip }}
+						{% endif %}
+						{% if order.shipping_address.country != blank %}
+							<br>{{ order.shipping_address.country }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		<div class="gap"></div>
+	</div>
+</html>

@@ -1,0 +1,64 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>{{ article.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="/blogs/mixes/">MIXES</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ article.title | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: {{ article.metafields.custom.mix_background_color }}; color: {{ article.metafields.custom.mix_text_color }};">
+
+		<!-- ------------------------------ image ------------------------------ -->
+
+		<img class="feature-image scroll-fade-in" src="{{ article.image | img_url: "1280x" }}">
+		<div class="gap"></div>
+
+		<!-- ------------------------------ content + player ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ article.content }}
+				</div>
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{% assign audio-file = article.metafields.custom.mix_audio_file %}
+					{% render "audio-player-colour", audio-file: audio-file, audio-color: article.metafields.custom.mix_text_color %}
+				</div>
+			</div>
+		</div>
+
+		<!-- ------------------------------ prev + next ------------------------------ -->
+
+		{% if blog.previous_article or blog.next_article %}
+			<div class="gap-desktop"></div>
+			<div class="previous-next title-small scroll-fade-in">
+				<div class="previous">
+					{% if blog.previous_article %}
+						{{ '← PREVIOUS' | link_to: blog.previous_article.url, 'Previous product' }}
+					{% endif %}
+				</div>
+				<div class="next">
+					{% if blog.next_article %}
+						{{ 'NEXT →' | link_to: blog.next_article.url, 'Next product' }}
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+		<div class="gap"></div>
+
+	</div>
+</html>

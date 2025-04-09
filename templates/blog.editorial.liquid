@@ -1,0 +1,93 @@
+<body style="background-color:  var(--purple);">
+
+	<title>EDITORIAL ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color:  var(--purple);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> EDITORIAL
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ items - desktop ------------------------------ -->
+
+	<div class="desktop">
+		{% for article in blog.articles %}
+			{% assign articleIndex = forloop.index | minus: 1 | modulo: 2 %}
+			{% if articleIndex == 0 %}
+				<div class="row" style="background-color: {{ article.metafields.custom.editorial_background_color }}; color: {{ article.metafields.custom.editorial_text_color }};">
+					<div class="column-square">
+						<div class="image-top-left" style="width: 100%;">
+							<a href="{{ article.url }}"><img src="{{ article.image | img_url: "2500x" }}" style="width: 100%;"></a>
+						</div>
+					</div>
+					<div class="column-square">
+						<div class="text-top-right title scroll-fade-in">
+							<a href="{{ article.url }}">{{ article.title | upcase }}</a>
+						</div>
+						<div class="text-bottom-right paragraph-large scroll-fade-in">
+							<a href="{{ article.url }}">→ READ</a>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+			{% if articleIndex == 1 %}
+				<div class="row" style="background-color: {{ article.metafields.custom.editorial_background_color }}; color: {{ article.metafields.custom.editorial_text_color }};">
+					<div class="column-square">
+						<div class="text-top-left title scroll-fade-in">
+							<a href="{{ article.url }}">{{ article.title | upcase }}</a>
+						</div>
+						<div class="text-bottom-left paragraph-large scroll-fade-in">
+							<a href="{{ article.url }}">→ READ</a>
+						</div>
+					</div>
+					<div class="column-square">
+						<div class="image-top-left" style="width: 100%;">
+							<a href="{{ article.url }}"><img src="{{ article.image | img_url: "2500x" }}" style="width: 100%;"></a>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<!-- ------------------------------ items - mobile ------------------------------ -->
+
+	<div class="mobile">
+		{% for article in blog.articles %}
+			{% assign articleIndex = forloop.index | minus: 1 | modulo: 2 %}
+			{% if articleIndex == 0 %}
+				<div style="background-color: {{ article.metafields.custom.editorial_background_color }}; color: {{ article.metafields.custom.editorial_text_color }};">
+					<div class="general-container title scroll-fade-in">
+						<a href="{{ article.url }}">{{ article.title | upcase }}</a>
+					</div>
+					<div class="gap"></div>
+					<div class="mobile-image-right scroll-fade-in">
+						<a href="{{ article.url }}">
+							<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%;">
+						</a>
+					</div>
+					<div class="gap"></div>
+				</div>
+			{% endif %}
+			{% if articleIndex == 1 %}
+				<div style="background-color: {{ article.metafields.custom.editorial_background_color }}; color: {{ article.metafields.custom.editorial_text_color }};">
+					<div class="general-container title scroll-fade-in" style="float: right; text-align: right;">
+						<a href="{{ article.url }}">{{ article.title | upcase }}</a>
+					</div>
+					<div class="gap"></div>
+					<div class="mobile-image-left scroll-fade-in">
+						<a href="{{ article.url }}">
+							<img src="{{ article.image | img_url: "1280x" }}" style="width: 100%;">
+						</a>
+					</div>
+					<div class="gap"></div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</body>

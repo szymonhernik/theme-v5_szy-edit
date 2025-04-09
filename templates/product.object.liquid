@@ -1,0 +1,180 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>{{ product.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white); color: var(--blue);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="/collections/objects/">OBJECTS</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ product.title | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: var(--turquoise);">
+
+		<!-- ------------------------------ image ------------------------------ -->
+
+		<div class="scroll-fade-in" 
+			{% assign slide-id = "slideshow" %}
+			{% if product.images.size > 0 %}
+				{% assign slide-1-url = product.images[0] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 1 %}
+				{% assign slide-2-url = product.images[1] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 2 %}
+				{% assign slide-3-url = product.images[2] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 3 %}
+				{% assign slide-4-url = product.images[3] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 4 %}
+				{% assign slide-5-url = product.images[4] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 5 %}
+				{% assign slide-6-url = product.images[5] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 6 %}
+				{% assign slide-7-url = product.images[6] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 7 %}
+				{% assign slide-8-url = product.images[7] | img_url: "master" %}
+			{% endif %}
+			{% if product.images.size > 8 %}
+				{% assign slide-9-url = product.images[8] | img_url: "master" %}
+			{% endif %}
+			{% render "slideshow", slide-id: slide-id, num-slides: num-slides, slide-1-url: slide-1-url, slide-2-url: slide-2-url, slide-3-url: slide-3-url, slide-4-url: slide-4-url, slide-5-url: slide-5-url, slide-6-url: slide-6-url, slide-7-url: slide-7-url, slide-8-url: slide-8-url, slide-9-url: slide-9-url,%}
+			<div class="gap"></div>
+		</div>
+
+		<!-- ------------------------------ description ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ product.description }}
+				</div>
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					{% if product.has_only_default_variant == true %}
+						{{ product.title | upcase}}
+					{% else %}
+						{% for variant in product.variants %}
+							{% if forloop.index == 1 %}
+								<button style="color: var(--white)" class="object-variant-selector" data-object-id="{{ variant.id }}" data-object-price ="{{ variant.price | money_without_trailing_zeros }}">{{ variant.title | upcase }}</button>{% if forloop.index != product.variants.size %},{% endif %}
+							{% else %}
+								<button class="object-variant-selector" data-object-id="{{ variant.id }}" data-object-price ="{{ variant.price | money_without_trailing_zeros }}">{{ variant.title | upcase }}</button>{% if forloop.index != product.variants.size %},{% endif %}
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+					<br><span id="object-price">{{ product.price | money_without_trailing_zeros }}</span>
+					{% if product.available %}
+						<div><button id="add-to-cart-button">+ TO CART</button></div>
+					{% else %}
+						<div>SOLD OUT</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<input type="hidden" id="first-variant-id" value="{{ product.variants[0].id }}">
+
+		<!-- ------------------------------ prev/next buttons ------------------------------ -->
+
+		{% if collection.previous_product or collection.next_product %}
+			<div class="gap-desktop"></div>
+			<div class="previous-next title-small scroll-fade-in">
+				<div class="previous">
+					{% if collection.previous_product %}
+						{{ '← PREVIOUS' | link_to: collection.previous_product.url, 'Previous product' }}
+					{% endif %}
+				</div>
+				<div class="next">
+					{% if collection.next_product %}
+						{{ 'NEXT →' | link_to: collection.next_product.url, 'Next product' }}
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+		<div class="gap"></div>
+	</div>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	var selectedVariant = {{ product.variants[0].id }};
+
+	// select variant buttons
+
+	document.querySelectorAll('.object-variant-selector').forEach(button => {
+		button.addEventListener('click', () => {
+			document.querySelectorAll('.object-variant-selector').forEach(button => {
+				button.style.color = "var(--blue)";
+			});
+			selectedVariant = Number(button.getAttribute('data-object-id'));
+			button.style.color = "var(--white)";
+			document.getElementById("object-price").innerHTML = button.getAttribute('data-object-price');
+		});
+	});
+
+	// add to cart
+
+	document.getElementById("add-to-cart-button").addEventListener("click", function() {
+
+		cartIsEmpty = 0;
+		document.getElementById('cart-items').style.display = 'block';
+		document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+		document.getElementById('cart-empty-message').style.display = 'none';
+
+		// get variant id
+		variantId = selectedVariant;
+
+		// change text of add to cart button
+		document.getElementById("add-to-cart-button").innerHTML = "ADDING..."
+
+		// axois post cart add
+		axios.post('/cart/add.js', {
+			id: variantId,
+			quantity: 1,
+		}).then(res => {
+			console.log(res.data)
+
+			// update cart button
+			axios.get('/cart.js', {
+			}).then(res => {
+				console.log(res.data);
+				updateCartButton(res.data.item_count);
+				document.getElementById("add-to-cart-button").innerHTML = "ADDED TO CART"
+				document.getElementById("add-to-cart-button").style.color = "#ffffff"
+				if(res.data.item_count === 1) {
+					document.getElementById("cart-button").style.visibility = "visible";
+					document.getElementById("cart-button").classList.add("header-button-bounce-in");
+					document.getElementById("cart-button").style.transform = "translateY(0)";
+				} else if(res.data.item_count > 1) {
+					document.getElementById("cart-button").style.color = "#c38839"
+					document.getElementById("cart-button").style.backgroundColor = "#284289"
+				}
+				setTimeout(function(){
+				    document.getElementById("add-to-cart-button").innerHTML = "+ TO CART"
+				    document.getElementById("add-to-cart-button").style.color = "#284289"
+				    document.getElementById("cart-button").style.color = "#284289"
+					document.getElementById("cart-button").style.backgroundColor = "#c38839"
+				}, 750);
+
+				// update cart
+				updateCart(res.data)
+			});
+		});
+	});
+
+</script>

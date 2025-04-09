@@ -1,0 +1,621 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html style="color: {{ product.metafields.custom.instrument_text_color }}">
+
+	<title>{{ product.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="header-container">
+			<div class="header-logo title">
+				<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/collections/instruments/">INSTRUMENTS</a>
+				<br>
+				<a href="/"><span class="header-logo-s">S</span></a>
+			</div>
+			<div class="header-menu-button" id="menu-button">+ MENU</div>
+			<div class="header-title-with-subtitle title scroll-fade-in">
+				{{ product.title | upcase }}
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="header-subtitle paragraph-large scroll-fade-in">
+			{{ product.description }}
+		</div>
+		<div class="gap"></div>
+		<div class="header-subtitle title-small scroll-fade-in">
+			<div>{{ product.title | upcase }}</div>
+			<div style="color: {{ product.metafields.custom.instrument_compare_at_color }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></div>
+			<div style="color: {{ product.metafields.custom.instrument_price_color }}">{{ product.price | money_without_trailing_zeros }}</div>
+			<div style="display: flex; justify-content: space-between;">
+				<div style="text-align: left;"><button id="add-to-cart-button">+ TO CART</button></div>
+				<div style="text-align: right"><a href="/collections/bundles/">→ BUNDLES</a></div>
+			</div>
+		</div>
+		<div class="gap"></div>
+	</div>
+
+	<!-- ------------------------------ youtube modal (hidden) ------------------------------ -->
+
+    <div class="youtube-modal" id="youtube-modal">
+        <div class="player-container" id="player-container">
+            <div id="player">
+            </div>
+        </div>
+    </div>
+
+	<!-- ------------------------------ video ------------------------------ -->
+
+    <div style="background-color: {{ product.metafields.custom.instrument_background_color }}; display: flex; justify-content: right">
+        <div class="gap"></div>
+        <div class="youtube-video scroll-fade-in" id="youtube-video" data-video-id="_yGSaK1FdJI" style="width: 100%">
+            <div class="youtube-video-label title">→ PLAY</div>
+            <img style="width: 100%" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/vlcsnap-2023-08-07-16h18m55s429.png?v=1691421558">
+        </div>
+    </div>
+
+	<!-- ------------------------------ emerging from nature ------------------------------ -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title title scroll-fade-in">
+					EMERGING FROM NATURE
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph-large scroll-fade-in">
+					Influenced by the forms and textures of the natural world, articulations were curated and produced with specific compositional intentions.
+				</div>
+				<div class="gap"></div>
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					Phrases that fuse together rhythmically and movements that overlap unpredictably to create progressive textural evolutions, mirroring the slowly building intensity of rising tides, the harmonic refractions of rippling water. 
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+		<div class="scroll-fade-in">
+			{% assign slide-id = "slideshowinstrument" %}
+			{% assign slide-1-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/LF_Elements_1.jpg?v=1691424174" %}
+			{% assign slide-2-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/LF_Elements_2.jpg?v=1691424174" %}
+			{% assign slide-3-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/LF_Elements_3.jpg?v=1691424174" %}
+			{% render "slideshowinstrument", slide-id: slide-id, num-slides: num-slides, slide-1-url: slide-1-url, slide-2-url: slide-2-url, slide-3-url: slide-3-url, slide-4-url: slide-4-url, slide-5-url: slide-5-url, slide-6-url: slide-6-url, slide-7-url: slide-7-url, slide-8-url: slide-8-url, slide-9-url: slide-9-url,%}
+		</div>
+		<div class="gap"></div>
+	</div>
+
+	<!-- ------------------------------ streamlined for simplicity ------------------------------ -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					STREAMLINED FOR SIMPLICITY
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div>
+            <div class="youtube-video scroll-fade-in" id="youtube-video" data-video-id="fz2Nbttsl6U">
+                <div class="youtube-video-label title">→ ENGINE OVERVIEW</div>
+                <img style="width: 100%" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/vlcsnap-2023-08-04-15h20m52s643.png?v=1691158914">
+            </div>
+        </div>
+		<div class="gap"></div>
+	</div>
+
+	<!-- ------------------------------ real expression, real emotion ------------------------------ -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					REAL EXPRESSION, REAL EMOTION
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph-large scroll-fade-in">
+					Recorded in the rich, warm acoustics of the Wood Room at Real World Studios and utilising ensembles of three players per instrument, the recordings of LANDFORMS ELEMENTS are all about emphasising focus and detail while still maintaining the magic of the ensemble.
+				</div>
+				<div class="gap"></div>
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					The intimacies of players’ individual performances were captured using hyper-focussed spot mics, whilst a range of mics placed throughout the Wood Room captured its sophisticated resonances. These can be combined to create a full-spectrum dynamic mix with a deep tonal range.
+					<br><br>
+					It’s not for the purists. It’s not about noiseless, robotic performances. It’s about real recordings and real expression. The rawness and detail of performances were intentionally captured in order to retain the authentic character and emotion of the instruments.
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+		<div class="scroll-fade-in" style="width: 100%; display: flex; justify-content: left;">
+			<img class="instrument-image-small" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/compressed_1.jpg?v=1691423556">
+		</div>
+		<div class="gap"></div>
+		<div class="scroll-fade-in" style="width: 100%; display: flex; justify-content: right;">
+			<img class="instrument-image-small" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/compressed_2.jpg?v=1691423555">
+		</div>
+		<div class="gap"></div>
+		<div class="scroll-fade-in" style="width: 100%; display: flex; justify-content: left;">
+			<img class="instrument-image-small" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/compressed_3.jpg?v=1691423554">
+		</div>
+		<div class="gap"></div>
+	</div>
+
+	<!-- ------------------------------ articulations ------------------------------ -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					A LIFE GIVING ENVIRONMENT
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph-large scroll-fade-in">
+					The core library comes packed with a deeply versatile collection of factory content, with more than 200 base multisampled articulations split across the families of the orchestra.
+				</div>
+				<div class="gap"></div>
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					 Strings are broken down into individual trios of bass, cello and violin. The woodwinds section consists of a low ensemble of baritone saxophone, contrabassoon and bass clarinet; a high ensemble of oboe, clarinet and bassoon; and a trio of flutes. Brass consists of a low trombone section and a high ensemble of trumpet and flugelhorn. As well as this, articulations taken from sessions with a solo violinist and flautist are included.
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+		<div style="display: flex; justify-content: right">
+            <div class="gap"></div>
+            <div class="youtube-video scroll-fade-in" id="youtube-video" data-video-id="X4sCJy2RnNA">
+                <div class="youtube-video-label title">→ FULL ARTICULATION PLAYTHROUGH</div>
+                <img style="width: 100%" src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/lf_arts.jpg?v=1683237241">
+            </div>
+        </div>
+		<div class="gap"></div>
+	</div>
+
+	<!-- ---------- audio demos ---------- -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					IN CONTEXT
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item scroll-fade-in">
+				{% assign num-tracks = 5 %}
+				{% assign track-1-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Will_Slater_-_Elements.mp3?v=1691159341" %}
+				{% assign track-1-name = "Elements — Will Slater" %}
+				{% assign track-2-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Derek_Kirkup_-_Black_Mass.mp3?v=1691159342" %}
+				{% assign track-2-name = "Black Mass — Derek Kirkup" %}
+				{% assign track-3-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Joe_Dean_-_Calderas.mp3?v=1691159342" %}
+				{% assign track-3-name = "Calderas — Joe Dean" %}
+				{% assign track-4-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Sylvia_Bastille_-_Fujiyama.mp3?v=1691159342" %}
+				{% assign track-4-name = "Fujiyama — Sylvia Bastille" %}
+				{% assign track-5-url = "https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Derek_Kirkup_-_Solace.mp3?v=1691159500" %}
+				{% assign track-5-name = "Solace — Derek Kirkup" %}
+				{% assign track-6-url = "" %}
+				{% assign track-6-name = "" %}
+				{% assign track-7-url = "" %}
+				{% assign track-7-name = "" %}
+				{% assign track-8-url = "" %}
+				{% assign track-8-name = "" %}
+				{% assign track-9-url = "" %}
+				{% assign track-9-name = "" %}
+				{% render "audio-demos", num-tracks: num-tracks, track-1-url: track-1-url, track-1-name: track-1-name, track-2-url: track-2-url, track-2-name: track-2-name, track-3-url: track-3-url, track-3-name: track-3-name, track-4-url: track-4-url, track-4-name: track-4-name, track-5-url: track-5-url, track-5-name: track-5-name, track-6-url: track-6-url, track-6-name: track-6-name, track-7-url: track-7-url, track-7-name: track-7-name, track-8-url: track-8-url, track-8-name: track-8-name, track-9-url: track-9-url, track-9-name: track-9-name %}
+				<div class="gap-desktop"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ------------------------------ full vs elements ------------------------------ -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					FULL VS ELEMENTS
+				</div>
+			</div>
+			<div class="grid-item-empty">
+			</div>
+		</div>
+
+		<div class="gap"></div>
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					LANDFORMS FULL
+				</div>
+				<div class="gap"></div>
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					Orchestral content<br>
+					Processed content<br>
+					Paired patches<br>
+					Crossfade patches<br>
+					Sound design patches<br>
+					Individual spot mics<br>
+					Basic perspective control<br>
+					Advanced perspective control<br>
+					Basic expression control<br>
+					Advanced expression control<br>
+					Amp envelope<br>
+					Filter envelope<br>
+					Pitch envelope<br>
+					Master EQ<br>
+					Delay effect<br>
+					Reverb effect<br>
+					Lofi effect<br>
+					Compressor<br>
+					Master effects page<br>
+					Harmony engine<br>
+					Arpeggiator<br>
+					Tape mode<br>
+					Drag and drop<br><br>
+					Total size → 100GB
+				</div>
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					LANDFORMS ELEMENTS
+				</div>
+				<div class="gap"></div>
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					Orchestral content<br>
+					—<br>
+					Paired patches<br>
+					Crossfade patches<br>
+					—<br>
+					—<br>
+					Basic perspective control<br>
+					—<br>
+					Basic expression control<br>
+					—<br>
+					Amp envelope<br>
+					—<br>
+					—<br>
+					Master EQ<br>
+					Delay effect<br>
+					Reverb effect<br>
+					—<br>
+					—<br>
+					—<br>
+					—<br>
+					—<br>
+					Tape mode<br>
+					—<br><br>
+					Total size → 40GB
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+	</div>
+
+	<!-- ---------- tech specs ---------- -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					TECHNICAL SPECIFICATIONS
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					<span class="title-small">SOFTWARE</span>
+					<div class="gap-small"></div>
+					Kontakt or Kontakt 6.7.1 or higher
+					<br><a href="https://www.native-instruments.com/en/products/komplete/samplers/kontakt-7-player/free-download/">Free Kontakt Player</a> included
+					<div class="gap"></div>
+					<span class="title-small">SYSTEM</span>
+					<div class="gap-small"></div>
+					Intel Macs (i5 or higher): macOS 10.15, 11 or 12 (latest update); Apple Silicon Macs: macOS 11 or 12 (latest update); Windows 10 or 11, Intel Core i5 or equivalent CPU
+					<div class="gap"></div>
+					<span class="title-small">SIZE</span>
+					<div class="gap-small"></div>
+					40GB
+					<div class="gap"></div>
+					<span class="title-small">CONTENT</span>
+					<div class="gap-small"></div>
+					186 core multisampled articulations
+					<br>177 curated articulation combos
+				</div>
+			</div>
+			<div class="gap-desktop"></div>
+		</div>
+	</div>
+
+	<!-- ---------- buy ---------- -->
+
+	<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }}">
+		<div class="grid-container title">
+			<div class="grid-item-empty">
+				<div class="general-container scroll-fade-in">
+					{{ product.title | upcase }}
+					{% if product.compare_at_price %} 
+						<br><span style="color: {{ product.metafields.custom.instrument_compare_at_color }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></span>
+					{% endif %}
+					<br><span style="color: {{ product.metafields.custom.instrument_price_color }}">{{ product.price | money_without_trailing_zeros }}</span>
+					<br><button id="add-to-cart-button-bottom">+ TO CART</button>
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container title">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item-empty" style="text-align: right">
+				<div class="general-container scroll-fade-in">
+					{% assign compareAtColor = product.metafields.custom.instrument_compare_at_color %}
+					{% assign priceColor = product.metafields.custom.instrument_price_color %}
+					{% assign featured_bundle = product.metafields.custom.instrument_featured_bundle | remove: '[' | remove: ']' | remove: '"' | remove: 'gid://shopify/Product/' | remove: ' ' %}
+					{% assign featured_bundle_id = featured_bundle | plus: 0 %}
+					{% for product in collections['all'].products %}
+						{% if product.id == featured_bundle_id %}
+							{% assign featured_bundle_variant_id = product.variants[0].id %}
+							<a href="{{ product.url }}">{{ product.title | upcase }}</a>
+							<br><span style="color: {{ compareAtColor }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></span>
+							<br><span style="color: {{ priceColor }}">{{ product.price | money_without_trailing_zeros }}</span>
+							<br><button id="add-to-cart-button-bottom-bundle">+ TO CART</button>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	var selectedVariant = {{ product.variants[0].id }};
+	const highlightColor = "{{ product.metafields.custom.instrument_compare_at_color }}"
+	const returnColor = "{{ product.metafields.custom.instrument_text_color }}"
+	const returnColorInvert = "{{ product.metafields.custom.instrument_background_color }}"
+
+	// add to cart - main
+
+	document.getElementById("add-to-cart-button").addEventListener("click", function() {
+		cartIsEmpty = 0;
+		document.getElementById('cart-items').style.display = 'block';
+		document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+		document.getElementById('cart-empty-message').style.display = 'none';
+		// get variant id
+		variantId = selectedVariant;
+		// change text of add to cart button
+		document.getElementById("add-to-cart-button").innerHTML = "ADDING..."
+		// axois post cart add
+		axios.post('/cart/add.js', {
+			id: variantId,
+			quantity: 1,
+		}).then(res => {
+			console.log(res.data)
+			// update cart button
+			axios.get('/cart.js', {
+			}).then(res => {
+				console.log(res.data);
+				updateCartButton(res.data.item_count);
+				document.getElementById("add-to-cart-button").innerHTML = "ADDED TO CART"
+				document.getElementById("add-to-cart-button").style.color = highlightColor
+				if(res.data.item_count === 1) {
+					document.getElementById("cart-button").style.visibility = "visible";
+					document.getElementById("cart-button").classList.add("header-button-bounce-in");
+					document.getElementById("cart-button").style.transform = "translateY(0)";
+				} else if(res.data.item_count > 1) {
+					document.getElementById("cart-button").style.color = "#c38839"
+					document.getElementById("cart-button").style.backgroundColor = "#284289"
+				}
+				setTimeout(function(){
+				    document.getElementById("add-to-cart-button").innerHTML = "+ TO CART"
+				    document.getElementById("add-to-cart-button").style.color = returnColor
+				    document.getElementById("cart-button").style.color = "#284289"
+					document.getElementById("cart-button").style.backgroundColor = "#c38839"
+				}, 750);
+				// update cart
+				updateCart(res.data)
+			});
+		});
+	});
+
+	// add to cart - bottom
+
+	document.getElementById("add-to-cart-button-bottom").addEventListener("click", function() {
+		cartIsEmpty = 0;
+		document.getElementById('cart-items').style.display = 'block';
+		document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+		document.getElementById('cart-empty-message').style.display = 'none';
+		// get variant id
+		variantId = selectedVariant;
+		// change text of add to cart button
+		document.getElementById("add-to-cart-button-bottom").innerHTML = "ADDING..."
+		// axois post cart add
+		axios.post('/cart/add.js', {
+			id: variantId,
+			quantity: 1,
+		}).then(res => {
+			console.log(res.data)
+			// update cart button
+			axios.get('/cart.js', {
+			}).then(res => {
+				console.log(res.data);
+				updateCartButton(res.data.item_count);
+				document.getElementById("add-to-cart-button-bottom").innerHTML = "ADDED"
+				document.getElementById("add-to-cart-button-bottom").style.color = highlightColor
+				if(res.data.item_count === 1) {
+					document.getElementById("cart-button").style.visibility = "visible";
+					document.getElementById("cart-button").classList.add("header-button-bounce-in");
+					document.getElementById("cart-button").style.transform = "translateY(0)";
+				} else if(res.data.item_count > 1) {
+					document.getElementById("cart-button").style.color = "#c38839"
+					document.getElementById("cart-button").style.backgroundColor = "#284289"
+				}
+				setTimeout(function(){
+				    document.getElementById("add-to-cart-button-bottom").innerHTML = "+ TO CART"
+				    document.getElementById("add-to-cart-button-bottom").style.color = returnColor
+				    document.getElementById("cart-button").style.color = "#284289"
+					document.getElementById("cart-button").style.backgroundColor = "#c38839"
+				}, 750);
+				// update cart
+				updateCart(res.data)
+			});
+		});
+	});
+
+	// add to cart - bottom bundle
+
+	var selectedVariantBundle = {{ product.variants[0].id }};
+
+	document.getElementById("add-to-cart-button-bottom-bundle").addEventListener("click", function() {
+		cartIsEmpty = 0;
+		document.getElementById('cart-items').style.display = 'block';
+		document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+		document.getElementById('cart-empty-message').style.display = 'none';
+		// get variant id
+		variantId = {{ featured_bundle_variant_id }};
+		// change text of add to cart button
+		document.getElementById("add-to-cart-button-bottom-bundle").innerHTML = "ADDING..."
+		// axois post cart add
+		axios.post('/cart/add.js', {
+			id: variantId,
+			quantity: 1,
+		}).then(res => {
+			console.log(res.data)
+			// update cart button
+			axios.get('/cart.js', {
+			}).then(res => {
+				console.log(res.data);
+				updateCartButton(res.data.item_count);
+				document.getElementById("add-to-cart-button-bottom-bundle").innerHTML = "ADDED"
+				document.getElementById("add-to-cart-button-bottom-bundle").style.color = highlightColor
+				if(res.data.item_count === 1) {
+					document.getElementById("cart-button").style.visibility = "visible";
+					document.getElementById("cart-button").classList.add("header-button-bounce-in");
+					document.getElementById("cart-button").style.transform = "translateY(0)";
+				} else if(res.data.item_count > 1) {
+					document.getElementById("cart-button").style.color = "#c38839"
+					document.getElementById("cart-button").style.backgroundColor = "#284289"
+				}
+				setTimeout(function(){
+				    document.getElementById("add-to-cart-button-bottom-bundle").innerHTML = "+ TO CART"
+				    document.getElementById("add-to-cart-button-bottom-bundle").style.color = returnColor
+				    document.getElementById("cart-button").style.color = "#284289"
+					document.getElementById("cart-button").style.backgroundColor = "#c38839"
+				}, 750);
+				// update cart
+				updateCart(res.data)
+			});
+		});
+	});
+
+	// youtube
+
+    var youtubeVideos = document.querySelectorAll(".youtube-video");
+    var youtubeModal = document.getElementById("youtube-modal")
+    var playerContainer = document.getElementById("player-container")
+    var youtubeModalIsShown = 0
+
+    // open youtube modal
+    youtubeVideos.forEach(function(youtubeVideo) {
+        youtubeVideo.addEventListener("click", function() {
+            changeVideo(this.dataset.videoId)
+            youtubeModal.style.visibility = "visible";
+            youtubeModal.classList.add("youtube-fade-in");
+            playerContainer.classList.add("player-container-fade-in");
+            youtubeModal.style.opacity = "100%"
+            playerContainer.style.opacity = "100%"
+            playerContainer.style.visibility = "visible";
+            document.querySelector("body").style.overflow = "hidden";
+        });
+    });
+
+    // close youtube modal
+    youtubeModal.addEventListener("click", function() {
+        if(youtubeModalIsShown == 1) {
+            youtubeModalIsShown = 0
+            this.classList.add("youtube-fade-out");
+            playerContainer.classList.add("player-container-fade-out");
+            this.style.visibility = "hidden";
+            this.style.opacity = "0%";
+            playerContainer.style.opacity = "0%"
+            playerContainer.style.visibility = "hidden";
+            document.querySelector("body").style.overflow = "auto";
+            player.pauseVideo();
+        }
+    });
+
+    // fade transition end
+    youtubeModal.addEventListener("transitionend", function() {
+        if(this.classList.contains("youtube-fade-in")) {
+            this.classList.remove("youtube-fade-in");
+            youtubeModalIsShown = 1
+            console.log(youtubeModalIsShown)
+        }
+        if(this.classList.contains("youtube-fade-out")) {
+            this.classList.remove("youtube-fade-out");
+        }
+    });
+
+    // load youtube api
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    let player
+    let videoId
+    let form = document.getElementById("form")
+
+    function onYouTubeIframeAPIReady(){
+        console.log("api is loaded")
+        player = new YT.Player("player", {
+            height: "100%",
+            width: "100%",
+            videoId: "QPjHCAHfjoU",
+            playerVars: {
+                playsinline: 1,
+                autoplay: 0,
+                controls: 1,
+            },
+            events: {
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange,
+            },
+        })
+    }
+
+    function changeVideo(videoId) {
+        player.loadVideoById({videoId: videoId})
+    }
+
+    function onPlayerReady(){
+    }
+
+    function onPlayerStateChange(event){
+    }
+
+</script>

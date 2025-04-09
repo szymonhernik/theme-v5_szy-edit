@@ -1,0 +1,359 @@
+<div class="paragraph tracklist-container">
+	{% if track-1-name %}
+		<div class="tracklist"><span style="color: {{ product.metafields.custom.instrument_price_color }}">→ {{ track-1-name }}</span></div>
+	{% endif %}
+	{% if track-2-name %}
+		<div class="tracklist">{{ track-2-name }}</div>
+	{% endif %}
+	{% if track-3-name %}
+		<div class="tracklist">{{ track-3-name }}</div>
+	{% endif %}
+	{% if track-4-name %}
+		<div class="tracklist">{{ track-4-name }}</div>
+	{% endif %}
+	{% if track-5-name %}
+		<div class="tracklist">{{ track-5-name }}</div>
+	{% endif %}
+	{% if track-6-name %}
+		<div class="tracklist">{{ track-6-name }}</div>
+	{% endif %}
+	{% if track-7-name %}
+		<div class="tracklist">{{ track-7-name }}</div>
+	{% endif %}
+	{% if track-8-name %}
+		<div class="tracklist">{{ track-8-name }}</div>
+	{% endif %}
+	{% if track-9-name %}
+		<div class="tracklist">{{ track-9-name }}</div>
+	{% endif %}
+</div>
+
+<div class="gap"></div>
+
+<div class="audio-demos-player-container">
+	<div style="color: inherit" class="timestamp paragraph"><span id="time-label">00:00</span> / <span id="duration-label">00:00</span></div>
+	<div class="play paragraph" id="play-button">PLAY</div>
+	<div class="gap-tiny"></div>
+	<div class="playbar-container">
+		<div class="playbar-progress" id="playbar-progress" style="background-color: {{ product.metafields.custom.instrument_price_color }}"></div>
+		<div class="playbar-slider-container">
+			<input class="playbar-slider" id="playbar-slider" type="range" min="0" max="1000" value="0"></input>
+		</div>
+	</div>
+</div>
+
+<style>
+
+	.tracklist-container {
+		margin-right: 15px;
+		margin-left: 15px;
+	}
+
+	@media screen and (max-width: 1420px) {
+        .tracklist-container {
+            margin-right: 13px;
+            margin-left: 13px;
+        }
+    }
+
+    @media screen and (max-width: 1250px) {
+        .tracklist-container {
+            margin-right: 11px;
+            margin-left: 11px;
+        }
+    }
+
+    @media screen and (max-width: 1080px) {
+        .tracklist-container {
+            margin-right: 9px;
+            margin-left: 9px;
+        }
+    }
+
+    @media screen and (max-width: 920px) {
+        .tracklist-container {
+            margin-right: 7px;
+            margin-left: 7px;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .tracklist-container {
+            margin-right: 6px;
+            margin-left: 6px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .tracklist-container {
+            margin-right: 9px;
+            margin-left: 9px;
+        }
+    }
+
+	.audio-demos-player-container {
+		position: relative;
+		margin-right: 15px;
+		margin-left: 15px;
+		left: 0;
+	}
+
+	@media screen and (max-width: 1420px) {
+        .audio-demos-player-container {
+            margin-right: 13px;
+            margin-rleft 13px;
+        }
+    }
+
+    @media screen and (max-width: 1250px) {
+        .audio-demos-player-container {
+            margin-right: 11px;
+            margin-rleft 11px;
+        }
+    }
+
+    @media screen and (max-width: 1080px) {
+        .audio-demos-player-container {
+            margin-right: 9px;
+            margin-left: 9px;
+        }
+    }
+
+    @media screen and (max-width: 920px) {
+        .audio-demos-player-container {
+            margin-right: 7px;
+            margin-left: 7px;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .audio-demos-player-container {
+            margin-right: 6px;
+            margin-left: 6px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .audio-demos-player-container {
+            margin-right: 9px;
+            margin-left: 9px;
+        }
+    }
+
+	.play-button {
+		cursor: pointer;
+	}
+
+	.play {
+		cursor: pointer;
+		width: fit-content;
+	}
+
+	.timestamp {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	.playbar-container {
+		width: 100%;
+		height: 36px; 
+		position: relative;
+		background-color: var(--white);
+	}
+
+	@media screen and (max-width: 1420px) {
+		.playbar-container {
+			height: 32px;
+		}
+	}
+
+	@media screen and (max-width: 1250px) {
+		.playbar-container {
+			height: 27px;
+		}
+	}
+
+	@media screen and (max-width: 1080px) {
+		.playbar-container {
+			height: 23px;
+		}
+	}
+
+	@media screen and (max-width: 920px) {
+		.playbar-container {
+			height: 18px;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		.playbar-container {
+			height: 14px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.playbar-container {
+			height: 26px;
+		}
+	}
+
+	.playbar-progress {
+		width: 0;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		-webkit-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	.playbar-slider-container {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.playbar-slider {
+		width: 100%;
+		height: 100%;
+		-webkit-appearance: none;
+	    appearance: none;
+	    cursor: pointer;
+	    opacity: 0;
+	}
+
+	.tracklist:hover {
+		cursor: pointer;
+	}
+</style>
+
+<script>
+
+	const trackUrls = ["{{ track-1-url }}", "{{ track-2-url }}", "{{ track-3-url }}", "{{ track-4-url }}", "{{ track-5-url }}", "{{ track-6-url }}", "{{ track-7-url }}", "{{ track-8-url }}", "{{ track-9-url }}"];
+    const trackNames = ["{{ track-1-name }}", "{{ track-2-name }}", "{{ track-3-name }}", "{{ track-4-name }}", "{{ track-5-name }}", "{{ track-6-name }}", "{{ track-7-name }}", "{{ track-8-name }}", "{{ track-9-name }}"];
+    const tracklist = document.querySelectorAll(".tracklist");
+
+	var isPlaying = 0;
+	var currentTrack = 0;
+	var audio = new Audio(trackUrls[currentTrack]);
+
+	var numTracks = {{ num-tracks }};
+
+	var playButton = document.getElementById("play-button");
+	var timeLabel = document.getElementById("time-label");
+    var durationLabel = document.getElementById("duration-label");
+    var playbarProgress = document.getElementById("playbar-progress");
+    var playbarSlider = document.getElementById("playbar-slider");
+
+	// update duration on audio load
+
+	audio.addEventListener("loadeddata", () => {
+		durationLabel.textContent = convertTime(audio.duration);
+		},
+		false
+	);
+
+	// play button
+
+	playButton.addEventListener("click", function() {
+        if (isPlaying == 0) {
+            audio.play();
+            isPlaying = true;
+            playButton.innerHTML = "PAUSE";
+            window.requestAnimationFrame(prog_animation);
+        } else { 
+            audio.pause();;
+            isPlaying = false
+            playButton.innerHTML = "PLAY";
+        }
+    });
+
+    // update time label when the audio is playing
+
+    audio.addEventListener("timeupdate", function() {
+        timeLabel.textContent = convertTime(audio.currentTime)
+    });
+
+    // progress animation
+
+    function prog_animation() {
+  		playbarProgress.style.setProperty("width", (audio.currentTime / audio.duration) * 100 + "%");
+  		window.requestAnimationFrame(prog_animation);
+	};
+
+	// update current time on slider drag
+
+    playbarSlider.addEventListener("input", function() {
+        var sliderValue = Number(this.value);
+        audio.currentTime = (sliderValue / 1000) * audio.duration;
+    });
+
+    // audio end
+
+    audio.addEventListener("ended", function() {
+
+    	audio.pause();
+
+    	playbarProgress.style.setProperty("width", "0%");
+    	audio.currentTime = 0;
+
+    	currentTrack ++;
+    	if (currentTrack >= numTracks) {
+    		currentTrack = 0;
+    		audio.src = trackUrls[currentTrack];
+    		audio.load();
+    		isPlaying = false;
+    		playButton.innerHTML = "PLAY"
+    	} else {
+    		audio.src = trackUrls[currentTrack];
+    		audio.load();
+    		audio.play();
+    	}
+    	updateTracklist();
+    });
+
+	// tracklist click
+
+	tracklist.forEach.call(tracklist, function (track, index) {
+		track.addEventListener('click', function () {
+			audio.pause();
+	        playbarProgress.style.setProperty("width", "0%");
+	    	audio.currentTime = 0;
+	    	currentTrack = index;
+	    	audio.src = trackUrls[currentTrack];
+	    	audio.load();
+	    	audio.play();
+	    	isPlaying = true;
+	    	window.requestAnimationFrame(prog_animation);
+	    	playButton.innerHTML = "PAUSE"
+	    	updateTracklist();
+		})
+	});
+
+	// function: update tracklist
+
+	function updateTracklist() {
+    	for (let i = 0; i < numTracks; i ++) {
+    		tracklist[i].innerHTML = trackNames[i];
+		}
+		tracklist[currentTrack].innerHTML = `<span style="color: {{ product.metafields.custom.instrument_price_color }}">→ ` + trackNames[currentTrack] + `</span>`
+	};
+
+	// function: convert time
+
+	var convertTime = function(time) {    
+        var mins = Math.floor(time / 60);
+        if (mins < 10) {
+          mins = '0' + String(mins);
+        }
+        var secs = Math.floor(time % 60);
+        if (secs < 10) {
+          secs = '0' + String(secs);
+        }
+        return mins + ':' + secs;
+    }
+
+</script>

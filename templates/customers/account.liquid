@@ -1,0 +1,157 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white); color: var(--blue);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="">ACCOUNT</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ customer.first_name | upcase }} {{ customer.last_name | upcase }}
+		</div>
+	</div>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+	<div style="background-color: var(--mid-grey);">
+
+		<div class="gap-tiny"></div>
+
+		<!-- ------------------------------ overview ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title scroll-fade-in">
+					OVERVIEW
+				</div>
+			</div>
+			<div class="grid-item">
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					NAME
+					<br><br>
+					{{ customer.first_name }} {{ customer.last_name }}
+					<br><br>
+					EMAIL
+					<br><br>
+					{{ customer.email }}
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+
+		<!-- ------------------------------ orders ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title scroll-fade-in">
+					ORDERS
+				</div>
+			</div>
+			<div class="grid-item">
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{% for order in customer.orders %}
+						<span style="color: var(--white)"><a href="{{ order.customer_url }}">ORDER #{{ order.order_number }}</a></span>
+						<br><br>
+						{{ order.total_price | money_without_trailing_zeros }} for {% for line_item in order.line_items %}<a href="{{ line_item.url }}">{{ line_item.title }}</a>{% if forloop.index < order.item_count %}, {% endif %}{% endfor %} on {{ order.created_at | date: '%d/%m/%y' }}
+						{% if forloop.index < customer.orders_count %}
+							<br><br>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+
+		<!-- ------------------------------ addresses ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title scroll-fade-in">
+					ADDRESSES
+				</div>
+			</div>
+			<div class="grid-item">
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{% for address in customer.addresses %}
+						{% form 'customer_address', address %}
+							<input class="account-address-input" type="text" name="address[first_name]" value="{{ form.first_name }}" placeholder="First Name"><br><br>
+							<input class="account-address-input" type="text" name="address[last_name]" value="{{ form.last_name }}" placeholder="Last Name"><br><br>
+							<input class="account-address-input" type="text" name="address[company]" value="{{ form.company }}" placeholder="Company"><br><br>
+							<input class="account-address-input" type="text" name="address[address1]" value="{{ form.address1 }}" placeholder="Address 1"><br><br>
+							<input class="account-address-input" type="text" name="address[address2]" value="{{ form.address2 }}" placeholder="Address 2"><br><br>
+							<input class="account-address-input" type="text" name="address[city]" value="{{ form.city }}" placeholder="City"><br><br>
+							<input class="account-address-input" type="text" name="address[country]" value="{{ form.country }}" placeholder="Country"><br><br>
+							<input class="account-address-input" type="text" name="address[zip]" value="{{ form.zip }}" placeholder="ZIP/Postal Code"><br><br>
+							<input class="account-address-input" type="text" name="address[phone]" value="{{ form.phone }}" placeholder="Phone Number"><br><br>
+							<button style="color: var(--white)" type="submit">→ UPDATE</button>
+						{% endform %}
+						{% if forloop.index < customer.addresses_count %}
+							<div class="gap"></div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+
+		<!-- ------------------------------ vat ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title scroll-fade-in">
+					EU VAT
+				</div>
+			</div>
+			<div class="grid-item">
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					<!-- Begin Exemptify account page VAT ID validation -->
+				    {{ "//www.modules4u.biz/shopify/exemptify/js/validate_vat_v1.js.php?shop=slate-ash.myshopify.com" | script_tag }}
+				    EU VAT ID
+				    <br><br>
+				    <input class="account-address-input" placeholder="Enter VAT ID here" type="text" id="VatId" name="VatId" maxlength="20">
+				    <div style="color: var(--orange)" id="ErrMsg"></div>
+				    <input id="CustomerId" type="hidden" value="{{ customer.id }}">
+				    <input id="ShopCtyId" type="hidden" value="{{ shop.metafields['exemptify']['country'] }}">
+				    <br>
+				    <input style="text-align: left" id="VatIdSubmit" type="button" value="→ SAVE">
+					<input style="text-align: left" id="DeleteId" type="button" value="→ DELETE">
+					<!-- End Exemptify account page VAT ID validation -->
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+	</div>
+</html>

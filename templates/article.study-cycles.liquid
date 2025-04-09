@@ -1,0 +1,455 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>{{ article.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/blogs/studies">STUDIES</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ article.title | remove: "STUDIES: " | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: {{ article.metafields.custom.study_background_color }}; color: {{ article.metafields.custom.study_text_color }};">
+
+		<!-- ------------------------------ image ------------------------------ -->
+
+		<img class="feature-image scroll-fade-in" src="{{ article.image | img_url: "2500x" }}">
+		<div class="gap"></div>
+
+		<!-- ------------------------------ intro ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					Below is an encylopedia of sound design concepts and techniques. Use them to expand your knowledge of CYCLES and inspire new ways of working with it.
+				</div>		
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<!-- <div style="color: {{ article.metafields.custom.study_secondary_text_color }}">→ DOWNLOAD PATCHES</div> -->
+				</div>	
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ variables ------------------------------ -->
+
+		<!-- variable to give each study technique with a new id (it is incremented each time a technique is rendered) -->
+		{% assign studyTechniqueCount = 0 %}
+		<!-- variable for secondary text color to be passed into render -->
+		{% assign study-secondary-text-color =  article.metafields.custom.study_secondary_text_color %}
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">PATTERNS</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CYCLES plays back and manipulates source material, dissecting it by erasing blocks from the interface and rearranging them to form new material. CYCLES can divide its source material into anything from whole bar divisions to sixteenth notes across four bars. 
+						<br><br>
+						Selecting ‘Slice On’ in the first tab of the LOOP engine’s main menu causes CYCLES to trigger each grid division with an individual envelope. Shaping the amp envelope gives slices their character forming anything from short percussive gates to overlapping slices that fade in amplitude.
+						<br><br>
+						Clicking on a slice division will cause a slice to be active (illuminated) or erased (faded) in the loop. CYCLES forms new repeating PATTERNS by erasing sections of the source material from playback.
+						<br><br>
+						Located in the left-hand menu, CYCLES can select how the engine reacts to erased slices. The gap erase type causes the engine to trigger erased slices as silent steps of the sequence; the splice erase type removes the division from playback, shortening the length of the loop.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "BACKWARDS FORWARDS" %}
+		{% assign study-technique-description = "CYCLES uncovers newfound sounds inside its source material by playing loops and individual slices in forward and reverse. New PATTERNS emerge when the source loop plays back in forward, backward, pendulum and random directions. <br><br>CYCLES can reverse individual slices causing them to trigger in reverse or randomly trigger forwards or backwards.<br><br>By setting the loop direction and slice direction to oppose each other, CYCLES can create PATTERNS that scan in one way and playback in the other, forming forward-moving reversing slices and backwards-moving regularly triggering slices." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/e66138d0caf54e8c9a7566e9af9406c2.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GAP MELODIES" %}
+		{% assign study-technique-description = "When loop slicing is off, the gap erase type breaks up the loop into slice groupings and an envelope triggers from the start of each. Adjusting the envelope release time adjusts how long it takes for the slice amplitude to fade once the division is released. <br><br>CYCLES can design sparser loops utilising the gap erase type to remove divisions from playback. By only triggering occasional slices with a short decay, CYCLES lets pulse-like snapshots of the source material through and implies precise moments of the melody of the original loop. Adding long and modulating reverb and delay effects fill the space between active slices." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/a6a127aa4a1b4e1cbfad747d7e7055f2.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ALTERNATING LINES" %}
+		{% assign study-technique-description = "By selecting the splice erase type, CYCLES will skip erased slices and jump to the next closest illuminated slice. CYCLES can divide the source material and remove loop divisions from playback to design custom arrangements of the source loop.<br><br>By dividing the grid into even or alternating combinations of both and random PATTERNS, source material can be redesigned and recycled. This technique alone can uncover endless possibilities of newfound loops, melodies and accent PATTERNS." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/de77fe967b114f29bd69363281769bde.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ODD SLICES" %}
+		{% assign study-technique-description = "Splice-erasing divisions of the grid from playback can achieve uneven loops. When set to trigger an odd amount of eighth or sixteenth note slices, CYCLES can create an unfolding loop that moves out of phase with an even clock and trigger polyrhythmic PATTERNS. CYCLES can accentuate the rhythmic nature of an odd grouping loop by triggering grid divisions with a short envelope. Shaping the envelope with a long ADSR will create a smoother gestural articulation as they overlap." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/45ee69845adb4f33987a92200003f560.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SLICED PENDULUM" %}
+		{% assign study-technique-description = "Assigning the trigger movement to pendulum mode will cause the pattern to play forwards and then backwards. The change in direction adds a second-half variation to the loop and doubles the playback length.<br><br>CYCLES can shape the timbre of each slice, moving between pitched plucks to percussive gates by adjusting the short amp envelope attack and decay parameters. A short envelope causes slices to fire in rhythmic and percussive PATTERNS. Increasing the random volume parameter will increase the loops' dynamic variation and add unpredictability to the repeating pendulum motion." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/ab46254480574b149d6844dfb7b0a56c.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRAIN LOOPS" %}
+		{% assign study-technique-description = "In CYCLES’ GRAINS engine, PATTERNS can be formed by modulating the position parameter with an LFO. The LFO shape and smooth amount will dictate the character of the loop as it modulates the trigger's grain position in a repeating oscillation.<br><br>CYCLES can utilise its square LFO modulation source to cause the GRAINS engine to move between two specific positions for precise loop start and end points — indicated by the two square wave values. Increasing the smooth parameter introduces gradual position movement up to and after each start and end point.<br><br>CYCLES will trigger percussive gates and create rhythmic PATTERNS when envelope and size parameters are at low values. By opening the envelope parameter, grains will become longer, smearing as they overlap." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/04a3dcb30f224e8bb42e037f3acec1d5.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TREMOLO RHYTHMS" %}
+		{% assign study-technique-description = "CYCLES can utilise the tremolo macro effect to add a rhythmic nature to any pattern. The tremolo effect adds anything from subtle rhythmic movement to tight on/off gates to the loop.<br><br>CYCLES can create complex rhythmic movements through the tremolo macro’s mix and rate parameters. Modulating the mix parameter causes the intensity of the effect to vary; modulating the rate causes the tremolo to move at changing rhythmic divisions as the LFO oscillates within a set range. CYCLES utilises multiple LFO shapes to design precise and custom tremolo PATTERNS — the square LFO can cause the tremolo to shift between two specific rates." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/57cb6874e6c84a219bc311f105269c51.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">SEQUENCER</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CYCLES cartesian SEQUENCER frees itself from standard linear step sequences, instead mapping locations to divisions of an X/Y grid. The cartesian grid divides splices of a sample and its other parameters across four grids. The four cartesian grids can reorder their step values independently of each other and be triggered in any order, from any grid position and move in multiple directions. Manually assign sequence patterns to each grid to design custom sequences.
+						<br><br>
+						CYCLES can quickly and intuitively restructure loops by combining its 26 preset patterns assignable to each grid. Design complex, pitch, granular, velocity and directional sequences to resequence and fully transform the CYCLES sample libraries material.
+						<br><br>
+						As well as the 26 preset patterns and manually selecting grid parameters, CYCLES can randomly generate sequence step values by selecting ‘gen’ below each grid. Each grid will instantly inherit new, randomly generated values for each step.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "OCTAVE REPITCH" %}
+		{% assign study-technique-description = "CYCLES' pitch grid can manually assign an interval to every step of its sequence. The values displayed on the cartesian pitch grid can be quantised to scales, causing them to shift to the nearest available note of the scale. <br><br>In its simplest form, CYCLES can add interest to melodic loops by shifting any step up or down an octave while retaining the tonal information of the original sample.<br><br>Increasing the sequence's repeat amount will cause each step to retrigger and create a jittery and stuttery pattern. Combined with a shifting octave pattern from the pitch grid, CYCLES transforms the source material but retains its tonal centre and character." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/b4f7f4f694fe437980bcc33d8683550f.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POSITION GRIDS" %}
+		{% assign study-technique-description = "The position grid in the cartesian SEQUENCER can trigger slices in non-linear arrangements. The position grid has 26 preset patterns and can design custom sequences by assigning each step to one of thirty-two loop positions.<br><br>CYCLES can CC assign the position SEQUENCER’s preset patterns for manual control over the position grid presets. As the CYCLES engine plays back the morphed source material, the CC value can change the position grid swapping between multiple position sequences creating complex loop position variation. CYCLES can assign individual steps in the position grid to modulate as CC values are changed, leading to subtle sequence changes. " %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/ba80280326eb4999ae8f5c84e9dc79fd.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POSITION MELODIES" %}
+		{% assign study-technique-description = "CYCLES’ cartesian SEQUENCER can divide its source loop across a sixteen-step grid and assign a sample start point for each step. Cycles can resequence each step and restructure the splices with multiple combinations in the position grid.<br><br>Setting every step of the position grid to the same value will cause CYCLES to repeatedly trigger the same starting point at every step of the sequence. Use the position grid to hone in on the individual splices and scan for tonal and timbral voices to use as sound sources. <br><br>CYCLES’ SEQUENCER can lock to specific scales and note patterns by assigning a scale quantisation to the pitch grid in the sequencer menu. Repitching splice with the pitch grid can unlock endless melodic exploration. Draw in precise custom melodies or randomly generate pitch patterns." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/48fc1cd9f40b4ca59080da3bef1fb57a.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "VOLUME ACCENTS" %}
+		{% assign study-technique-description = "The cartesian SEQUENCER's volume grid can design multi-functional sixteen-step sequences that allow for both stepped velocity accents and detailed volume patterns. Add anything from subtle velocity inflections to gate-like volume reductions on each step. <br><br>By combining the volume grid with the directional grid, CYCLES can add more emphasis to accent-based sequences by reversing the direction of transient-heavy steps. Playing back a step in reverse removes the transient from the state of the slice, changes its timbre and inverts its phrasing — doing this to the steps between the intended accent pattern can create a sparser and more impactful sequence." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/8f2e7a2aa9c24145bd65ae02444c027f.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PATTERNS + RHYTHMS" %}
+		{% assign study-technique-description = "CYCLES’ sequence menu offers a quick and intuitive way to rearrange samples in the engine. The pattern presents contain a variety of non-linear pathways that bring complex movements, such as snake and pendulum movements, to the cartesian grids. The rhythm selection host presets that trigger the SEQUENCER in syncopated and non-constant patterns. <br><br>By changing the start point of the sequence to any of the sixteen grid positions, CYCLES can offset the grid creating new melodic content with new intervallic relationships. Shortening the sequence length uncovers arpeggio sequences and short repeating melodies. " %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/15f2925dfdaa40d39f41006619437442.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "WHOLE NOTE SEQUENCE" %}
+		{% assign study-technique-description = "Select the size of the splice that the cartesian SEQUENCER triggers by adjusting the grid parameter. CYCLES can select any value between a sixteenth note to a bar. Longer splices, such as one bar per step, are great for ambient textures with CYCLES' envelope set to a long shape. CYCLES can maintain a short envelope to create sparse plucked sequences.<br><br>Quantising the pitch grid to a scale allows for melodic exploration and unexpected shifts as the sequence unfolds. Manually adjust or randomly generate grid values to design longer abstract patterns." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/141efeb0fd5940938dbf0a1438b15592.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRAIN SEQUENCE" %}
+		{% assign study-technique-description = "While CYCLES' Grain SEQUENCER looks the same as the Loop SEQUENCER, each cartesian grid controls a different granular parameter and offers a new approach to modulating the grain engine.<br><br>The size grid shapes the sustain and release of the grains triggered on that particular step. Therefore, CYCLES can shape the envelope for each of the 16 steps and begin to design shape and articulation to a sequence. Combining the size and volume grid will effectively shift a sequence's phrasing. Randomly generating volume and size grid values can humanise and add further variation to these phrasing-based sequences.<br><br>By selecting one shot in the granular SEQUENCER menu, CYCLES only plays individual grains, causing sparser sequences that cause the rhythmic nature of short grains and a rhythmic trigger to shine through. When one shot is deactivated, the sequence steps trigger constant grains at the rate of the density parameter." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/fe6c1a1e776242a7b02d3674f0462bbb.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">MODULATION</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CYCLES can route its MODULATION in varying ways implementing pitch, rhythm, timbral and space-morphing movement over a loop. Assigning LFO shapes such as sine, triangle, square, sawtooth, random and bounce, will cause parameters to change in value over time and at conflicting rates. 
+						<br><br>
+						CYCLES can modulate any parameter with an individual LFO and utilises this to cause many parameter values to change independently. Setting the MODULATION to slow rates creates gradual movement and causes a patch to unfold over time; setting the MODULATION to a quicker rate introduces fast and precise jitters and rhythmic inflections.
+						<br><br>
+						CYCLES' MODULATION sources can be attenuated with the smooth parameter and the maximum and minimum MODULATION values on either side of the MODULATION visualiser to hone in on precise movement within parameter values.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRADUALLY MORPHING" %}
+		{% assign study-technique-description = "CYCLES can design tempo-synced and unsynced repeating MODULATIONs that morph parameters and create timbral changes in a patch. When LFOs are unsynced, parameters can modulate in a non-repeating nature, creating unpredictability and controlled randomness, moving the MODULATION out of phase with the rest of the patch.<br><br>Assigning slow-moving LFOs to parameters such as amp envelope, filter, filter envelope and macro effects; will cause patches to come alive with different values on every trigger.<br><br>CYCLES’ lofi macro can introduce a pitch wobble effect by isolating its wow parameter. By modulating the wow amount with a random LFO shape, the macro will introduce an unstable pitch drift and imbue an analogue texture." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/19dafb04b287424692c0b9707884c72e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RANDOM 16THS" %}
+		{% assign study-technique-description = "When CYCLES' loop slicing is on, the engine triggers new envelopes on every division. Randomly modulating the envelope shape will cause a different envelope on every splice. <br><br>Assigning random LFOs to the pan, LP filter and envelope shaping parameters will cause splices to sound with increasingly unstable characteristics. Introduce further variation with the random menu as it increases the chance of instability over volume, pan, octave and fifth parameters." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/29cfd76ca7124f748120c726d855eed9.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "LFO MELODIES" %}
+		{% assign study-technique-description = "The CYCLES grains engine can lock its tune parameter to specific scales and note patterns by assigning the slider, to the right of the tune control, to a scale quantisation. Modulating the tune parameter with an LFO causes grains to trigger while moving through pitches of the chosen scale. The CYCLES engine can combine multiple LFO shapes with scale options to design custom repeating melodic phrases.<br><br>The random LFO shape unpredictably moves between scale pitches at a set rate — leading to generative melody patterns." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/f3deab2553b54045a980b2c9f1cca259.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "BOUNCING BALL" %}
+		{% assign study-technique-description = "The bouncing ball LFO shape is created by modulating a sine LFO with a ramped-down LFO. CYCLES takes inspiration from physics and explores gravitational LFO shapes that add a sense of weight, space and momentum to a patch. <br><br>Modulating the position parameter in the GRAINS engine with the bouncing ball LFO creates a granular scan that feels gravitational. The bouncing motion can be accentuated by modulating other parameters along with the position parameter with the same LFO and rate. A bouncing ball shape assigned to the size parameter causes the envelope to open, letting more sound through as the conceptual ball bounces higher.<br><br>CYCLES can create melodies with the bouncing LFO as it uniquely sweeps the tune parameter. Quantising the tune parameter to octaves causes occasional pitch leaps as the MODULATION peaks. Explore pitch articulations inspired by manually playing with the transpose switch on a synth.<br><br>Smoothing or changing the rate of the LFO can change the feel of the MODULATION in a dramatic, impressionistic way. The bouncing LFO can feel weightless by increasing the minimum MODULATION value on the envelope size as grains maintain faster rates and envelopes remain longer." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/5cedb743326a424ca55ee2ef26412fed.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "VELOCITY + AFTERTOUCH" %}
+		{% assign study-technique-description = "CYCLES can harness subtle variations in human performance by outputting velocity and aftertouch values as MODULATION sources. <br><br>Assigning velocity to the low pass filter causes it to open as keys get manually pressed with force. <br><br>Assigning aftertouch to the gain volume causes an aggressive, gate-like jitter that accents volume when the aftertouch acknowledges pressure. Unlike the gradual curve of mod wheel CC, aftertouch inherently has a shorter and more sensitive range that causes the MODULATION to be more erratic.<br><br>The patch requires the performer to initially decide on the brightness, opening the filter with the velocity of the manually pressed keys. However, the aftertouch performance increases the grain volume and pan parameters causing the patch to accent louder and spread in stereo image. CYCLES can design patches that cause performers to rethink their approach to their MIDI controller, reassigning performable parameters to have unusual functions." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/c035b0263499407f9fc16e7b3e677a2f.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MULTI CC CHANNELS" %}
+		{% assign study-technique-description = "MIDI CC routing can influence the design of multi-gestural patches and bring more control over CYCLES for live performance. For example, the mod wheel can control a form of expression while aftertouch can control another. The two forms of expression offer their own performance styles, lean into their individual MODULATION idiosyncrasies and provide two different manual controls over a patch.<br><br>Every parameter is assignable to an individual MIDI CC source. CC assigning parameters to a single or multiple hardware controllers can bring real-time performance over a CYCLES patch. Complex modular CV information can be converted into MIDI CC and assigned to any CYCLES parameter." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/c958b39301ce40498c7668b7b02c4a24.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">TEXTURES</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CYCLES utilises its idiosyncratic playback types, deep modulation capabilities and spatial feedback possibilities to design complex textural layers that can stand alone or be mixed alongside dry signals.
+						<br><br>
+						The engine contains characterful global playback settings that change how CYCLES interacts with its source material. When source loops are synced, they align to the project's tempo; when unsynced, loops increase playback speed in a tape-like manner as slices get transposed. 
+						<br><br>
+						The two loop erase types cause CYCLES to interact with erased slices differently. When in gap mode, playback acknowledges the grid position of a previously illuminated slice as an empty step of the sequence. Splice mode cuts the faded division out of playback, skipping the slice and shortening the loop.
+						<br><br>
+						Clicking the expand button will cause CYCLES to trigger its source material using three modes: poly, one shot and arp. Poly mode transposes the engine’s material across the keyboard, turning it into a sample-based polysynth; hold mode continuously repeats a division of the grid per key; one shot plays a division of the grid per manually pressed note; arp mode repeats manually pressed keys, assigned to grid divisions, in a cyclic motion.
+						<br><br>
+						The CYCLES engine excels at creating atmospheres, custom morphing effects and textural beds of sound.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FILTERED ATMOSPHERES" %}
+		{% assign study-technique-description = "CYCLES can build bespoke spatial environments by combining the macro effects with filtering and gradual modulation. The reverb, hall, room and delay spatial macros and smear, loss and lofi process macros shape an environment for a patch to live in.<br><br>Filtering CYCLES’ source material with a high pass and low pass filter will provide a precise frequency range for a spatial atmosphere to sit. Modulating the filter causes the source loop to feel fluid and alive in the environment and creates the perspective of the source material moving around in space. <br><br>Gradual predictable movement from cyclic LFOs can give the source loop a predictable filter movement; modulating filter bands with random LFO shapes causes unstable filter movement." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/893db18c01894667893570bd5c03164d.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PHASED SWEEPS" %}
+		{% assign study-technique-description = "CYCLES’ modulation possibilities allow for LFO routing to any parameter. Assigning an LFO to each EQ band creates frequency spectrum movement. Offsetting the phase of the LFO on each EQ band by 0, 25, 50 and 75 percent causes a cyclic EQ spectrum sweep. Assigning different LFO shapes to each of CYCLES’ EQ bands brings characterful filter movement to the loop.<br><br>CC assigning the mod wheel to the low pass filter can manually prevent overpowering highs as modulation is applied to the top EQ band." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/86a1a6279b874b0c8c8611f741cdd518.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PUSHED CASSETTE" %}
+		{% assign study-technique-description = "Each of CYCLES’ process macros have multiple parameters that can be used individually as effects. For example, inside the Lofi macro is wow, flutter, noise and push parameters that can each be isolated. CYCLES can add texture and warmth to its source material by utilising its macro effects to create a degraded, warbly, tape machine effect. <br><br>Combining parameters in the Loss, Lofi, Drive and Chorus macros can introduce pitch drift, compression and distortion and imply the effect of an old tape machine that degrades its source loop." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/1823b4242f704394a18936247f15addb.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SPATIAL VOICES" %}
+		{% assign study-technique-description = "CYCLES can modulate its spatial macros to create voices on top of a source loop. Multiple pitch drifting tails can layer on a patch by exploiting each spatial macro's assignable parameters. For the spatial macros to self-oscillate, they need long feedback times. Modulating the delay time and reverb size parameters will cause the tails to change pitch and stretch as the space morphs due to the modulation.<br><br>Pitch-shifting delay lines can be designed by increasing the feedback to one hundred percent and modulating the delay time with an LFO. Delay will introduce repeating copies of the source material.<br><br>CYCLES can add two more voices by applying the same approach to the reverb and smear macros. Modulating the size of the space with LFOs causes further spatial layers to self-oscillate and pitch drift.<br><br>CYCLES can utilise its LFO shapes and smoothing to affect the character of each pitch drift. Square LFOs design precise note delay time and reverb size modulation between two exact values." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/0a48b29cf62b4178821d1b146edfaad6.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TAPE SPLICES" %}
+		{% assign study-technique-description = "The CYCLES engine can playback source material at unsynced tempos, stretching the source material in a tape-like manner as it is re-pitched. Random octave and fifth slices introduce melodic variations to the loop as they get triggered at time-stretched pitches and speeds.<br><br>When loop slicing is on, increasing the envelope release times cause slices to overlap as they get triggered at random pitches and directions." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/63e20c72c1974aa7807c80cd2d848966.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POLYPHONIC TEXTURES" %}
+		{% assign study-technique-description = "CYCLES can map source loops polyphonically across a MIDI keyboard to create washes of playable TEXTURES. The CYCLES engine can uncover synth voices inside the source material by scanning and selecting singular slices as manually pressed note start points. Shaping the amp envelope will cause triggered loops to sound smoothly and continuously. Increasing the amp release creates smoother held notes as envelope tails overlap and smear. <br><br>CYCLES can perform chords and melodies across the keyboard with its pre-assigned pitched source material. Sending bespoke voices into the macro effects provides further textural sound design possibilities for a polyphonic patch." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/45eaa37a802b41229ea86fc5e54f91cc.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">XY</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						Inside CYCLES’ grains engine, The XY menu displays four modulation grids. Each XY grid blends two granular parameters or macro effects. For example, the density parameter is mapped from zero to one hundred percent, bottom to the top of the grid; the random parameter is mapped from zero to one hundred,  left to right of the grid. The grids create a bespoke X and Y modulation mixing environment. By plotting the cursor in the top right of the grid, both X and Y settings are at one hundred percent.
+						<br><br>
+						CYCLES has four XY grid structure presets that assign new effect combinations to the grids – each with a unique granular flavour. By setting the cursor to sit at a sweet spot within each grid, CYCLES quickly finds complex FX combinations and manipulations over multiple elements of the granulation.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "XY LFO" %}
+		{% assign study-technique-description = "Each grid has an LFO modulating the cursor from the X and Y axis. When both LFOs match shape and rate, the cursor moves in a short cyclic motion. By setting X and Y LFOs to differing rates and shapes, the cursor moves in a more complex formation that takes multiple LFO oscillations to reach the original start point. Reducing the maximum and minimum modulation values will restrict the available XY grid space where the cursor can modulate." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/a7010e507a014ff38b3d6a0e2c63a0e8.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "DRAWN SHAPES" %}
+		{% assign study-technique-description = "CYCLES can record custom-drawn modulation paths to design precise and long-form routing across the four grids. Moving the cursor in specific corners of the XY grid causes the effects to change in value at varying intensities. By drawing the same shape in each grid, such as geometric and alphabetical shapes, the same recorded path in each grid will yield completely different modulations." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/5d39526f79e54f44ac12ed9e93b253ef.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MAGNETIC FIELDS" %}
+		{% assign study-technique-description = "CYCLES’ XY modulation capabilities dive deep into physics-based movement. Taking inspiration from the mathematics of magnetic fields, CYCLES creates gravitational, momentum-based and generative environments.<br><br>Four values define the physics-based environment and create unique modulation pathways that cause the XY grid to react accordingly. The magnetism function pulls the cursor towards the reticle; the bounce function increases the spring of the cursor as it hits the confines of the grid; the momentum function increases the overall propulsion of the cursor; the instability function introduces randomness and jitter to the values.<br><br>Guide, drag or throw the cursor to set it off on its course. The cursor will interact with the assigned environment, modulating the granular XY values." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/9d90e1c3c8684a69ba3052275605a0bb.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "KALEIDOSCOPIC GRIDS" %}
+		{% assign study-technique-description = "Selecting the link button in the top corner of a grid causes the cursor motion to pass onto the other link-activated grids. In the link menu, the offset parameter causes each grid to modulate at a slightly delayed start point and creates a kaleidoscopic effect where XY modulation values are always staggered.<br><br>As the cursor signal is passed through each grid in the linked signal chain, CYCLES can introduce attenuation to cursor modulation via its four parameters in the link menu. The strength function gradually attenuates the signal; the smooth function reduces the peaks of each X and Y value; the offset function adjusts the start point of each modulation source, moving each XY grid increasingly out of phase; increasing the entropy function causes XY values jitter and the cursor to move between random values close by. <br><br>By increasing all the link menu parameters, CYCLES degrades and adds unpredictability to the modulation signal as it passes through each grid." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/81c4d12a5a4e473296684f9a97954bf7.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRID RESOLUTIONS" %}
+		{% assign study-technique-description = "In the XY menu, CYCLES can reduce the resolution of cursor movement within the grids. At full resolution, the cursor moves smoothly across all possible XY values. Time and space resolution causes CYCLES to take snapshots of the cursor at reduced intervals and attenuated locations as resolution settings move to smaller values. <br><br>CYCLES only modulates following the values that align with the time and space resolution, taking snapshots of the full-resolution cursor movement, locked to the closest available XY resolution value.<br><br>Time resolution reduces the snapshots CYCLES makes over time, gradually decreasing from full-resolution to every sixty-fourth note; thirty-second note; sixteenth note; etc. Space resolution divides the grid into locked locations, taking a snapshot of the cursor at its closest grid division to the current modulation value. <br><br>Decreasing space resolution causes the XY grids to divide into smaller available cursor locations and create stuttery modulation loops that jump between values and hold until the full-resolution modulation reaches the next closest available grid location. CYCLES can use its space resolution parameters to design repeating modulation patterns that move in a wide range but have precise modulation value changes." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/63b2cd62fa52488fa26adcd24fa47125.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "THROW BALL" %}
+		{% assign study-technique-description = "The moveable reticle in each XY grid marks the gravitational centre of the physics-based modulation. Placing the cross at a position where the patch wants to sit will cause the XY grids to gravitate towards these parameters. As the cursor is pulled or thrown away from the grid’s reticle, the patch will modulate as it interacts with the XY environment.<br><br>In the physics menu, adjusting the magnetism, bounce and momentum parameters cause the cursor to react to the environment as it is thrown or released.<br><br>Throwing the cursor with increased bounce and momentum parameters causes the cursor to move around vigorously before being pulled towards the crosshair. An increased magnetism parameter pulls the cursor towards the cross as it is released.<br><br>By assigning the mod wheel to the magnetism parameter, CYCLES can use manual CC control to pull the cursor towards the reticle; then throw it away again." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/1a948d22ccd54a738964818c735517b2.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">GESTURAL</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CYCLES can be used to design patches which revolve around gestural, performative, and manual movement. Unlimited CC per parameter routing allows many parameters to be macro-controlled by single or multiple hardware controls.
+						<br><br>
+						Kontakt's mod wheel is assigned to CC1 and can act as a macro controller for an entire patch causing parameters to scan through fine-tuned modulation values.
+						<br><br>
+						This study explores conceptual patches that can transform any source material into newfound performative textures and timbres.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GESTURAL SWELLS" %}
+		{% assign study-technique-description = "CYCLES can design swells that manually change in timbre. In the GRAINS engine, assigning CC1 to modulate the position and envelope parameter will cause the mod wheel to scan through grains of the source material and form gestural swells as the envelope shape modulates. <br><br>By assigning CC1 to attenuated density and random position parameters, mod wheel expression will cause grains to trigger faster and with an increased range of positions. <br><br>CYCLES effect macros are located on the right-hand side of the interface. By CC assigning two spatial effects and inverting one, CYCLES can have a different spatial environment available at each end of the mod wheel. When CC1 is set to modulate the lofi macro, the expression will increasingly degrade the swell effect." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/21f8add1ce1348349c15497cc0efc04e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MORPHING VOICE" %}
+		{% assign study-technique-description = "While CYCLES can uncover newfound voices within source material by statically repeating a single grain position value, it can morph between unique textures by granularly scanning the source material with the position parameter. <br><br>In the GRAINS engine, a CC-assigned position parameter brings manual voice morphing control with the mod wheel. Gradually moving through the grain positions causes CYCLES to trigger grains that outline a specific location within the sample.<br><br>CYCLES can add another dimension of gestural expression to the patch by CC assigning the mod wheel to the envelope and size parameters. As the mod wheel morphs the timbre of the voice, a gravitation momentum gets implied as the envelope shortens from a lowered CC value." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/ca425873032d45cc9d9b47668f69cae0.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RANDOM RAINFALL" %}
+		{% assign study-technique-description = "The GRAINS engine can imply a rainfall effect by triggering grains at random positions and timings. By setting the envelope to have a short attack, each grain has a transient. Random octave and pan values cause grains to trigger at different pitches and spaces in the stereo field. <br><br>CYCLES can add a gestural rainfall manual modulation to any patch by setting these parameters to be accessed at maximum CC expression. Increasing the mod wheel will cause the CYCLES' GRAINS engine to morph the source material into a collage of short and randomly modulated grains." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/6aca963e4c87411a8ac574964d9d027d.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "INVERTED FREEZE" %}
+		{% assign study-technique-description = "In the modulation menus, the invert function flips the CC modulation polarity causing manual expression to decrease, rather than increase, parameter values. CC assignments can create a mod wheel movement that reduces parameter intensity in a patch.<br><br>The random menu in the GRAINS engine introduces unpredictability over granular parameters. CYCLES can inject a freeze effect to an unstable patch with the mod wheel.<br><br>Assigning and inverting CC1 on the random grain position parameter causes the patch to get increasingly stable. When the CC value reaches 100%, The random grain position parameter gets bypassed, and only four grains are continuously triggered. <br><br>By assigning CC1 to increase the envelope and size parameter, the freeze effect gets further implied through mod wheel expression. CYCLES slows the grain rate and increases the envelope release of each grain, making them smear. <br><br>Assigning and inverting CC1 to the space and repeat mix reduces the impression of the environment; CC inverted random pan and volume parameters cause the patch's dynamics to get flattened. The patch will feel like it freezes." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/9d3defb8ddf94b3185e5f47ce9e0f629.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CURVE STRUMS" %}
+		{% assign study-technique-description = "While one CC channel can control multiple parameters, each parameter assigned to a CC channel can have its own custom CC curve. Concave CC curves increase the modulation sensitivity in the first 50% of the modulation motion, reducing it in the latter half; convex curves do the opposite, less sensitive in the first half and more sensitivity in the latter.<br><br>By setting all parameters to have a similar CC curve, the modulation will feel more sensitive in a specific area when playing with mod wheel expression. The mod wheel will feel accurate in areas where the CC curve is gradual and acute in areas where the CC curve steepens. <br><br>CYCLES can showcase CC curve shapes as audible effects by assigning custom CC curves to parameters such as pitch, grain position and LP filter. Change the shape of the curve from concave to convex to change the character of the mod wheel and how it feels to perform the patch." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/face7b5a20834f3b89781ccd44f4bf38.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "BECOMING CLOUDS" %}
+		{% assign study-technique-description = "CYCLES can implement its various gestural mod wheel techniques into its XY granular environment. The four XY grids can have separate modulation pathways, all expressed with a single CC motion.<br><br>Assign the mod wheel to each XY grid and use the maximum and minimum modulation values to attenuate the movement to precise areas. The CC curve can help shape the modulation in the grid with specific pathways that balance the X and Y effect values.<br><br>Modulate colour grids XY values at unsynced rates to create an unstable modulation that adds a random variation to the patch's colour." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/21179559b3a744409dbed0aa6c0d32e7.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POLAR OPPOSITES" %}
+		{% assign study-technique-description = "CC control can cause the CYCLES engine to morph parameters at the opposite ends of their timbral spectrum. By setting the mod wheel to move multiple parameters to oppose in value, patches will sound different from one end of the CC modulation to the other. <br><br>CYCLES can turn predictable patches unstable; percussive patches merged into long gestural phrases; envelopes can be opened and then closed; grain positions can be precise then scattered; the signal can be wet then dry, and the stereo image can be centred and then spread. <br><br>CYCLES can design conceptual patches that utilise the CC invert function to crossfade multiple parameters morphing a patch between two extremes." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/ea3985683d3c4f1186db1064e2d8e1d1.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+	</div>
+</html>

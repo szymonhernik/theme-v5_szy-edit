@@ -1,0 +1,470 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div id="canvas" class="header-container-home">
+		<!-- logo -->
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<!-- feature -->
+		<div class="desktop">
+			<div class="home-feature title scroll-fade-in" style="display: flex; justify-content: center;">
+				<div style="display: inline-block;">
+					<a href="/collections/instruments">
+						&nbsp;&nbsp;&nbsp;SLATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ASH
+						<br>
+						MUSICAL
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOUND DESIGN
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSTRUMENTS
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="mobile">
+			<div class="home-feature title scroll-fade-in" style="display: flex; justify-content: center;">
+				<div style="display: inline-block;">
+					<a href="/collections/instruments">
+						&nbsp;&nbsp;SLATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ ASH
+						<br>
+						MUSICAL
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOUND DESIGN
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSTRUMENTS
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- menu -->
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<!-- circle -->
+		<!-- <span id="circle" style="height: 150px; width: 150px; background-color: var(--turquoise); border-radius: 50%; display: inline-block; position: absolute; left: 39%; top: 66%;"></span> -->
+	</div>
+
+	<!-- ------------------------------ get products and articles ------------------------------ -->
+
+	{% for collection in collections %}
+	    {% if collection.title contains 'Instruments' %}
+	        {% assign instruments = collection %}
+	    {% endif %}
+	    {% if collection.title contains 'Objects' %}
+	        {% assign objects = collection %}
+	    {% endif %}
+	    {% if collection.title contains 'Bundles' %}
+	        {% assign bundles = collection %}
+	    {% endif %}
+	{% endfor %}
+	{% assign editorials = blogs["editorial"] %}
+	{% assign mixes = blogs["mixes"] %}
+
+	{% assign instrument = instruments.products[0] %}
+	{% assign object = objects.products[0] %}
+	{% assign editorial = editorials.articles[0] %}
+	{% assign mix = mixes.articles[0] %}
+	{% assign bundle = bundles.products[0] %}
+
+	<!-- ------------------------------ items - desktop ------------------------------ -->
+
+	<div class="desktop">
+		<div class="row">
+			<!-- instrument -->
+			<div style="background-color: 262225; color: E8D7C5">
+				<div class="column-square">
+					<div class="image-top-left" style="width: 100%;">
+						<a href="/products/spectres">
+							<img src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Homepage.jpg?v=1739446582" style="width: 100%;">
+						</a>
+					</div>
+				</div>
+				<div class="column-square-right">
+					<div class="text-top-right title scroll-fade-in">
+						<a href="/products/spectres">
+							SPECTRES
+							<br><span style="color: 33A69E">MULTISAMPLE UPDATE</span>
+							<br>40% OFF
+						</a>
+					</div>
+					<div class="text-bottom-right paragraph-large scroll-fade-in">
+						<a href="/collections/instruments/">→ INSTRUMENTS</a>
+					</div>
+				</div>
+			</div>
+			<!-- packs -->
+			<div style="background-color: cedaca; color: var(--blue)">
+				<div class="column-square">
+					<div class="text-top-left title scroll-fade-in">
+						<a href="/products/dialect-strata">
+							DIALECT / STRATA<br><span style="color: var(--white)">OUT NOW</span>
+						</a>
+					</div>
+					<div class="text-bottom-left paragraph-large scroll-fade-in">
+						<a href="/collections/packs">
+							→ PACKS
+						</a>
+					</div>
+				</div>
+				<div class="column-square">
+					<div class="image-top-left" style="width: 100%;">
+						<a href="/products/dialect-strata">
+							<img src="https://slateandash.com/cdn/shop/files/DialectCropped.jpg?v=1709216769" style="width: 100%;">
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- bundles -->
+			<div style="background-color: var(--yellow); color: var(--blue)">
+				<div class="column-square">
+					<div class="image-top-left" style="width: 100%;">
+						<a href="/collections/bundles">
+							<img src="{{ bundle.images[0] | img_url: "2000x"}}" style="width: 100%;">
+						</a>
+					</div>
+				</div>
+				<div class="column-square-right">
+					<div class="text-top-right title scroll-fade-in">
+						<a href="/collections/bundles">
+							EXPAND YOUR COLLECTION
+						</a>
+					</div>
+					<div class="text-bottom-right paragraph-large scroll-fade-in">
+						<a href="/collections/bundles/">→ BUNDLES</a>
+					</div>
+				</div>
+			</div>
+			<!-- studies -->
+			<div style="background-color: var(--orange); color: var(--blue)">
+				<div class="column-square">
+					<div class="text-top-left title scroll-fade-in">
+						<a href="/blogs/studies">
+							DEEP DIVE GUIDES
+						</a>
+					</div>
+					<div class="text-bottom-left paragraph-large scroll-fade-in">
+						<a href="/blogs/studies">
+							→ STUDIES
+						</a>
+					</div>
+				</div>
+				<div class="column-square">
+					<div class="image-top-left" style="width: 100%;">
+						<a href="/blogs/studies">
+							<img src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/choreos_studies.jpg?v=1683027540" style="width: 100%;">
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- objects -->
+			<div style="background-color: var(--turquoise); color: var(--blue)">
+				<div class="column-square">
+					<div class="image-top-left" style="width: 100%;">
+						<a href="/collections/objects/">
+							<img src="https://cdn.shopify.com/s/files/1/0689/9299/1548/products/trip_2000x.webp?v=1672172758" style="width: 100%;">
+						</a>
+					</div>
+				</div>
+				<div class="column-square-right">
+					<div class="text-top-right title scroll-fade-in">
+						<a href="/collections/objects/">
+							TANGIBLE ARTEFACTS
+						</a>
+					</div>
+					<div class="text-bottom-right paragraph-large scroll-fade-in">
+						<a href="/collections/objects/">→ OBJECTS</a>
+					</div>
+				</div>
+			</div>
+			<!-- editorial -->
+			<div style="background-color: var(--purple); color: var(--blue)">
+				<div class="column-square">
+					<div class="text-top-left title scroll-fade-in">
+						<a href="/blogs/editorial/">
+							CONVERSATIONS + IDEAS
+						</a>
+					</div>
+					<div class="text-bottom-left paragraph-large scroll-fade-in">
+						<a href="/blogs/editorial/">
+							→ EDITORIAL
+						</a>
+					</div>
+				</div>
+				<div class="column-square">
+					<div class="image-top-left" style="width: 100%;">
+						<a href="/blogs/editorial/">
+							<img src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Ben_Salisbury_2.jpg?v=1682936722" style="width: 100%;">
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- mixes -->
+			<div style="background-color: var(--brown); color: var(--blue)">
+				<div class="column-square">
+					<div class="image-top-left" style="width: 100%;">
+						<a href="/blogs/mixes/">
+							<img src="{{ mix.image | img_url: "2000x" }}" style="width: 100%;">
+						</a>
+					</div>
+				</div>
+				<div class="column-square-right">
+					<div class="text-top-right title scroll-fade-in">
+						<a href="/blogs/mixes/">
+							EXPLORE MUSICAL LANDSCAPES
+						</a>
+					</div>
+					<div class="text-bottom-right paragraph-large scroll-fade-in">
+						<a href="/blogs/mixes/">
+							→ MIXES
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ------------------------------ items - mobile ------------------------------ -->
+	
+	<div class="mobile">
+		<!-- instrument -->
+		<div style="background-color: var(--mid-grey); color: var(--blue)">
+			<div class="general-container title scroll-fade-in">
+				<a href="/collections/instruments">
+					→ INSTRUMENTS
+				</a>
+			</div>
+			<div class="gap"></div>
+			<div class="mobile-image-right scroll-fade-in">
+				<a href="/collections/instruments">
+					<img src="{{ instrument.images[0] | img_url: "2000x" }}" style="width: 100%;">
+				</a>
+			</div>
+			<div class="gap"></div>
+		</div>
+		<!-- bundles -->
+		<div style="background-color: var(--yellow); color: var(--blue);">
+			<div class="general-container title scroll-fade-in" style="float: right; text-align: right;">
+				<a href="/collections/bundles">
+					→ BUNDLES
+				</a>
+			</div>
+			<div class="gap"></div>
+			<div class="mobile-image-left scroll-fade-in">
+				<a href="/collections/bundles">
+					<img src="{{ bundle.images[0] | img_url: "2000x" }}" style="width: 100%;">
+				</a>
+			</div>
+			<div class="gap"></div>
+		</div>
+		<!-- packs -->
+		<div style="background-color: var(--mid-grey); color: var(--blue)">
+			<div class="general-container title scroll-fade-in">
+				<a href="/collections/packs">
+					→ PACKS
+				</a>
+			</div>
+			<div class="gap"></div>
+			<div class="mobile-image-right scroll-fade-in">
+				<a href="/collections/packs">
+					<img src="https://slateandash.com/cdn/shop/files/DialectCropped.jpg?v=1709216769" style="width: 100%;">
+				</a>
+			</div>
+			<div class="gap"></div>
+		</div>
+		<!-- studies -->
+		<div style="background-color: var(--orange); color: var(--blue);">
+			<div class="general-container title scroll-fade-in" style="float: right; text-align: right;">
+				<a href="/blogs/studies">
+					→ STUDIES
+				</a>
+			</div>
+			<div class="gap"></div>
+			<div class="mobile-image-left scroll-fade-in">
+				<a href="/blogs/studies">
+					<img src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/choreos_studies.jpg?v=1683027540" style="width: 100%;">
+				</a>
+			</div>
+			<div class="gap"></div>
+		</div>
+		<!-- objects -->
+		<div style="background-color: var(--turquoise); color: var(--blue)">
+			<div class="general-container title scroll-fade-in">
+				<a href="/collections/objects">
+					→ OBJECTS
+				</a>
+			</div>
+			<div class="gap"></div>
+			<div class="mobile-image-right scroll-fade-in">
+				<a href="/collections/objects">
+					<img src="https://cdn.shopify.com/s/files/1/0689/9299/1548/products/trip_2000x.webp?v=1672172758" style="width: 100%;">
+				</a>
+			</div>
+			<div class="gap"></div>
+		</div>
+		<!-- editorial -->
+		<div style="background-color: var(--purple); color: var(--blue);">
+			<div class="general-container title scroll-fade-in" style="float: right; text-align: right;">
+				<a href="/blogs/editorial">
+					→ EDITORIAL
+				</a>
+			</div>
+			<div class="gap"></div>
+			<div class="mobile-image-left scroll-fade-in">
+				<a href="/blogs/editorial">
+					<img src="https://cdn.shopify.com/s/files/1/0029/7785/7602/files/Ben_Salisbury_2.jpg?v=1682936722" style="width: 100%;">
+				</a>
+			</div>
+			<div class="gap"></div>
+		</div>
+		<!-- mixes -->
+		<div style="background-color: var(--brown); color: var(--blue)">
+			<div class="general-container title scroll-fade-in">
+				<a href="/blogs/mixes">
+					→ MIXES
+				</a>
+			</div>
+			<div class="gap"></div>
+			<div class="mobile-image-right scroll-fade-in">
+				<a href="/blogs/mixes">
+					<img src="{{ mix.image | img_url: "2000x" }}" style="width: 100%;">
+				</a>
+			</div>
+			<div class="gap"></div>
+		</div>
+	</div>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	// const canvas = document.getElementById("canvas");
+	// const circle = document.getElementById("circle");
+
+	// var audio1 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_01.wav");
+	// var audio2 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_02.wav");
+	// var audio3 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_03.wav");
+	// var audio4 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_04.wav");
+	// var audio5 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_05.wav");
+	// var audio6 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_06.wav");
+	// var audio7 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_07.wav");
+	// var audio8 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_08.wav");
+	// var audio9 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_09.wav");
+	// var audio10 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_10.wav");
+	// var audio11 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_11.wav");
+	// var audio12 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_12.wav");
+	// var audio13 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_13.wav");
+	// var audio14 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_14.wav");
+	// var audio15 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_15.wav");
+	// var audio16 = new Audio("https://cdn.shopify.com/s/files/1/0689/9299/1548/files/Anote_16.wav");
+
+	// let x = 50;
+	// let y = 50;
+	// let vx = Math.floor(Math.random() * 8);
+	// let vy = Math.floor(Math.random() * 8);
+
+	// window.setInterval(function(){
+
+	// 	x += vx;
+	// 		y += vy;
+
+	// 		vx = vx * 0.995;
+	// 		vy = vy * 0.995;
+
+	// 	if (x > canvas.offsetWidth - 150 || x < 0) {
+	// 		vx = -vx;
+	// 		playNote();
+	// 		// circle.style.backgroundColor = "hsl(59, 100%, 72.5%)";
+	// 	}
+	// 	if (y > canvas.offsetHeight - 150 || y < 0) {
+	// 		vy = -vy;
+	// 		playNote();
+	// 		// circle.style.backgroundColor = "hsl(59, 100%, 72.5%)";
+	// 	}
+
+	// 		circle.style.left = x + "px";
+	// 		circle.style.top = y + "px";
+
+	// }, 10);
+
+	// circle.addEventListener("mouseover", function() {
+	// 	// circle.style.backgroundColor = Math.floor(Math.random()*16777215).toString(16);
+	// 	if(vx > 0) {
+	// 		vx = vx + Math.floor(Math.random() * 10);
+	// 	} else {
+	// 		vx = vx - Math.floor(Math.random() * 10);
+	// 	}
+	// 	if(vy > 0) {
+	// 		vy = vy + Math.floor(Math.random() * 10);
+	// 	} else {
+	// 		vy = vy - Math.floor(Math.random() * 10);
+	// 	}
+	// });
+
+	// function playNote() {
+
+	// 	switch(Math.floor(Math.random() * 16)) {
+	// 		case 0:
+	// 			audio1.play();
+	// 	    	break;
+	// 		case 1:
+	// 			audio2.play();
+	// 			break;
+	// 		case 2:
+	// 			audio3.play();
+	// 			break;
+	// 		case 3:
+	// 			audio4.play();
+	// 			break;
+	// 		case 4:
+	// 			audio5.play();
+	// 			break;
+	// 		case 5:
+	// 			audio6.play();
+	// 			break;
+	// 		case 6:
+	// 			audio7.play();
+	// 			break;
+	// 		case 7:
+	// 			audio8.play();
+	// 			break;
+	// 		case 8:
+	// 			audio9.play();
+	// 	    	break;
+	// 		case 9:
+	// 			audio10.play();
+	// 			break;
+	// 		case 10:
+	// 			audio11.play();
+	// 			break;
+	// 		case 11:
+	// 			audio12.play();
+	// 			break;
+	// 		case 12:
+	// 			audio13.play();
+	// 			break;
+	// 		case 13:
+	// 			audio14.play();
+	// 			break;
+	// 		case 14:
+	// 			audio15.play();
+	// 			break;
+	// 		case 15:
+	// 			audio16.play();
+	// 			break;
+	// 		default:
+	// 			// code block
+	// 	}
+
+	// 	circle.style.backgroundColor = "hsl(59, 100%, 72.5%)";
+	// 	setTimeout(function(){
+	// 		circle.style.backgroundColor = "hsl(159, 46.9%, 63.5%)";
+	// 	}, 100);
+	// }
+</script>

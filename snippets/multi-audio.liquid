@@ -1,0 +1,273 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+	<div class="grid-container">
+		<div class="grid-item">
+			<div class="grid-paragraph title-small">
+				{% if title1 %}
+					<div class="multi-audio-title">{{ title1 }}</div>
+				{% endif %}
+				{% if title2 %}
+					<div class="multi-audio-title">{{ title2 }}</div>
+				{% endif %}
+				{% if title3 %}
+					<div class="multi-audio-title">{{ title3 }}</div>
+				{% endif %}
+				{% if title4 %}
+					<div class="multi-audio-title">{{ title4 }}</div>
+				{% endif %}
+				{% if title5 %}
+					<div class="multi-audio-title">{{ title5 }}</div>
+				{% endif %}
+				{% if title6 %}
+					<div class="multi-audio-title">{{ title6 }}</div>
+				{% endif %}
+				{% if title7 %}
+					<div class="multi-audio-title">{{ title7 }}</div>
+				{% endif %}
+				{% if title8 %}
+					<div class="multi-audio-title">{{ title8 }}</div>
+				{% endif %}
+				{% if title9 %}
+					<div class="multi-audio-title">{{ title9 }}</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="grid-item">
+			<div class="grid-paragraph paragraph">
+				<div class="multi-audio-content">{{ content1 }}</div>
+				<div class="gap"></div>
+				<div class="multi-audio-player-container">
+					<div class="multi-audio-play-button paragraph" id="multi-audio-play-button">PLAY</div>
+					<div class="multi-audio-timestamp paragraph"><span id="multi-audio-time-label">00:00</span> / <span id="multi-audio-duration-label">00:00</span></div>
+					<div class="gap-tiny"></div>
+					<div class="multi-audio-playbar-container">
+						<div class="multi-audio-playbar-progress" id="multi-audio-playbar-progress" style="background-color: var(--blue)"></div>
+						<div class="multi-audio-playbar-slider-container">
+							<input class="multi-audio-playbar-slider" id="multi-audio-playbar-slider" type="range" min="0" max="1000" value="0"></input>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- ------------------------------ style ------------------------------ -->
+
+<style>
+
+	.multi-audio-title {
+		cursor: pointer;
+	}
+
+	.multi-audio-player-container {
+		position: relative;
+		width: 100%;
+	}
+
+	.multi-audio-play-button {
+		width: fit-content;
+		cursor: pointer;
+	}
+
+	.multi-audio-timestamp {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	.multi-audio-playbar-container {
+		width: 100%;
+		height: 36px; 
+		position: relative;
+		background-color: var(--white);
+	}
+
+	@media screen and (max-width: 1420px) {
+		.multi-audio-playbar-container {
+			height: 32px;
+		}
+	}
+
+	@media screen and (max-width: 1250px) {
+		.multi-audio-playbar-container {
+			height: 27px;
+		}
+	}
+
+	@media screen and (max-width: 1080px) {
+		.multi-audio-playbar-container {
+			height: 23px;
+		}
+	}
+
+	@media screen and (max-width: 920px) {
+		.multi-audio-playbar-container {
+			height: 18px;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		.multi-audio-playbar-container {
+			height: 14px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.multi-audio-playbar-container {
+			height: 26px;
+		}
+	}
+
+	.multi-audio-playbar-progress {
+		width: 0;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		-webkit-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+		transition: width 450ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+
+	.multi-audio-playbar-slider-container {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.multi-audio-playbar-slider {
+		width: 100%;
+		height: 100%;
+		-webkit-appearance: none;
+	    appearance: none;
+	    cursor: pointer;
+	    opacity: 0;
+	}
+</style>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	const multiAudioTitles = document.querySelectorAll(".multi-audio-title");
+	const multiAudioContent = document.querySelector(".multi-audio-content");
+
+	const multiAudioTitleArray = ["{{ title1 }}", "{{ title2 }}", "{{ title3 }}", "{{ title4 }}", "{{ title5 }}", "{{ title6 }}", "{{ title7 }}", "{{ title8 }}", "{{ title9 }}"];
+	const multiAudioContentArray = ["{{ content1 }}", "{{ content2 }}", "{{ content3 }}", "{{ content4 }}", "{{ content5 }}", "{{ content6 }}", "{{ content7 }}", "{{ content8 }}", "{{ content9 }}"];
+	const multiAudioAudioArray = ["{{ audio1 }}", "{{ audio2 }}", "{{ audio3 }}", "{{ audio4 }}", "{{ audio5 }}", "{{ audio6 }}", "{{ audio7 }}", "{{ audio8 }}", "{{ audio9 }}"];
+
+	// on page load highlight first title
+	multiAudioTitles[0].innerHTML = "→ " + multiAudioTitleArray[0];
+	multiAudioTitles[0].style.color = "#ffffff";
+
+	// load multiAudioAudio file into player
+	var multiAudioAudio = new Audio("{{ audio1 }}");
+
+	// get play button variable
+    var multiAudioPlayButtton = document.getElementById("multi-audio-play-button");
+
+    // get variables for time and duration labels
+    var multiAudioTimeLabel = document.getElementById("multi-audio-time-label");
+    var multiAudioDurationLabel = document.getElementById("multi-audio-duration-label");
+
+    // get variable for playbar
+    var multiAudioPlaybarProgress = document.getElementById("multi-audio-playbar-progress");
+
+    // get variable for slider
+    var multiAudioPlaybarSlider = document.getElementById("multi-audio-playbar-slider");
+
+    // start by not playing
+    let multiAudioIsPlaying = 0
+
+    // update duration on multiAudioAudio load
+	multiAudioAudio.addEventListener("loadeddata", () => {
+		multiAudioDurationLabel.textContent = convertTime(multiAudioAudio.duration)
+		},
+		false
+	);
+
+	// when multiAudioPlayButtton clicked
+    multiAudioPlayButtton.addEventListener("click", function() {
+        if (multiAudioIsPlaying == 0) {
+            multiAudioAudio.play();
+            multiAudioIsPlaying = true
+            multiAudioPlayButtton.innerHTML = "PAUSE"
+            window.requestAnimationFrame(multi_audio_prog_animation);
+        } else { 
+            multiAudioAudio.pause();
+            multiAudioIsPlaying = false
+            multiAudioPlayButtton.innerHTML = "PLAY"
+        }
+    });
+
+    // update time label when the multiAudioAudio is playing
+    multiAudioAudio.addEventListener("timeupdate", function() {
+        multiAudioTimeLabel.textContent = convertTime(multiAudioAudio.currentTime)
+    });
+
+    function multi_audio_prog_animation() {
+  		multiAudioPlaybarProgress.style.setProperty("width", (multiAudioAudio.currentTime / multiAudioAudio.duration) * 100 + "%");
+  		window.requestAnimationFrame(multi_audio_prog_animation);
+	};
+
+	// update current time on slider drag
+    multiAudioPlaybarSlider.addEventListener("input", function() {
+        var sliderValue = Number(this.value);
+        multiAudioAudio.currentTime = (sliderValue / 1000) * multiAudioAudio.duration;
+    });
+
+    // reset on multiAudioAudio end
+    multiAudioAudio.addEventListener("ended", function() {
+    	multiAudioAudio.pause();
+        multiAudioIsPlaying = false
+        multiAudioPlayButtton.innerHTML = "PLAY"
+        multiAudioPlaybarProgress.style.setProperty("width", "0")
+        multiAudioAudio.currentTime = 0;
+        multiAudioTimeLabel.textContent = convertTime(multiAudioAudio.currentTime)
+    });
+
+    // utility function to convert time into correct display figure
+    var convertTime = function(time)
+    {    
+        var mins = Math.floor(time / 60);
+        if (mins < 10) {
+          mins = '0' + String(mins);
+        }
+        var secs = Math.floor(time % 60);
+        if (secs < 10) {
+          secs = '0' + String(secs);
+        }
+
+        return mins + ':' + secs;
+    }
+
+    // title click
+	multiAudioTitles.forEach.call(multiAudioTitles, function (title, index) {
+		title.addEventListener('click', function () {
+			resetAllMultiAudioTitles();
+			this.innerHTML = "→ " + multiAudioTitleArray[index];
+			this.style.color = "#ffffff";
+			multiAudioContent.innerHTML = multiAudioContentArray[index];
+			// update audio player
+			multiAudioAudio.pause();
+        	multiAudioIsPlaying = false
+        	multiAudioPlaybarProgress.style.setProperty("width", "0")
+	        multiAudioAudio.currentTime = 0;
+	        multiAudioTimeLabel.textContent = convertTime(multiAudioAudio.currentTime)
+	        multiAudioPlayButtton.innerHTML = "PLAY"
+	        multiAudioAudio.src = multiAudioAudioArray[index];
+    		multiAudioAudio.load();
+    		window.requestAnimationFrame(multi_audio_prog_animation);
+		})
+	});
+
+	// function: reset all titles
+	function resetAllMultiAudioTitles() {
+    	multiAudioTitles.forEach(async (title, index) => {
+    		title.innerHTML = multiAudioTitleArray[index]
+    		title.style.color = "inherit"
+		});
+	};
+
+</script>

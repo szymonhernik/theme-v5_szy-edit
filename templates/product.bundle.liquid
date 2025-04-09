@@ -1,0 +1,327 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+	
+	<title>{{ product.title | upcase }} ← SLATE + ASH</title>
+	
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<head>
+		<div class="header-container" style="background-color: var(--white); color: var(--blue);">
+			<div class="header-logo title">
+				<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/collections/bundles">BUNDLES</a>
+				<br>
+				<a href="/"><span class="header-logo-s">S</span></a>
+			</div>
+			<div class="header-menu-button" id="menu-button">+ MENU</div>
+			<div class="header-title title">
+				{{ product.title | upcase }}
+			</div>
+		</div>
+	</head>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+	<body>
+		<div style="background-color: {{ product.metafields.custom.bundle_background_color }};">
+
+			<!-- ------------------------------ image ------------------------------ -->
+
+			<img class="feature-image scroll-fade-in" src="{{ product.images[0] | img_url: "2560x" }}">
+			<div class="gap"></div>
+
+			<!-- ------------------------------ description + buy ------------------------------ -->
+
+			<div class="grid-container">
+				<div class="grid-item">
+					<div class="grid-paragraph paragraph scroll-fade-in">
+						{{ product.description }}
+					</div>
+				</div>
+				<div class="grid-item">
+					<div class="grid-paragraph title-small scroll-fade-in">
+						{{ product.title | upcase }}
+						<br><span style="color: {{ product.metafields.custom.bundle_compare_at_color }}"><s>{{ product.compare_at_price | money_without_trailing_zeros }}</s></span>
+						<br><span id="object-price" style="color: {{ product.metafields.custom.bundle_price_color }}">{{ product.price | money_without_trailing_zeros }}</span>
+						<div><button id="add-to-cart-button">+ TO CART</button></div>
+					</div>
+				</div>
+			</div>
+			<div class="gap-desktop"></div>			
+
+			<!-- ------------------------------ what's included - desktop ------------------------------ -->
+
+			{% assign products_included = product.metafields.custom.bundle_included_products | remove: '[' | remove: ']' | remove: '"' | remove: 'gid://shopify/Product/' | remove: ' ' %}
+			{% assign split_products_included = products_included | split: ',' %}
+			{% assign productCount = 0 %}
+
+			<div class="desktop">
+				<div style="background-color: inherit; position: relative">
+					<div class="gap"></div>
+					{% for item in split_products_included %}
+						{% assign productIndex = forloop.index | minus: 1 | modulo: 8 %}
+						{% assign item_id = item | plus: 0 %}
+						{% for product in collections['all'].products %}
+							{% if product.id == item_id %}
+								{% if productIndex == 0 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% if productIndex == 1 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; left: 0;">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% if productIndex == 2 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 0; left: 0;">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% if productIndex == 3 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% if productIndex == 4 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 0; right: 0;">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% if productIndex == 5 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; right: 0;">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% if productIndex == 6 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; bottom: 0; right: 0;">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: right;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% if productIndex == 7 %}
+									<div class="column-square">
+										<div class="scroll-fade-in" style="width: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+											<a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%"></a>
+											<div class="gap-tiny"></div>
+											<div class="paragraph" style="text-align: left;"><a href="{{ product.url | within: collection }}">{{ product.title | upcase }}</a></div>
+										</div>
+									</div>
+								{% endif %}
+								{% capture productCount %}{% increment productCount %}{% endcapture %}
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+
+					{% assign productCountMod =  productCount | modulo: 2 %}
+					{% if productCountMod == 0 %}
+						<div class="column-square">
+						</div>
+					{% endif %}
+
+					<div style="position: absolute; top: 0;" class="grid-container">
+						<div class="grid-item">
+							<div class="grid-paragraph title scroll-fade-in">
+								WHAT'S INCLUDED
+							</div>
+						</div>
+						<div class="grid-item">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ------------------------------ what's included - mobile ------------------------------ -->
+
+			<div class="mobile">
+				<div class="grid-container">
+					<div class="grid-item">
+						<div class="grid-paragraph title scroll-fade-in">
+							WHAT'S INCLUDED
+						</div>
+					</div>
+				</div>
+				{% for item in split_products_included %}
+					{% assign productIndex = forloop.index | minus: 1 | modulo: 7 %}
+					{% assign item_id = item | plus: 0 %}
+					{% for product in collections['all'].products %}
+						{% if product.id == item_id %}
+							{% if productIndex == 0 %}
+								<div>
+									<div class="scroll-fade-in" style="width: 50%; position: relative; left: 50%; -webkit-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); transform: translate(-50%, 0%);">
+										<a href="{{ product.url | within: collection }}">
+											<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+											<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+										</a>
+									</div>
+								</div>
+								<div class="gap"></div>
+							{% endif %}
+							{% if productIndex == 1 %}
+								<div>
+									<div class="scroll-fade-in" style="width: 50%;">
+										<a href="{{ product.url | within: collection }}">
+											<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+											<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+										</a>
+									</div>
+								</div>
+								<div class="gap"></div>
+							{% endif %}
+							{% if productIndex == 2 %}
+								<div style="text-align: right">
+									<div class="scroll-fade-in" style="width: 80%; display: inline-block">
+										<a href="{{ product.url | within: collection }}">
+											<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+											<div class="paragraph" style="text-align: left">{{ product.title | upcase }}</div>
+										</a>
+									</div>
+								</div>
+								<div class="gap"></div>
+							{% endif %}
+							{% if productIndex == 3 %}
+								<div>
+									<div class="scroll-fade-in" style="width: 50%;">
+										<a href="{{ product.url | within: collection }}">
+											<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+											<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+										</a>
+									</div>
+								</div>
+								<div class="gap"></div>
+							{% endif %}
+							{% if productIndex == 4 %}
+								<div>
+									<div class="scroll-fade-in" style="width: 50%; position: relative; left: 50%; -webkit-transform: translate(-50%, 0%); -ms-transform: translate(-50%, 0%); transform: translate(-50%, 0%);">
+										<a href="{{ product.url | within: collection }}">
+											<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+											<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+										</a>
+									</div>
+								</div>
+								<div class="gap"></div>
+							{% endif %}
+							{% if productIndex == 5 %}
+								<div style="text-align: left">
+									<div class="scroll-fade-in" style="width: 80%; display: inline-block">
+										<a href="{{ product.url | within: collection }}">
+											<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+											<div class="paragraph" style="text-align: right">{{ product.title | upcase }}</div>
+										</a>
+									</div>
+								</div>
+								<div class="gap"></div>
+							{% endif %}
+							{% if productIndex == 6 %}
+								<div style="text-align: right">
+									<div class="scroll-fade-in" style="width: 50%; display: inline-block">
+										<a href="{{ product.url | within: collection }}">
+											<img src="{{ product.featured_image | img_url: "1280x" }}" style="width: 100%">
+											<div class="paragraph" style="text-align: left">{{ product.title | upcase }}</div>
+										</a>
+									</div>
+								</div>
+								<div class="gap"></div>
+							{% endif %}
+							{% capture productCount %}{% increment productCount %}{% endcapture %}
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</div>
+
+			<div class="gap"></div>
+			<div class="previous-next title-small scroll-fade-in">
+				<div class="previous">
+					<a href="/collections/bundles/">← BUNDLES</a>
+				</div>
+			</div>
+			<div class="gap"></div>
+		</div>
+	</body>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	var selectedVariant = {{ product.variants[0].id }};
+	const highlightColor = "{{ product.metafields.custom.bundle_compare_at_color }}"
+
+	// add to cart
+
+	document.getElementById("add-to-cart-button").addEventListener("click", function() {
+
+		cartIsEmpty = 0;
+		document.getElementById('cart-items').style.display = 'block';
+		document.getElementById('cart-subtotal-and-checkout').style.display = 'block';
+		document.getElementById('cart-empty-message').style.display = 'none';
+
+		// get variant id
+		variantId = selectedVariant;
+
+		// change text of add to cart button
+		document.getElementById("add-to-cart-button").innerHTML = "ADDING..."
+
+		// axois post cart add
+		axios.post('/cart/add.js', {
+			id: variantId,
+			quantity: 1,
+		}).then(res => {
+			console.log(res.data)
+
+			// update cart button
+			axios.get('/cart.js', {
+			}).then(res => {
+				console.log(res.data);
+				updateCartButton(res.data.item_count);
+				document.getElementById("add-to-cart-button").innerHTML = "ADDED TO CART"
+				document.getElementById("add-to-cart-button").style.color = highlightColor
+				if(res.data.item_count === 1) {
+					document.getElementById("cart-button").style.visibility = "visible";
+					document.getElementById("cart-button").classList.add("header-button-bounce-in");
+					document.getElementById("cart-button").style.transform = "translateY(0)";
+				} else if(res.data.item_count > 1) {
+					document.getElementById("cart-button").style.color = "#c38839"
+					document.getElementById("cart-button").style.backgroundColor = "#284289"
+				}
+				setTimeout(function(){
+				    document.getElementById("add-to-cart-button").innerHTML = "+ TO CART"
+				    document.getElementById("add-to-cart-button").style.color = "#284289"
+				    document.getElementById("cart-button").style.color = "#284289"
+					document.getElementById("cart-button").style.backgroundColor = "#c38839"
+				}, 750);
+
+				// update cart
+				updateCart(res.data)
+			});
+		});
+	});
+
+</script>

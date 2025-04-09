@@ -1,0 +1,125 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>{{ article.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> <span class="arrow">→</span> <a href="/blogs/careers/">CAREERS</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ article.title | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: var(--mid-grey); color: var(--blue);">
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ intro ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ article.content }}
+				</div>
+				<div class="gap-small"></div>
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					<a style="color: var(--white);" href="mailto:careers@slateandash.com?subject={{ article.title | capitalize }}">→ APPLY FOR THIS JOB</a> 
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ job details ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					JOB DETAILS
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ article.metafields.custom.career_job_details }}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ primary tasks ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					PRIMARY TASKS
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ article.metafields.custom.career_primary_tasks }}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ required skills ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					REQUIRED SKILLS
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ article.metafields.custom.career_required_skills }}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ bonus skills ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item-empty">
+				<div class="grid-title-no-top title scroll-fade-in">
+					BONUS SKILLS
+				</div>
+			</div>
+		</div>
+		<div class="gap"></div>
+		<div class="grid-container">
+			<div class="grid-item-empty">
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					{{ article.metafields.custom.career_bonus_skills }}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+	</div>
+</html>

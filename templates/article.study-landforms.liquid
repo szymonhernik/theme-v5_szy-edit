@@ -1,0 +1,406 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>{{ article.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/blogs/studies">STUDIES</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ article.title | remove: "STUDIES: " | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: {{ article.metafields.custom.study_background_color }}; color: {{ article.metafields.custom.study_text_color }};">
+
+		<!-- ------------------------------ image ------------------------------ -->
+
+		<img class="feature-image scroll-fade-in" src="{{ article.image | img_url: "2500x" }}">
+		<div class="gap"></div>
+
+		<!-- ------------------------------ intro ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					Below is an encylopedia of sound design concepts and techniques. Use them to expand your knowledge of LANDFORMS and inspire new ways of working with it.
+				</div>		
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<!-- <div style="color: {{ article.metafields.custom.study_secondary_text_color }}">→ DOWNLOAD PATCHES</div> -->
+				</div>	
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ variables ------------------------------ -->
+
+		<!-- variable to give each study technique with a new id (it is incremented each time a technique is rendered) -->
+		{% assign studyTechniqueCount = 0 %}
+		<!-- variable for secondary text color to be passed into render -->
+		{% assign study-secondary-text-color =  article.metafields.custom.study_secondary_text_color %}
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">LAYERS</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						LANDFORMS hosts a diverse library of string, wood, and brass samples, as well as a collection of extended techniques and experimental processed material. The recording sessions captured the performers' nuances and inflections on each articulation, ensuring that the library content portrays the genuine feeling and expression of a real player as material is manipulated throughout the engine.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ARTICULATION SELECT" %}
+		{% assign study-technique-description = "LANDFORMS’ A + B LAYERS allow two articulations to be loaded into the engine for independent shaping. The interface encourages thoughtful consideration of instrument groupings. Scroll through the sample library and assign new articulations to each LAYER. Make adjustments to tune, filter, and sample start point parameters in the open menu.<br><br>For quick timbral changes in a patch, LANDFORMS enables easy switching between source articulations while preserving the layer parameter adjustments." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/727454f4a446416bb22e702df63c9d21.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "DIFFERENT RANGES" %}
+		{% assign study-technique-description = "In LANDFORMS, a single patch is capable of covering the entire frequency spectrum. LAYERS provide the flexibility to pitch up or down any articulation in the library, revealing new timbres and expanding the instrument groups' ranges. Tuning down the library material produces a thicker tone with added movement, while pitching it up imparts a livelier feel with increased audible harmonics.<br><br>When mixing LAYERS, similarities can be drawn with blending two oscillators on a synth. Both have coarse tuning and fine-tuning capabilities. To create thicker voices, explore different combinations of articulations at various ranges and detune them from one another. This process allows LANDFORMS to craft unique and expressive sounds with a rich and full-bodied quality." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/72645d6ba6e34ad790f02212c90aaa2d.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "LAYER PAIRS" %}
+		{% assign study-technique-description = "LANDFORMS offers the freedom to explore various combinations of instrument groups by assigning different articulations to each uniquely programmable LAYER. Discover combinations that create new phrases and textures can be formed from articulations of the same instrument by moving the start point parameter on each LAYER.<br><br>LANDFORMS can outline chords as each LAYER plays a designated interval, adding harmonic depth to the patch. Adjusting the fine tune of LAYERS achieves anything from subtle detuning effects to abstract and experimental atonal sounds." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/03817043e17a46028be86279fbec05b4.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PHASE OSCILLATIONS" %}
+		{% assign study-technique-description = "LANDFORMS can move the start point of a LAYER to any desired position within a chosen articulation. When LAYER B's start point is set to 50%, while retaining the original start position of LAYER A, a constant oscillation effect is achieved. By triggering a MIDI note, LAYER A is triggered from its natural start point, while LAYER B starts from its 50% position. This approach conceals the attack and release of each articulation, as one of the LAYERS continuously sounds a fully expressed note alongside the other articulation's natural starting point.<br><br>Create continuously oscillating textures by blending different articulations and instrument groups. Alternatively, for a more experimental approach, introduce processed samples to the oscillation effect, expanding the creative possibilities and adding depth to your compositions." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/cc8f25782e2748bba448987da0221c39.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SIX LIMBS" %}
+		{% assign study-technique-description = "LANDFORMS has six envelopes, three for each LAYER: Amp, filter, and pitch. The amp envelope ensures clean and natural control over the articulation's audible duration. The filter and pitch envelopes introduce colourful sound design characteristics, setting LANDFORMS apart from traditional orchestra libraries.<br><br>On their own, these envelopes offer three distinct morphing capabilities for articulations. For example, by setting LAYER A with a short filter envelope and LAYER B with a pitch envelope featuring a slow attack, the front ends of both LAYERS acquire their own characterful movement. Additionally, the random envelope menu introduces variations to envelope attack, release, and depth parameters, ensuring that they change with every MIDI note trigger. Percentage values allow you to control the likelihood and extent of these changing envelope shape values." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/ef552fbdb5d14a2d82f11ba488757aa7.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "DUAL TAPES" %}
+		{% assign study-technique-description = "LAYERS can stretch articulations as if they were in a tape machine. The choice of slower tape speeds causes slower articulation movement and adds a characterful machine-like warmth. Each LAYER is equipped with its own dedicated tape machine, allowing independent rates and providing ample tonal variation to each layer.<br><br>The tape machine on each LAYER can maintain the pitch of articulations while altering their playback speed. By engaging pitch retention and slowing the tape speed, pitched-up library material gains a woozy and slow-moving modulation. This effect accentuates the natural vibrato and expression of the performer." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/8efb28d10a1245ce8c79eafc6f07ed1d.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MELODY + ACCOMPANIMENT" %}
+		{% assign study-technique-description = "LANDFORMS can employ its LAYERS to design two contrasting sounds that work together within a patch. By bypassing the Harmony and Arp in each LAYER menu, you can independently route the MODULES, allowing for contrasting manipulations and enhanced separation between the LAYERS.<br><br>With the Arpeggiator and Harmony modules assigned, LAYER A triggers a repeating melodic phrase with quantized pitch information, while LAYER B employs the Harmony module to design a four-voice structure, introducing chordal motion within a quantized scale. This combination allows LAYERS A and B to create a melody and accompaniment patch, utilising pitch information from MIDI note triggers.<br><br>Generative module parameters introduce an element of chance to a patch. The Arpeggiator can trigger in a random pattern order, the Harmony module sends random pitch values per trigger, and the random module adds random percentage over pitch information, sample start point, and pan." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/20059b02d3d3457e94ab1eb3d3696765.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">MODULES</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						Clicking on the blue column situated on the left-hand side of the interface will open the LANDFORMS module window. The HARMONY, ARP, TAPE and RANDOM modules are located here, which influence the selected articulations on both layers. Each LAYER has the option to bypass the Harmony and Arp modules, granting individual control over a single LAYER. The modules take LANDFORMS' source orchestral articulations and transform them through a unique signal chain, adding triggers, harmonic information, timbral changes, and randomness to the patch.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TAPE FLUTTERS" %}
+		{% assign study-technique-description = "The tape machine module in LANDFORMS effectively slows down the playback speed of both layers A and B, resulting in the incoming signal to playback at a slower rate. The tape machine rate changes accentuate performance subtleties in articulations. As the tape playback rate decreases, the source material's pitch lowers accordingly.<br><br>When the retain pitch selection is active, the source material stretches while maintaining its pitch. This produces slower playback movement without altering the pitch range." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/5e64ca506ee9402a98b9aafdbbd8f11e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CASCADING ARP" %}
+		{% assign study-technique-description = "LANDFORMS’ ARP MODULE offers versatile triggering options, including up, down, forward, backwards, pendulum, and random directions, allowing articulations to transform into repeating melodies or generative sequences. Selecting the downwards ARP direction in the pattern tab creates a cascading melody triggered from the highest to lowest manually pressed MIDI note.<br><br>LANDFORMS enables abstract arp patterns by combining sequence directions with octave and strike parameters. The octave slider introduces additional pitched-up sequence steps before moving to the following pressed MIDI note. The strike slider causes the arp to freeze for an allocated number of triggers before proceeding.<br><br>In the options tab, the hold parameter sets the gate length per ARP step. A low hold amount leads to staccato and percussive steps, cutting the articulation's amplitude for a large portion of each step. When set to full, the arp's gate length fills the entire range of every step, and increasing the release time causes ARP steps to overlap.<br><br>The stutter parameter increases the chance of missed notes, resulting in more varied rhythms and phrasing for the arpeggiator." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/740f6332c45145e0b84936be7fa49146.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "HARMONY STRUMS" %}
+		{% assign study-technique-description = "LANDFORMS’ HARMONY MODULE enables you to add up to four voices to your patch. In the delay tab, there is precise timing control over each additional voice, allowing them to be staggered in any desired order. Choose to synchronise delay timings with clock divisions or opt for free time settings.<br><br>Free time delay timings emulate human performances of plucking or fingerpicking an instrument. Design strum patterns that trigger with a human sense of momentum, as note divisions remain unquantized.<br><br>The Humanise parameter introduces an element of chance, generating different timing values for each MIDI trigger per the specified humanise amount. This imparts a subtle variation to each additional voice's timing." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/47b7f4eb212349a29235860a2672c5dc.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RANDOM CLUSTERS" %}
+		{% assign study-technique-description = "The HARMONY MODULE combines generative capabilities with scale quantization, enabling the creation of dense chordal clusters from a single triggered note. Increasing an additional voice's pitch to its maximum value prompts it to generate pitch values. If the HARMONY MODULE is scale quantized, it will randomly select a note from the chosen scale.<br><br>By setting LAYER A and B to play articulations in separate ranges, the patch acquires a low and high voice. The HARMONY module generates pitch information for both LAYERS and controls voice structures on both. As a result, the patch becomes a cluster of diatonic notes, with a single MIDI-triggered note generating different chords on each trigger." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/6fe3f27e3bdd49099447fc6b808156e9.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ATTACK SEQUENCE" %}
+		{% assign study-technique-description = "By utilising an envelope with no sustain and a short attack and decay, LANDFORMS triggers a plucked note, isolating the various attack timbres within a single articulation by scrubbing the LAYER start point.<br><br>The ARP MODULE offers multiple parameters that transform it into a sequencer and generative composer. Increasing the strike parameter causes priority triggers to continuously fire for the specified steps before transposing to the subsequent manually pressed note.<br><br>LANDFORMS can interchange the layer source material of the patch, offering access to a diverse library of natural and sample-scrubbed attack sounds." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/cda7502d8ef042e990c1e6d59cc2d442.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ARP SMEAR" %}
+		{% assign study-technique-description = "LANDFORMS can turn articulations into deep morphing textures that build in intensity. When triggered by the ARP, LAYERS with long envelope release parameters create a dense bed of tails as they continuously layer on top of one another.<br><br>The Harmony MODULE expands the sonic palette by introducing up to four repitched voices, adding additional layers and release tails to the patch. In the delay tab, the introduction of harmony notes can be staggered, either synced or unsynced to the clock. The staggered release times further contribute to a thick bed of release tails, layering the articulations at phased points.<br><br>The Arp's stutter parameter enhances the chance of skipped gates, creating unpredictable accents in the arp smear. Additionally, the random module's octave parameter introduces unpredictable pitch-up layers to the smear." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/056cf89134e241928617812140e4f00a.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GENERATIVE QUARTET" %}
+		{% assign study-technique-description = "By randomising the sample start point, LANDFORMS can transform a single articulation into multiple phrases, triggering it from different start points. As the LAYER start point randomly shifts, the library articulation takes on new intervallic and dynamic orders with each trigger.<br><br>The RANDOM MODULE in LANDFORMS offers the ability to increase the probability of triggering random octave, fifth, detune amount, and pan position. When combined with the changing start point position, almost every trigger of a single source library articulation will yield a different result.<br><br>With the HARMONY module, duplicates of the randomised start point articulation can be added, each individually pitched to outline specific harmonies. LANDFORMS can create a quartet-like effect from a single articulation and function as a generative sequencer and composer for the source material.<br><br>Introducing the ARP module into the signal chain brings continuous triggering and controlled randomness to the articulation. Selecting the random arpeggiator direction and increasing the stutter and jump parameters allow LANDFORMS to generate diverse notes, phrases, and timbres. Holding a chord shape enables the four voices to perform in a quartet-like manner, and increasing the number of held MIDI notes contributes to the generative nature of the patch." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/49afc636bf0a4e42acc96a5357ea422e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">SPATIAL MIXER</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						LANDFORMS' perspective window opens the SPATIAL MIXER, an intuitive spatial design environment that arranges elements in a two-dimensional space. Within the perspective window, discover three performers, each with their own assignable articulation, alongside a range of microphone potions, spatial re-amps and convolutions to craft desired spatial layouts. 
+						<br><br>
+						The cursor lies at the end of the signal chain and determines the output and mixed perspective of all elements relative to its position. This enables you to isolate individual players and room sounds, allowing for precise control over the stereo image. Whether you seek realistic microphone positions or wish to explore experimental perspectives.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MICROPHONE POSITIONS" %}
+		{% assign study-technique-description = "LANDFORMS enables the creation of custom spatial arrangements by combining player articulations with close, mid, far, and smear microphone positions. The cursor acts as the final microphone position and serves as the main output of the SPATIAL MIXER. Placing the cursor at different points within the mixer allows for the exploration of multi-microphone sweet spots and roomy re-amped reflections.<br><br>The close microphone captures nuanced details such as performer breaths, bow and finger movements. The mid microphone provides a balanced mix of player and room sound, while the far microphone offers various reverb options including plate, room, hall, and eight convolution impulse responses.<br><br>Elements, represented by letters or numbers, can be mixed using LFOs, CC, physics-based movement, or record custom-drawn motions. It is also possible to remove specific microphone positions from the spatial mix by selecting the corresponding element in the right-hand window." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/f840319392404eb68097800c528ab864.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "REAL TREMOLO" %}
+		{% assign study-technique-description = "The SPATIAL MIXER can create a tremolo effect by modulating the cursor with an even LFO shape when elements are situated in the corner of the perspective layout. This LFO shape moves between the close microphone position in the top right of the mixer window and the empty bottom left.<br><br>By maintaining a matched rate on both the X and Y axes of the LFO, LANDFORMS provides the flexibility to explore a range of LFO speeds, enabling the creation of faster or slower tremolo effects.<br><br>When introducing the far (reverb) microphone position to the bottom left of the spatial mixer, a previously harsh, on/off gated tremolo transforms into a modulating movement with blended room reflections." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/6980020de3f542d48d59d6b8b8d3b998.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PERSPECTIVE VIBRATO" %}
+		{% assign study-technique-description = "Within the SPATIAL MIXER, each microphone position offers parameters such as gain, tune, tone, bend, and start point. Additionally, random parameters introduce chance elements over pitch, drift, and start point, adding unpredictability to each trigger.<br><br>LANDFORMS can achieve a detuned vibrato effect by assigning two player slots, both with the same articulation. By slightly detuning one of the player slots and modulating the cursor with a cyclic LFO movement, a natural vibrato effect emerges as the cursor modulates the output signal in and out of tune.<br><br>By reducing the microphone bleed percentage, individual elements can be isolated from one another. As the bleed amount decreases, the fine-tune pitch modulation becomes more pronounced. At 0% bleed, the cursor captures only the signal directly above the player, creating a ducking effect as the cursor moves away.<br><br>Alternatively, increasing the bleed parameter widens the radius captured by the cursor, causing microphone positions to layer regardless of their placement within the mix and enhances the overall blend and interaction between elements." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/97ad9d2ab6db49bcb7a21c65edb5a2f2.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SPATIAL PERSPECTIVES" %}
+		{% assign study-technique-description = "LANDFORMS can craft spatially intricate voices through contrasting LAYER and perspective window settings. In Layer A, a distant spatial perspective is built by modulating the cursor between mid and far elements. Conversely, Layer B creates a close spatial mix by modulating the cursor around player and microphone positions.<br><br>When both LAYERS are used simultaneously, LANDFORMS generates a bespoke mix of characterful, roomy reflections and intricate details from close performer recordings. By adjusting the phase of the LFO movement by 50%, the cursor on each layer moves in and out of its spatial mix at opposite timings." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/1a9cf188948f4933b0abd0247dda7329.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FLIGHT CIRCUITS" %}
+		{% assign study-technique-description = "With the record modulation source, LANDFORMS offers the ability to create personalised modulation routes, shifting the mix perspective within the spatial mixer. Manually moving the cursor in the record modulation mode creates long-form modulation pathways. Once a modulation pathway is drawn and released, it repeats as a cyclic oscillating signal. <br><br>Meanwhile, LANDFORMS allows for adjustments to the positioning or complete rearrangement of elements within the spatial mixer, all while the drawn cursor modulation continues indefinitely along its route." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/0ddacfae0e584486ac34bee8f14926e9.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ATTRACTOR ORBITS" %}
+		{% assign study-technique-description = "The SPATIAL MIXER's motion modulation brings generative movement, instability and probability to LANDFORMS. The motion modulation source applies a physics-based environment to cursor movement. By increasing the magnetism parameter and keeping the bounce and momentum at 100%, the cursor will continuously orbit the gravitational crosshair each time with momentum-based XY values. Reducing the speed parameter makes the orbit motion more audible. The speed parameter is a global rate control and implies the effect of slowing down time in the physics-based environment. The parameter-to-cursor relationship doesn't get affected by the decrease in modulation speed." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/abfbd68be0b243eda18d28d217cfb5cf.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "REHEARSAL ROOM" %}
+		{% assign study-technique-description = "LANDFORMS can import user material in the perspective window to replace player source material. Import up to six sources into the engine, three on each layer. Import audio alongside LANDFORMS library content; stems can be arranged and played within the spatial environment. <br><br>Non-LANDFORMS sounds can be gain-staged, fine-tuned and tonally adjusted inside the perspective environment.<br><br>The random tab in each player window introduces variation to pitch, fine-tune drift and sample start point upon every note trigger. Increasing the random probability of these parameters and triggering MIDI notes with the arpeggiator module triggers random splices of each player's audio and creates a generative sliced sequence from the three player sources." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/6cfa93af46584dcfa88085592884548a.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MAPPED ELEMENTS" %}
+		{% assign study-technique-description = "LANDFORMS 51 processed articulations have a unique SPATIAL MIXER with processed versions of the dry recorded sample. Mix between process types and rearrange their arrangements in the SPATIAL MIXER.<br><br>Each processed articulation has dry, amp, tape, overdrive, grunge and smear re-amped elements. Each instance can be blended and modulated inside the spatial environment.<br><br>CC routing can provide up to four pivot points that move the CC value increase in a new direction. The four labelled crosshairs can map and design gestural modulation over the SPATIAL MIXER and elements. An increased bleed amount creates layers of shifting processes from the same articulation — more erratic CC movement can lead to rapid timbral changes." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/1eb590f370f149d8ada85b1bfe00628b.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SPATIAL SEQUENCING" %}
+		{% assign study-technique-description = "The SPATIAL MIXER allows for tuning each element to different pitches, resulting in the cursor outputting corresponding notes based on its placement. Modulating the cursor in the SPATIAL MIXER generates melodic information, with different modulation routing causing significant pitch changes.<br><br>Using square and ramped LFOs causes the cursor to jump to new values on each axis, creating instant pitch variations in the sequence. Alternatively, modulating the cursor with a sine LFO produces smoother element pitch transitions, offering more seamless shifting perspectives." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/aad69d617f1041cb90d601128d95a70e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+
+	{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ATONAL DRIFT" %}
+		{% assign study-technique-description = "Using the SPATIAL MIXER in LANDFORMS, it is possible to create a gestural and atonal drift by detuning microphone positions. By mapping CC routing, starting from a microphone position that maintains pitch, the cursor can be moved into a perspective where articulations sound with increased fine-tuning or random drift." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/723fec65eec5418ba672e8f5c4f434ec.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TIMBRAL SHIFT" %}
+		{% assign study-technique-description = "LANDFORMS offers the ability to create intricate timbral changes by arranging elements assigned with separate articulations within the SPATIAL MIXER. Triggered by the same MIDI and pitch information, the cursor gradually moves, dynamically shifting the output perspective of the SPATIAL MIXER and resulting in a continuous morphing of timbre.<br><br>When the bleed parameter is set to a high percentage, the cursor outputs a blend of multiple elements, contributing to a rich and layered sound that adds depth and complexity to the patch.<br><br>LFO modulation plays a crucial role in generating the gradual movement within the patch. The speed of the LFO determines the pace of the timbral changes, with slower LFO settings providing more gradual transitions. By adjusting the phase position of each LFO axis, the cursor's modulation path can be shifted." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/3b85208e6ce145edb99760ee8a6e84ef.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+		<div class="gap"></div>
+		
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">EXPRESSION</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						The EXPRESSION window in LANDFORMS provides manual control, enabling gestural performance at the forefront of a patch. Through shaped CC curves and adjustable maximum and minimum ranges, LANDFORMS allows precise control over the amplitude and filter cutoff individually or simultaneously.
+						<br><br>
+						With the option to assign an LFO, The expression window can generate cyclic and rhythmic volume and filter movement for expressive sound shaping. Additionally, CC routing facilitates individual hardware control over the expression of each LAYER. 
+						<br><br>
+						To route expression over any parameter, simply right-click and select 'learn MIDI CC automation,' then move the CC value to link it to the desired parameter.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CROSSFADES" %}
+		{% assign study-technique-description = "LANDFORMS offers a powerful crossfade feature between the two LAYERS. By inverting LAYER B's CC expression value from 0 to 100% to 100 to 0%, the mod wheel can seamlessly crossfade amplitude from LAYER A to LAYER B.<br><br>This manual fading capability gives LANDFORMS a unique performance interface, allowing real-time control over accentuating or blending timbres from two articulations.<br><br>By adjusting the expression maximum and minimum values on each LAYER, the user can tailor the mod wheel movement, providing a natural LAYER weighting for the patch." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/2d66083088c34836bbb09ea270058823.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "DYNAMIC SWELLS" %}
+		{% assign study-technique-description = "LANDFORMS' expression window can design precise volume control and unique swells for each LAYER. Using the maximum and minimum expression values, assign specific expression ranges to individual layers.<br><br>To achieve a swell effect, LANDFORMS triggers a patch while keeping the volume expression at 0%. As the manual expression is gradually increased, the LANDFORMS patch smoothly fades into the XY effects chain. The spatial effect within the XY chain creates the dense reverb as the volume expression is manually reduced. When the CC is decreased, the reverb and delay tails continue to be audible." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/577240d81d1c4864912426d359fc0da8.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MELODY CLOUDS" %}
+		{% assign study-technique-description = "LANDFORMS can create captivating melody bursts by manually increasing the volume expression while the ARP MODULE continuously triggers notes. As the volume expression is raised, LANDFORMS will produce bursts of gated arpeggiated melodies that are sent into the XY effects chain.<br><br>By opening the CC volume expression, the ARP module dynamically engages the modulating Smear and Repeat XY effects, resulting in a rhythmic and evolving soundscape. The spatial tail in the XY effect chain continues to add depth and movement to the patch." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/6d58fadb28b54d66ad1ed0a7f9ba605e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FILTER SWEEPS" %}
+		{% assign study-technique-description = "The expression window can design individual high-pass and low-pass movements on each LAYER using LFOs. Setting LFOs at different rates causes different filter movements from each expression window. LANDFORMS creates two tempo-synced filter sweeps, one on each articulation. Set to separate rates, LAYER A and B's expression can move at the polyrhythms of one another. Unsynced LFOs cause filters to no longer move in a repeating oscillation, instead moving slowly out of phase with each other.<br><br>In the expression window, LANDFORMS allows you to design unique high-pass or low-pass filter movements for each LAYER using LFOs. By setting LFOs at different rates, LANDFORMS can create distinct filter movements for each expression window.<br><br>LANDFORMS generates two tempo-synced filter sweeps, one for each articulation. With separate rates, LAYER A and B's expression can move at polyrhythms, adding rhythmic complexity to a patch.<br><br>Unsynced LFOs offer a different expression, as the filters no longer move in a tempo-synced oscillation. Instead, they gradually move out of phase with each other, creating evolving and interesting filter modulation." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/72d2fbe30fa5416fbbd8d54e72cd4074.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RANDOM EXPRESSION" %}
+		{% assign study-technique-description = "The expression window can use random LFOs for generative filter movement on each LAYER. Random LFO shapes generate values on every subdivision, with the random values changing according to the LFO rate.<br><br>Increasing the smooth parameter provides a more gradual transition between random values, creating a smoother and more continuous waveshape. This smoothness transforms the LFO into a stable waveshape, ensuring a coherent and consistent modulation pattern rather than severe changes in value." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/a4090f517b1547c2841ef7fd7a98d96e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CC HARMONY" %}
+		{% assign study-technique-description = "In LANDFORMS' HARMONY MODULE, the CC Vol parameter offers manual expressive control over additional voices using the mod wheel and other CC controllers.<br><br>By setting an additional voice in the HARMONY MODULE to trigger notes below the manually pressed pitch, activating the CC vol parameter provides a gestural CC-controlled sub that can smoothly introduce or remove an additional bass voice in the patch.<br><br>Increasing the number of voices in the HARMONY MODULE enables CC control over chordal structures. Setting a HARMONY voice to its minimum value allows the MODULE to trigger random notes below the manually pressed pitch on each trigger.<br><br>With all four HARMONY voices triggering random pitches, LANDFORMS generates new chords for every manually triggered note. LANDFORMS can use this feature to manually mix in the harmony voices using CC control." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/1fda2fe64b9942fd80db9e5a2b640d54.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">XY EFFECTS</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						LANDFORMS’ three XY grids provide a signal chain interface for layering complex modulation and arranging selected effects in a modular format. LANDFORMS can assign each built-in FX to an XY grid; the two core parameters get mapped to each axis. The slider on the right-hand side of the grid controls either a third parameter or the mix balance. When the cursor is at the top of the grid, both X and Y parameters are at 100% value; when the cursor is at the bottom left, parameters are at 0%.
+						<br><br>
+						Each grid can have individual modulation routing using LFOs, CC and physics-based motion to cause the cursor to move between XY values. The randomise tool instantly generates new effects and parameters on each of the three grids.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "EFFECT SLOTS" %}
+		{% assign study-technique-description = "LANDFORMS offers a creative way to design slow moving ambient drones using a selection of effects and a three slot signal chain. By choosing three out of the fifteen programmable effects, unique sounds can be achieved.<br><br>The Colour effect brings in a clean and smooth filter movement to the incoming signal. By modulating it with slow moving XY LFOs, the signal transitions between dark and bright wide filter bands, creating an evolving tonal quality.<br><br>The Loss effect adds a signal crush and crackle to the Y axis. By modulating the Y axis with a random LFO, the intensity of the unstable loss effect varies, adding an unpredictable element to the sound.<br><br>The space effect provides a custom space designer with reflect and diffuse options on each axis. Moving the cursor controls the characteristics of the space, allowing for morphing and shaping of the spatial values." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/085ffd15b15a4f18a7cccb9d87d37736.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "HARMONIC VOICE" %}
+		{% assign study-technique-description = "The Voice effect adds a chordal or harmonic voice to the source material and can add a layer of pitch information to a monophonic, single-note phrase or polyphonic chord. Setting the Voice effect to sound a diatonic root note and chord voicing to the manually triggered LANDFORMS patch provides a constant chordal drone alongside orchestral melodic movement. Setting the Voice effect to a clashing chordal structure to what us being MIDI performed introduces dissonance to the LANDFORMS patch. Increasing the Y-axis value adds resonance and causes the voice to sustain feedback into itself; increasing the X-axis value detunes the voice and introduces odd harmonics.<br><br>Use the record modulation to draw a custom cursor path that changes the Y and X axis values and detunes the harmony effects’ harmonics." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/cbea6ba9928b4f91b16872389d2f9e21.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RESONATOR GROWLS" %}
+		{% assign study-technique-description = "LANDFORMS can design metallic growls using the Resonate effect. The four resonate effect modes, sympathetic, dynamic, natural and kinetic, have a characterful natural oscillation. Percussive and transient-heavy library material will cause the resonating effect to respond to the amplitude of the signal it receives. A high-input single will generate tonal resonances, differing in timbre and harmonics depending on the resonator mode and source material.<br><br>Increasing the rate introduces phasing and flanging to the effect. With depth at 0%, the resonator is at its most tonal; as depth increases, it loses tonal harmonics and gains metallic, odd harmonics.<br><br>Setting the X axis to modulate at a 16th-note rate causes the resonating note to change and creates a pitch sequence from the resonant harmonics.<br><br>Scanning for start positions and slowing LANDFORMS' source material rate with a tape machine uncovers moments in articulations that provide timbres that create new harmonics when put into the Resonate effect." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/c3915b5f90e74d66bbb142b6d339e7b7.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FREEZE BUFFER" %}
+		{% assign study-technique-description = "The Buffer effect in LANDFORMS can copy incoming signal, resulting in unique sound collages. Increasing the Y value results in more copies of the incoming signal, creating endless repeats at 100% value. The X value determines the length of time that the buffer captures.<br><br>By copying the signal and adjusting the X value, the buffer captures different lengths of the incoming signal. As the signal repeats, the CC control allows for stretching and resizing of the audio.<br><br>To have more manual control over modulation, increasing the CC mod points to four provides more precise movement. Plotting the CC routing anticlockwise, starting from the bottom left of the XY grid, causes the buffer to repeat at a shorter length at the beginning of the CC curve. Gradually moving the CC value between points two and three stretches the buffer length." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/446ce97599f44746a8fb6385d9eb648b.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CHAIN MOTION" %}
+		{% assign study-technique-description = "LANDFORMS can modulate each XY effect with an individual physics-based motion that interacts with assigned environment parameters. Build layers of complex modulation effects reducing maximum and minimum grid values. The three XY effect slots can add layers of unpredictable moving textures to the incoming signal. LANDFORMS' XY effects, particularly the shift and phase categories, react to articulation accents, inflections and subtleties.<br><br>By keeping the mix amount for each effect low, LANDFORMS can blend initially harsh, overpowering effect treatments into subtle layers of modulation." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/c526ef8625504216aa49f8b81168bcb6.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "DETUNED CHAOS" %}
+		{% assign study-technique-description = "In the first XY EFFECT slot, an unstable drive effect is designed by moving the cursor to a sweet spot in the drive XY effect. Assigning a random LFO shape to each axis causes the value to jump randomly. Attenuating the maximum and minimum modulation range will generate values within a desired area and create unstable distortion that moves unpredictably between gain and pressure values.<br><br>This technique applies the same concept to the Ring effect in the second XY slot. However, with a slower-moving X-axis, the random modulation drags the cursor horizontally across the grid, modulating the rate while the position value stays static for sustained periods.<br><br>The third XY EFFECT slot utilises the Space effect and modulates the axis parameters with physics-based modulation. With the momentum and bounce parameters set to 100%, the Space modulation parameters continuously modulate within the selected, maximum and minimum XY values." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/ceb9851dbd2a475d97ab97be4dd349a9.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+
+	</div>
+</html>

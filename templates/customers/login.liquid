@@ -1,0 +1,75 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/account/">ACCOUNT</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ main content ------------------------------ -->
+
+	{{ customer.recover_password.success }}
+
+	<div style="background-color: var(--mid-grey);">
+		<div class="gap-tiny"></div>
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					<div id="password-reset-success-message">
+						A password reset email has been sent.
+						<div class="gap-form"></div>
+					</div>
+					LOGIN
+					<div class="gap-form"></div>
+					{%- form 'customer_login' -%}
+					{% if form.errors %}
+						<span class="paragraph" style="color: var(--orange)">Incorrect email or password.</span>
+						<div class="gap-form"></div>
+					{% endif %}
+					<div>
+						<input class="account-input" 
+							type="email"
+							name="customer[email]"
+							id="customerEmail"
+							autocorrect="off"
+							autocapitalize="off"
+							autocomplete="email"
+							placeholder="Email*">
+					</div>
+					<div class="gap-form"></div>
+					<div>
+						<input class="account-input"
+							type="password"
+							name="customer[password]"
+							id="customerPassword"
+							placeholder="Password*">
+					</div>
+					<div class="gap-form"></div>
+					<div class="paragraph"><button class="login-modal-submit" type="submit">→ LOGIN</button></div>
+					<div class="paragraph">{{ '→ CREATE ACCOUNT' | customer_register_link }}</div>
+					<a class="paragraph" href="/pages/recover-password/">→ FORGOT PASSWORD</a>
+				{%- endform -%}
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+	</div>
+</html>
+
+<!-- ------------------------------ script ------------------------------ -->
+
+<script>
+
+	if (window.location.hash === "#recover") {
+		document.getElementById("password-reset-success-message").display = "inline"
+	} else {
+		document.getElementById("password-reset-success-message").innerHTML = ""
+	}
+</script>

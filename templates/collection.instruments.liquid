@@ -1,0 +1,109 @@
+<html>
+
+	<title>INSTRUMENTS ← SLATE + ASH</title>
+
+	<meta name="theme-color" content="#c7c7c7">
+
+	<!-- ------------------------------ head ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--mid-grey); color: var(--blue);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → INSTRUMENTS
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+	</div>
+
+	<!-- ------------------------------ items - desktop ------------------------------ -->
+
+	<div class="desktop">
+		<div class="row">
+			{% for product in collection.products %}
+				{% assign productIndex = forloop.index | minus: 1 | modulo: 2 %}
+				{% if productIndex == 0 %}
+					<div class="column-square" style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }};">
+						<div class="image-top-left" style="width: 100%;">
+							<a href="{{ product.url }}"><img src="{{ product.images[0] | img_url: "2500x" }}" style="width: 100%;"></a>
+						</div>
+					</div>
+					<div class="column-square" style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }};">
+						<div class="text-top-right title scroll-fade-in">
+							<a href="{{ product.url }}">
+								{{ product.title | upcase }}
+								<span style="color: {{ product.metafields.custom.instrument_homepage_tagline_colour }}"><br>{{ product.metafields.custom.instrument_tagline | upcase }}</span>
+							</a>
+						</div>
+						<a href="{{ product.url }}">
+							<div class="text-bottom-right paragraph-large scroll-fade-in">
+								<a href="{{ product.url }}">→ LEARN MORE</a>
+							</div>
+						</a>
+					</div>
+				{% endif %}
+				{% if productIndex == 1 %}
+					<div class="column-square" style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }};">
+						<div class="text-top-left title scroll-fade-in">
+							<a href="{{ product.url }}">
+								{{ product.title | upcase }}
+								<span style="color: {{ product.metafields.custom.instrument_homepage_tagline_colour }}"><br>{{ product.metafields.custom.instrument_tagline | upcase }}</span>
+							</a>
+						</div>
+						<a href="{{ product.url }}">
+							<div class="text-bottom-left paragraph-large scroll-fade-in">
+								<a href="{{ product.url }}">→ LEARN MORE</a>
+							</div>
+						</a>
+					</div>
+					<div class="column-square" style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }};">
+						<div class="image-top-left" style="width: 100%;">
+							<a href="{{ product.url }}"><img src="{{ product.images[0] | img_url: "2500x" }}" style="width: 100%;"></a>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+
+	<!-- ------------------------------ items - mobile ------------------------------ -->
+
+	<div class="mobile">
+		{% for product in collection.products %}
+			{% assign productIndex = forloop.index | minus: 1 | modulo: 2 %}
+			{% if productIndex == 0 %}
+				<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }};">
+					<div class="general-container title scroll-fade-in">
+						<a href="{{ product.url }}">
+							{{ product.title | upcase }}
+							<span style="color: {{ product.metafields.custom.instrument_homepage_tagline_colour }}"><br>{{ product.metafields.custom.instrument_tagline | upcase }}</span>
+						</a>
+					</div>
+					<div class="gap"></div>
+					<div class="mobile-image-right scroll-fade-in">
+						<a href="{{ product.url }}">
+							<img src="{{ product.images[0] | img_url: "1280x" }}" style="width: 100%;">
+						</a>
+					</div>
+					<div class="gap"></div>
+				</div>
+			{% endif %}
+			{% if productIndex == 1 %}
+				<div style="background-color: {{ product.metafields.custom.instrument_background_color }}; color: {{ product.metafields.custom.instrument_text_color }};">
+					<div class="general-container title scroll-fade-in" style="float: right; text-align: right;">
+						<a href="{{ product.url }}">
+							{{ product.title | upcase }}
+							<span style="color: {{ product.metafields.custom.instrument_homepage_tagline_colour }}"><br>{{ product.metafields.custom.instrument_tagline | upcase }}</span>
+						</a>
+					</div>
+					<div class="gap"></div>
+					<div class="mobile-image-left scroll-fade-in">
+						<a href="{{ product.url }}">
+							<img src="{{ product.images[0] | img_url: "1280x" }}" style="width: 100%;">
+						</a>
+					</div>
+					<div class="gap"></div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</html>

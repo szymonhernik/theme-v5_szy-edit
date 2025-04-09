@@ -1,0 +1,710 @@
+<!-- ------------------------------ html ------------------------------ -->
+<html>
+
+	<title>{{ article.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/blogs/studies">STUDIES</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ article.title | remove: "STUDIES: " | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: {{ article.metafields.custom.study_background_color }}; color: {{ article.metafields.custom.study_text_color }};">
+
+		<!-- ------------------------------ image ------------------------------ -->
+
+		<img class="feature-image scroll-fade-in" src="{{ article.image | img_url: "2500x" }}">
+		<div class="gap"></div>
+
+		<!-- ------------------------------ intro ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					SPECTRES is a dynamic playground for sonic exploration, full of overlapping loops and contrasting fragments. Inspired by the tape-splicing techniques of musique concrete, the COLLAGE engine reassembles and magnifies fragments of samples, building overlapping sequences and granular micro-montages that transcend linear time. Everything feeds into a sophisticated mixer and effect environment, with modular-like automation of almost every parameter.
+					<br><br>
+					Below is an encyclopaedia of sound design concepts and techniques. Use them to expand your knowledge of SPECTRES and inspire new ways of working with it.
+				</div>		
+			</div>
+			<div class="grid-item-empty">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<!-- <div style="color: {{ article.metafields.custom.study_secondary_text_color }}">→ DOWNLOAD PATCHES</div> -->
+				</div>	
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ variables ------------------------------ -->
+
+		<!-- variable to give each study technique with a new id (it is incremented each time a technique is rendered) -->
+		{% assign studyTechniqueCount = 0 %}
+		<!-- variable for secondary text color to be passed into render -->
+		{% assign study-secondary-text-color =  article.metafields.custom.study_secondary_text_color %}
+		<!-- to shorten the syntax of this variable -->
+		{% assign stc =  article.metafields.custom.study_secondary_text_color %}
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">COLLAGES</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						The multi-loop functionality in SPECTRES is a tool for precisely manipulating library material, enabling the creation of tape-like splices, repeating phrases, and overlapping segments. The <span style="color: {{ stc }}">+</span> button in the top-right corner of the interface allows you to add up to five loops to a sample. Each loop is represented by a coloured dot and visualised as a highlighted segment on the waveform. Loops can be rearranged freely by clicking and dragging their position and bounds on the waveform.
+						<br><br>
+						The three lower menus—<span style="color: {{ stc }}">Loop</span>, <span style="color: {{ stc }}">Shape</span>, and <span style="color: {{ stc }}">Random</span>—reveal an array of parameters that allow fine control over a loop’s behaviour and character. A matching coloured dot appears beside each menu’s name, indicating which loop is currently selected.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "VOICE SCANNING" %}
+		{% assign study-technique-description-template = "SPECTRES can turn any moment within its library into a voice by using a single loop to capture a precise, repeating segment of audio. This loop can be repositioned by simply clicking and dragging, allowing you to easily scan through the audio for a desired timbre.<br><br>In the <span style='color: CLR'>Shape</span> menu below, you’ll find controls for an envelope that is re-triggered with each repetition of the loop. Enabling the <span style='color: CLR'>Sustain</span> function keeps the envelope open throughout the entire loop range. The <span style='color: CLR'>Crossfade</span> parameter introduces fades between loop repetitions, helping to blend them into a more continuous tone." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "pqR9VXnGBiQ?si=V958vrCTmCIIhDdF" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "VOICE TUNING" %}
+		{% assign study-technique-description-template = "SPECTRES can compensate for pitch drift in source material, which may occur due to intentional vibrato, pitch bends, or detuning in the recordings. To ensure accurate pitch within a repeating loop range, adjustments can be made in the <span style='color: CLR'>Preferences</span> menu (top-right of the interface). Fine-tuning in cents provides precise control over retuning and microtuning, enabling seamless key-mapping across the entire library." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "RY4keDbsugQ?si=lFthH_T05cPJERp9" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "QUANTISED PULSES" %}
+		{% assign study-technique-description-template = "In traditional looping samplers, re-pitching a loop inherently alters its length, making alignment with the musical grid impossible. Higher-pitched loops cycle faster, while lower-pitched loops stretch out more slowly, causing timing inconsistencies.<br><br>SPECTRES features a <span style='color: CLR'>Quantise</span> function to address this. The function has two modes: <span style='color: CLR'>Time</span> and <span style='color: CLR'>Position</span>. In <span style='color: CLR'>Time</span> mode, each loop’s size is rounded to the nearest grid division, regardless of its pitch. This means higher-pitched loops will extend beyond their natural endpoints due to faster sample scrubbing, while lower-pitched loops will stop earlier. This ensures consistent loop timing across all pitches and establishes a uniform rhythmic pulse within a patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "CI_bybBjgnw?si=FbfQHu47qA5d8a5A" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "VOICE OFFSET" %}
+		{% assign study-technique-description-template = "In <span style='color: CLR'>Position</span> quantise mode, a voice’s pitch influences its quantised length. Higher-pitched notes cycle through the sample more quickly and reach the loop endpoint sooner than lower-pitched notes.<br><br>This allows voices of different pitches to become offset, much like in a traditional sampler, but with each loop still cycling on the musical grid. When multiple notes are held simultaneously, these variations create intricate and evolving collage effects as fragments of the sample repeat at different speeds." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "X9aE39SXIMg?si=qDD_N_ern6Mt5g-k" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RHYTHMIC PATTERNS" %}
+		{% assign study-technique-description-template = "SPECTRES enables the creation of grooves and patterns from any source material. A short loop triggers a segment of audio repetitively and rhythmically. Time-quantising it to a value longer than its natural length ensures it extends to the exact duration. For example, time-quantising a small loop to eighth notes creates a continuous eighth-note rhythm. Using multiple loops in this way generates linear rhythmic patterns.<br><br>In the <span style='color: CLR'>Loop</span> menu, a loop’s percussive nature can be shaped by adjusting its <span style='color: CLR'>Attack</span> to reduce a transient-heavy start point and its <span style='color: CLR'>Decay</span> to dictate its tail length. Each loop can also be set to cycle up to eight times before transitioning to the next, allowing for unique groupings and varied rhythmic pattern lengths. From here, a quick change of source material can completely transform the character of the patch while preserving its rhythmic structure." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "NAYe44uuwDs?si=_BoT3x6D2cka1aMu" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RANDOM SPLICES" %}
+		{% assign study-technique-description-template = "Each loop is equipped with a dedicated set of <span style='color: CLR'>Random</span> controls that introduce variation to parameters on each loop cycle. <span style='color: CLR'>Volume</span> fluctutations can range from subtle, human-like nuances to more dramatic shifts, creating unpredictable jumps and occasional missed loop repeats. The random <span style='color: CLR'>Pan</span> parameter gradually expands the stereo field, positioning each loop iteration in progressively wider spatial locations. Random <span style='color: CLR'>Tune</span> allows for both fine-tuning, which introduces microtonal shifts, and coarse-tuning, which generates spontaneous melodic changes. <span style='color: CLR'>Attack</span> and <span style='color: CLR'>Release</span> randomness affects envelope times, ensuring variation with every iteration. The <span style='color: CLR'>Filter</span> parameter assigns a unique cutoff value to each repetition. By combining these random controls, a single loop continuously evolves in character with each pass." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "vsdoBnfMJ9w?si=HBNtromFWSJSjJFJ" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "UTILITY GAPS" %}
+		{% assign study-technique-description-template = "Utilising the silence at the end of source material can create space in multi-loop phrases and add rests between loops. By applying quantisation, loops and phases can be aligned precisely with the grid, ensuring they repeat evenly and rhythmically." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "rXD3eFPHmaM?si=aWjBDzCj_rVbrjyn" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PITCHED SPLICES" %}
+		{% assign study-technique-description-template = "Melodic phrases can be created by arranging multiple loops and assigning each one a specific <span style='color: CLR'>Tune</span>. Scale quantisation can then be applied to constrain all re-pitched loops to the notes of a selected scale, transforming arbitrary atonal clusters into intentional melodic cells." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "pwMkvMgnUOw?si=IQ8Buva0NRMqPmI4" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "EXTRA MILEAGE" %}
+		{% assign study-technique-description-template = "Multiple overlapping loops across the same waveform range create complex movement from a single articulation. This technique reduces the repetitiveness of loop points, as re-pitched playheads scrub through the articulation at varying rates, resulting in a dynamic, shifting collage of timbres.<br><br>By combining <span style='color: CLR'>Tune</span> and <span style='color: CLR'>Pan</span> adjustments for each loop, a gradual and continuous shift in both timbre and harmony emerges that transitions smoothly in and out of focus." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "RQgdVNseu_E?si=YSbbz5M-KOuPQaaC" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "LONGFORM PHRASES" %}
+		{% assign study-technique-description-template = "Within the <span style='color: CLR'>Loop</span> menu, the <span style='color: CLR'>Direction</span> control allows for the reversal of loop playback. This inverts the phrasing and note intervals of the sample library content—effectively doubling the available vocabulary of each source. When using the <span style='color: CLR'>Pendulum</span> direction, new phrases are revealed by alternating between precise moments of material played forwards and then in reverse.<br><br>Each loop can be cycled up to eight times before transitioning to the next, creating extended phrases that overlap their start and end points, reusing the same precise moment of source material across multiple loops.<br><br>The <span style='color: CLR'>Link</span> button in the top-right ensures that all other loop parameters align with the currently selected loop. This feature maintains consistency across loop points, enhancing patch coherence and enabling quick, uniform adjustments for efficient patch design." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "6tW4wyhOZyQ?si=-VIStWvR9oRzKqww" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">MOVEMENTS</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						Movement can be introduced to nearly all parameters in SPECTRES, allowing patches to warp and shift dynamically. By using core modulation sources such as advanced <span style="color: {{ stc }}">LFOs</span>, drawable <span style="color: {{ stc }}">Step Sequencers</span>, and gestural <span style="color: {{ stc }}">MIDI CC</span>, parameters can be controlled to evoke the expressive qualities of natural performance. Each parameter can be modulated independently, with its own source, offering a modular approach to shaping movement within a patch.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "COARSE SEQUENCES" %}
+		{% assign study-technique-description-template = "Each of the two layers in SPECTRES has its own global <span style='color: CLR'>Tune</span> control to adjust its overall pitch. Dual-layer patches can be therefore be tuned independently, allowing them to be played at a fixed interval difference. When scale quantisation is enabled, all tuning adjustments will conform to a specified scale. <br><br>Modulating the <span style='color: CLR'>Tune</span> parameter with the <span style='color: CLR'>Step Sequencer</span> enables precise melodic design for each layer. Assigning opposing sequence values to different layers introduces metric irregularity, causing melodies to shift in and out of phase, resulting in evolving, generative phrasing. The adjustable modulation <span style='color: CLR'>Range</span> sets the highest and lowest notes in a sequence and is crucial for refining its shape." %}
+		{% assign study-technique-youtube-id = "Qqfs8psWZUk?si=2BZy6-4CM6EFqogo" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ENVELOPE SEQUENCES" %}
+		{% assign study-technique-description-template = "By combining the <span style='color: CLR'>Envelope</span> modulation source with the layer’s <span style='color: CLR'>Tune</span> slider, four-stage pitch movements can be created. This is achieved by shaping the envelope’s <span style='color: CLR'>Attack</span>, <span style='color: CLR'>Decay</span>, <span style='color: CLR'>Sustain</span>, and <span style='color: CLR'>Release</span> parameters, allowing for tonal modulation with smooth rises, evolving decays, and sustained pitch holds.<br><br>Alternatively, the envelope can be set to maintain a static note until release, triggering a pitch run based on the envelope's release time. This method provides precise control over melodic evolution, influencing both sustained key presses and the expressive nuances of release tails." %}
+		{% assign study-technique-youtube-id = "pfspi8aNmqk?si=38ZcyXwwr4ipxKL7" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FILTER EXPRESSION" %}
+		{% assign study-technique-description-template = "A dynamic approach to crafting dense, harmonically rich patches involves using <span style='color: CLR'>CC</span> modulation to link the mod wheel to a <span style='color: CLR'>Filter</span> placed at the start of an effects chain. This CC-controlled filter serves as a powerful performance tool, enabling expressive tonal shaping with <span style='color: CLR'>Low Pass</span>, <span style='color: CLR'>Band Pass</span>, and <span style='color: CLR'>High Pass</span> options.<br><br>Due to the spectral complexity of the library material, where articulations span the full frequency range, the engine’s re-amplification and convolution processing can generate an abundance of high-end content. Manually adjusting the filter with the mod wheel allows for real-time tonal modulation, shaping the patch’s overall balance. This control is particularly effective when feeding dense textures into spatial effects like the <span style='color: CLR'>Room</span>, <span style='color: CLR'>Hall</span>, or <span style='color: CLR'>Plate</span> reverbs." %}
+		{% assign study-technique-youtube-id = "QhXSr6z3BL0?si=eIqG5qDT8of_slXT" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SHIFTING POINTS" %}
+		{% assign study-technique-description-template = "By modulating a loop’s <span style='color: CLR'>Start</span> and <span style='color: CLR'>End</span> points, playback variability is introduced, allowing a single loop point to generate evolving voices and textures.<br><br>Each triggered note operates with its own playhead, moving through the sample at a faster rate for higher pitches. When a note is pressed, playback begins from the exact loop start position; as the playhead reaches the shifting loop endpoint, it re-triggers the loop from the modulating start position, creating a continuously evolving playback experience.<br><br>Using modulation at even rates results in predictable loop movement, while un-synced rates or random LFOs introduce a more fluid, organic feel: as the endpoint shifts unpredictably, the playhead is nudged back to the start, generating dynamic and ever-changing variations." %}
+		{% assign study-technique-youtube-id = "LM11RM46BKY?si=2fq4ge386P9SptcA" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "S/E LOCK" %}
+		{% assign study-technique-description-template = "The ability to lock a loop's <span style='color: CLR'>Start</span> and <span style='color: CLR'>End</span> points together allows it to maintain a consistent length while shifting across the source material. With quantisation applied, the loop envelope will only trigger on specific time divisions. This motion can be further influenced by modulating loop points with advanced LFO shapes. Synced LFOs enable precise control over voice selection, while un-synced or random LFOs create fluid, unpredictable variations, continuously introducing new voices and textures." %}
+		{% assign study-technique-youtube-id = "mXU4L4FUYT4?si=ZR46VUTiftfNmBJv" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "UNSTABLE LOOPS" %}
+		{% assign study-technique-description-template = "A multi-loop patch can be designed to dynamically switch between modulating and static loop points. This is achieved by applying strong modulation to one loop point while keeping others fixed in both pitch and timbre. By combining static-pitched loops with those rapidly sweeping the tune parameter, a collage of contrasting loop points emerges—some stable, others unpredictable. The static elements establish a harmonic and tonal foundation, while the modulated loops introduce continuous movement and evolution, creating a rich and ever-changing sonic texture." %}
+		{% assign study-technique-youtube-id = "TipWjE9CrAM?si=39_1eQPc_vmvG7mE" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "XY FX" %}
+		{% assign study-technique-description-template = "In the effects window, each DSP effect features an <span style='color: CLR'>XY</span> modulation grid that maps two parameters to the X and Y axes. Moving the cursor within this grid causes real-time changes to both parameters. Similar to the perspective mixer, SPECTRES can modulate the cursor using <span style='color: CLR'>LFOs</span>, <span style='color: CLR'>envelopes</span>, and physics-based motion. SPECTRES also allows for recording custom-drawn modulation paths with the cursor. This feature enables complex and intricate movement that can be assigned to each of the six effects individually. By recording unique modulation paths for each effect, SPECTRES creates a continuously evolving effects chain. This adds complexity to the final stage of the channel strip, transforming a dry sample from the SPECTRES library into a dynamically shifting patch." %}
+		{% assign study-technique-youtube-id = "fKp5_kH0Ny8?si=JYjgkHm2v_yWtQZp" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RACK MALFUNCTION" %}
+		{% assign study-technique-description-template = "Introducing fast, unstable modulation—such as random <span style='color: CLR'>LFOs</span> and erratic sequences—across all six DSP effects brings a dynamic, unpredictable quality to the effects page. Designing the tape effect's character around parameters like <span style='color: CLR'>Wow</span>, <span style='color: CLR'>Flutter</span>, <span style='color: CLR'>Age</span>, and <span style='color: CLR'>Noise</span> adds a layer of signal degradation. As the effects mix increases, the tape effect further degrades the signal. Using the <span style='color: CLR'>Tremolo</span> setting on the <span style='color: CLR'>Mod</span> effect, especially with a fast rate and deep depth, creates volume fluctuations as the effect’s mix shifts in and out of focus. Unstable modulation applied to the <span style='color: CLR'>Amp</span> effect drives the signal into a modelled amplifier and cabinet, giving the sound a distinct boxy tone and adding extra distortion. Gradually modulating the delay time within a narrow range causes delayed notes to drift in pitch, pulling away from the tonal center and adding to the overall unpredictable character of the effects chain." %}
+		{% assign study-technique-youtube-id = "XIy6gvygbv0?si=emq0fNpBW5hD66pV" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">PERSPECTIVES</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						The <span style="color: {{ stc }}">Spatial Mixer</span> in SPECTRES is located in the modulation tab on the left side of the interface. This stage in the signal chain enables blending of the dry source material with re-amplified spaces crafted by Lea Bertucci, Randall Dunn, and the SLATE + ASH team. Each perspective adds its unique character to the mix, accentuating harmonics and spectral elements from the original recordings. The <span style="color: {{ stc }}">Spatial Mixer</span> utilises modulation sources to smoothly transition between and combine multiple perspectives across the stereo field, creating a dense, layered sound with shifting timbres throughout the patch.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MIXING PERSPECTIVES" %}
+		{% assign study-technique-description-template = "The <span style='color: CLR'>Spatial Mixer</span> in SPECTRES enhances each dry articulation by adding re-amplified perspectives, expanding the tonal range. The <span style='color: CLR'>Silo</span>, <span style='color: CLR'>Amp</span>, and <span style='color: CLR'>Echo</span> perspectives each bring distinct characteristics, extracting unique harmonic and spectral information from the original source material. Silo emphasises specific frequencies with diffusion and resonance, creating a bright, reflective space. The <<span style='color: CLR'>Amp</span> perspective processes the dry, high-fidelity recordings through twenty amplifiers, introducing dynamic distortion and rich tube harmonics.  <span style='color: CLR'>Echo</span> adds the distinctive qualities of two iconic Roland Echo units—the Space Echo and Chorus Echo—infusing a wide, vintage, and warbling feel to the articulations. Each perspective’s gain can be adjusted using the sliders next to its name. Clicking the <span style='color: CLR'>+</span> symbol next to each perspective opens a mixing menu with <span style='color: CLR'>EQ</span>, <span style='color: CLR'>Width</span> Control, and <span style='color: CLR'>Swap L/R</span> options." %}
+		{% assign study-technique-youtube-id = "9hslpuj4ZNs?si=fGTYHbZyq6E6LSSm" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SPECTRAL REGROWTH" %}
+		{% assign study-technique-description-template = "SPECTRES can create a dynamic, evolving patch by setting an <span style='color: CLR'>LFO</span> to modulate along the Y-axis, with the <span style='color: CLR'>Dry</span> and <span style='color: CLR'>Amp</span> perspectives placed at the top and bottom extremes of the <span style='color: CLR'>Spatial Mixer</span>. This configuration creates a gap in the center where the signals of both re-amplified perspectives are attenuated, due to the lack of element bleed. Fine-tuning the <span style='color: CLR'>Bleed</span> control (located on the right side of the spatial mixer) allows precise adjustment of the bleed as the cursor moves away from each perspective.<br><br>Adjusting the LFO <span style='color: CLR'>Phase</span> shifts the cursor's movement to different start points within the spatial arrangement, synchronised with a MIDI note trigger. This setup allows for a patch that begins with the <span style='color: CLR'>Dry</span> articulation and gradually shifts away from it. The patch causes a brief signal loss as the cursor enters the gap, where <span style='color: CLR'>Bleed</span> is reduced, before smoothly fading into the <span style='color: CLR'>Amp</span> perspective. This transition reveals a distorted regrowth of the signal, bringing forward new harmonics from the <span style='color: CLR'>Dry</span> articulations that emerge within the <span style='color: CLR'>Amp</span> perspective." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "DOy5W-GxF9c?si=0jy45pyii87VIEFT" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ENVELOPE DIFFUSION" %}
+		{% assign study-technique-description-template = "SPECTRES can create dynamic movement from a dry to a wet signal by applying <span style='color: CLR'>Envelope</span> modulation to each axis of the <span style='color: CLR'>Spatial Mixer’s</span> XY grid. This technique produces complex, yet precise movements that gradually settle at a final modulation value.<br><br>By bypassing one axis, the envelope shape becomes more clearly visualised. Enabling both axes lets the interaction of two envelopes create complex cursor movement between perspectives. The <span style='color: CLR'>Envelope Retrigger</span> option can be enabled from the <span style='color: CLR'>Preferences</span> window in the top-right corner of the interface." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "vyrz6sAfASc?si=AdH1AH7lNTcH0kd9" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "BETWEEN REALMS" %}
+		{% assign study-technique-description-template = "To create intricate and dense articulations in SPECTRES, re-amplified elements can be carefully arranged within the <span style='color: CLR'>Spatial Mixer</span> window. The cursor serves as a flexible tool, enabling precise placement, easy adjustments, and modulation of the mixer’s output. Increasing the <span style='color: CLR'>Bleed</span> parameter and applying slow cursor modulation allows perspective elements to smoothly blend into each other, creating re-amplified overlaps with noticeable crossfades<br><br>By using the record modulation source, SPECTRES enables the creation of custom cursor paths across the XY grid, generating modulations for both axis values. This setup causes re-amplified positions to drift in and out, shifting across different areas of the stereo image." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "_sm_xcrDGok?si=sGbC81cdO-OJbGi5" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GESTURAL REAMP" %}
+		{% assign study-technique-description-template = "SPECTRES allows for manual, gestural control between re-amplified elements through <span style='color: CLR'>CC</span> modulation routing assigned to each axis. This setup provides a powerful way to achieve complex, expressive transitions between dry and re-amplified spaces. The modulation smooth parameter further enhances this by allowing for gradual, fluid movement between <span style='color: CLR'>CC</span> expression values.<br><br>As the mod wheel’s value increases, the cursor moves along the CC-assigned modulation path, offering a highly expressive method of navigating through SPECTRES’ re-amplified perspectives. This enables real-time, performative adjustments.<br><br>Increasing the <span style='color: CLR'>Smooth</span> parameter introduces a unique modulation effect, where the cursor responds more slowly to changes in <span style='color: CLR'>CC</span> values. By manually adjusting <span style='color: CLR'>CC</span> values ahead of the cursor, users can anticipate its movement, allowing for a more controlled and deliberate modulation process." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "2tk4T26Wwzw?si=EfKeRbDv-z4oNEsd" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PHYSICAL MOVEMENT" %}
+		{% assign study-technique-description-template = "SPECTRES includes physics-based motion modulation on the <span style='color: CLR'>Spatial Mixer's</span> XY pad, driven by five key parameters. This generative movement alters how the cursor interacts with the XY grid and re-amplified elements. The movable crosshair sets a gravitational center for the cursor's motion, while the <span style='color: CLR'>Magnetism</span> parameter strengthens the pull toward this crosshair. The Bounce</span> parameter adds momentum when the cursor hits the grid's boundaries, and <span style='color: CLR'>Instability</span> creates random, jittery fluctuations around the cursor's true value. <span style='color: CLR'>Inertia</span> adjusts the cursor's mass, influencing how it responds to movement and stillness. Lastly, <span style='color: CLR'>Speed</span> controls the overall rate of modulation. Increasing the parameter results in rapid, dramatic physics-based movements, while reducing it allows for slow, unpredictable modulation." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "-Xy8IT_4Zv0?si=SDqpYC_SPAlieYoJ" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+	<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PERSPECTIVE VELOCITY" %}
+		{% assign study-technique-description-template = "SPECTRES allows for dynamic velocity patterns through the  <span style='color: CLR'>Instability</span> parameter. By setting the  <span style='color: CLR'>Bleed</span> to its minimum and positioning the cursor and crosshair directly over a spatial element, the <span style='color: CLR'>Spatial Mixer</span> generates a constantly fluctuating velocity value. For every manually pressed MIDI note, the source articulation is output with a velocity determined by the cursor's unstable position relative to its true location.<br><br>Additional re-amplified elements can also be introduced to the  <span style='color: CLR'>Spatial Mixer</span>, placed farther from the cursor’s center point. This integration adds new spectral characteristics to the velocity triggers, especially when instability values are at their peak." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "2uI9Y8ECft0?si=uNNvR4Q0aBklLu4A" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "LOOSE CONNECTION" %}
+		{% assign study-technique-description-template = "Unstable motion modulation within the <span style='color: CLR'>Spatial Mixer</span> can be used to create audible, random fluctuations in the re-amplified signal level. By positioning the <span style='color: CLR'>Dry</span> perspective, crosshair, and cursor at the center of the mixer and increasing the <span style='color: CLR'>Instability</span> parameter, the cursor will move erratically around the <span style='color: CLR'>Dry</span> signal, causing constant dips and boosts in amplitude. This effect is most pronounced when the <span style='color: CLR'>Bleed</span> amount is kept to a minimum.<br><br>To enhance this effect, place the <span style='color: CLR'>Silo</span> and <span style='color: CLR'>Amp</span> perspectives on opposite sides of the cursor’s center point. Modify the <span style='color: CLR'>EQ</span> on these perspectives, boosting the highs and cutting the lows on the <span style='color: CLR'>Silo</span> reamp, while boosting the lows and cutting the highs on the <span style='color: CLR'>Amp</span> re-amp. This configuration creates a dynamically unstable sound, with the cursor randomly pushing the bright high reflections of the <span style='color: CLR'>Silo</span> and the deep rumble of the <span style='color: CLR'>Amp</span>, as it moves unpredictably between the two perspectives." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "0Yg-bgKukqU?si=dwXjMsPTSAR6jJSE" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">SPACES</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						The <span style="color: {{ stc }}">Convolution Mixer</span> in SPECTRES adds up to four channels of spatial layers to a patch's signal chain. Source articulations can be directed into impulse responses from various spaces, objects, or even the entire sample library, allowing for the creation of unique convolution reverbs. These impulse responses generate distinctive spatial tails by aligning the frequency content of the selected response with the incoming signal.<br><br>In <span style="color: {{ stc }}">Serial</span> routing, the dry signal and four convolution layers are processed sequentially, while in <span style='color: CLR'>Parallel</span> routing, all four convolution layers are mixed with the dry signal. A built-in limiter ensures that tonal frequencies from the impulse responses don't become overly loud as they stack together.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SPACE CONVOLUTIONS" %}
+		{% assign study-technique-description-template = "SPECTRES incorporates a variety of impulse responses from both environments and hardware units into the signal chain. These spatial impulses include distinctive room acoustics, synthetic reverbs, and effects from guitar pedals and hardware units. The inclusion of pedals and effects boxes, such as the <span style='color: CLR'>Holy Grail</span> pedal and <span style='color: CLR'>EMT</span> plate reverbs, adds their unique colour and texture to a patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "3JqA8UxuYzs?si=tCb-bMXG9tHAtTZe" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RESONANT OBJECTS" %}
+		{% assign study-technique-description-template = "Beyond spatial convolutions from real-world spaces and hardware effects, SPECTRES offers a range of <span style='color: CLR'>Object</span> impulse resonses that process library content through distinctive materials. This feature brings an array of organic, metallic, wooden, and abstract sounds into the fold. When SPECTRES articulations are routed through these <span style='color: CLR'>Object Convolutions</span>, dynamic interactions amplify shared harmonics and spectral elements between the source and impulse response. These combinations highlight unique frequencies, adding depth and complexity to the patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "dyvXmJCSk7w?si=pRzmQKvYbMKCEBps" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "INSTRUMENT CONVOLUTIONS" %}
+		{% assign study-technique-description-template = "SPECTRES can route its patch signal into another articulation or a different instrument’s waveform as a convolution. This creates a signal chain that resonates with shared frequencies between the source articulation and the selected impulse response. The result is a fusion of unique timbral clashes, producing countless combinations of spatial trails, alongside a blending of phrasing from both the source articulation and the chosen IR." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "iSQrI1K671Q?si=lxphO7WwZ6zDoMAv" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "STRETCHED RESPONSES" %}
+		{% assign study-technique-description-template = "Each impulse response in the library can be adjusted to three distinct sizes: <span style='color: CLR'>Large</span> (100% size), <span style='color: CLR'>Medium</span> (50% size), and <span style='color: CLR'>Short</span> (25% size). Reducing the IR size shortens the reflection and decay times of the convolution.<br><br>Additionally, the IR size can be further manipulated, shrinking it to 50% or stretching it up to 150% of its original size. This offers creative control over reflection and decay times, while also introducing warping and artefacts to the impulse response.<br><br>Shortening the convolution length produces quick, resonant reflections of the articulation's harmonics, while stretching it generates extended harmonic tails and sustained drones that persist throughout the patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "m9TzWarP3-E?si=m6hxp8nf1Y3EIkBu" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GATED SEQUENCE" %}
+		{% assign study-technique-description-template = "In a serial routing setup, adding modulation to each convolution's mix parameter with a square <span style='color: CLR'>LFO</span> creates sharp bursts of convoluted signal that appear and disappear suddenly. By adjusting the LFO <span style='color: CLR'>Rate</span> and <span style='color: CLR'>Phase</span> for each channel, the convolutions gate in repeating, asymmetrical patterns. As the LFOs overlap, intricate and rhythmically complex patterns unfold. This method of gating up to four convolution channels helps shape pulsating, textural rhythms." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "7V3iiQBol48?si=tJXtTPeVmOBSvXPb" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SLOW DIVES" %}
+		{% assign study-technique-description-template = "The <span style='color: CLR'>Pre-Delay</span> setting on convolution channels offers a creative way to shape immersive reverb tails from their respective impulse response sources. By triggering the source articulation with a short amp envelope, a plucked note activates the convolution process, allowing the selected impulse response tails to fill the space. To refine each convolution channel, high and low <span style='color: CLR'>EQ</span> bands help shape the sound, removing any muddiness from extended tails while maintaining a light, airy quality.<br><br>Adding <span style='color: CLR'>Layer B</span> to the patch introduces rhythmic, impulsive textures enhanced by un-synced loop points. <span style='color: CLR'>Layer B</span> injects dynamic, punctuated hits into the sound, and a quarter-note delay on the effects strip ties the plucked notes and un-synced hits together with shared momentum, creating an ongoing, fluid quality." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "EUsN0WjhcrI?si=aAtp7xMLGskANH3b" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FOUR GHOSTS" %}
+		{% assign study-technique-description-template = "Activating the <span style='color: CLR'>Reverse</span> function on a convolution channel introduces a haunting, ethereal breath before the full impulse response signal. This effect can be taken further by layering up to four reversed impulse responses, creating a rich convolution signal chain with multiple layers of this reversed effect. Varying the <span style='color: CLR'>Pre-Delay</span> time for each channel adds complexity, allowing the reversed convolutions to merge at different timings. This layering technique enriches the sound, facilitating the creation of evolving, intricate textures." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "j6Ebom6X6Ns?si=5XEufdq4MW62ldC6" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SPECTRAL HARMONY" %}
+		{% assign study-technique-description-template = "By using instrument impulse responses with strong fundamental notes or overtones, SPECTRES enables the creation of four-note harmony, with each note assigned to a separate convolution mixer channel. The system can select impulse responses rich in harmonic content, allowing for the construction of static harmony that resonates throughout the patch.<br><br>Introducing <span style='color: CLR'>CC</span> modulation to the convolution channels, along with inverting the modulation routing on channels three and four, creates two distinct tonal layers at opposite ends of the range. The system can then manually crossfade between the tonal convolutions of channels one and two with those of channels three and four, offering a way to introduce different harmonies into a single-note patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "MkVhfQCBFAs?si=8C6xVR6IBp-FykFA" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "STEPPED CHANNELS" %}
+		{% assign study-technique-description-template = "Rhythmic movement can be introduced into <span style='color: CLR'>Convolution Mixer</span> by applying custom-drawn step-sequenced modulation to each channel’s mix parameter. The sharp transitions between high and low modulation values on each step create distinct rhythmic accents. Complex rhythms can be developed using a sixteen-step repeating pattern, with the option to reduce the number of steps for shorter loops. By assigning a <span style='color: CLR'>Step Sequencer</span> to all four convolution mix parameters, a patch gains four independently adjustable rhythmic textures." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "6jPZ9S6je6s?si=dzq2fMb6LhZp38Zz" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MORPHING SPACES" %}
+		{% assign study-technique-description-template = "A slowly oscillating sine LFO can be applied to one convolution channel, while a phase-flipped LFO, modulating at the same rate, is assigned to another channel. This setup allows for smooth blending between two impulse responses. For example, using an infinite IR on channel one and a smaller room impulse response on channel two, the patch transitions every eight beats between an expansive space and a compact, reflective one. This dynamic modulation creates a gradual shift in reflection, character, and the perceived spatial qualities within the patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "hzvPpmyAOw4?si=OCdDWhsxFh-0cyQD" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">GRAINS</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						SPECTRES can isolate specific moments within sample library material, breaking them down into grains and rearranging them into collages. <span style="color: {{ stc }}">Grains</span> are created by adjusting the loop start and end points, keeping them close together to repeatedly isolate sections of the waveform. The <span style='color: CLR'>Retrigger</span> function allows for continuous grains shaped by the loop’s individual envelope as the playhead moves through the loop range. <br><br>These granular possibilities are vast, ranging from washed-out atmospheres to intricate percussive patterns, where each grain becomes a unique hit. By adjusting <span style="color: {{ stc }}">Envelope</span> sizes and slower <span style="color: {{ stc }}">Trigger</span> rates, SPECTRES can also collage larger sections of articulation phrasing, adding further complexity and texture.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+	
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MICROSCOPIC VOICES" %}
+		{% assign study-technique-description-template = "SPECTRES amplifies subtle details within articulations by setting loop points with very short start and end ranges, capturing specific nuances as voices or textures. The time quantise function triggers continuous gates into the loop’s envelope generator based on the quantise value.<br><br><span style='color: CLR'>Envelope</span> design is critical for shaping the sound. Lengthening attack and decay times creates sustained, washed-out notes, while a fast trigger rate produces a smeared voice as grains rapidly repeat, adding a dynamic, fluid quality to the sound." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "qg1uFLeS0X8?si=owCB8k7-znEycAkA" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TRIGGER PATTERNS" %}
+		{% assign study-technique-description-template = "SPECTRES enables the creation of percussive grain trigger patterns using the <span style='color: CLR'>Loop Retrigger</span> function. Activating this while disabling envelope sustain ensures that percussive envelopes fire consistently at a set rate.<br><br>By modulating the retrigger <span style='color: CLR'>Rate</span>, dynamic gate and accent patterns can be created, transforming the repeating grain into a rhythmic phrase. Advanced LFO shapes and custom-drawn step sequences further refine trigger patterns, adding rhythmic depth and complexity to the patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "6EEoFdoXUtA?si=9sC0CFx_5e5aVpay" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MORPHING ENVELOPES" %}
+		{% assign study-technique-description-template = "The loop envelope’s <span style='color: CLR'>Attack</span> and <span style='color: CLR'>Decay</span> parameters can be modulated to create new envelope shapes with each retrigger. Using repeating LFO shapes allows for envelopes to gradually evolve over time. Alternatively, assigning an LFO with the <span style='color: CLR'>Random</span> shape to the loop envelope parameters introduces unpredictability, causing the envelopes to change erratically and dynamically." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "BwzdjfDnZu0?si=3pXnXjVBfpn2KVj0" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CC SCATTER" %}
+		{% assign study-technique-description-template = "The <span style='color: CLR'>Scatter</span> parameter introduces randomisation to the playhead start point, causing notes to trigger at varying positions across the waveform. At 0% scatter, gates are triggered directly from the playhead. As the scatter value increases, triggers span a wider range across the source articulation. At 100% scatter, triggers can occur anywhere within the sample. Assigning CC modulation to scatter allows for manual or gestural control over the randomisation of grain positions." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "DG8PDRExuF4?si=uElF_Y2kPwKXyS4q" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "JITTER CLOUDS" %}
+		{% assign study-technique-description-template = "The <span style='color: CLR'>Jitter</span> parameter, when increased, adds randomisation to each trigger's note alignment with the quantised centre point. This randomisation causes notes to deviate from a precise linear pattern, creating un-synced bursts and a variety of random patterns.<br><br>When combined with adjustments to envelope size and other random elements like pan, tuning, and envelope release, jitter creates rich, spatial, and atmospheric textures within the articulation." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "QcEJkTyxn48?si=f22N0kY3-7W2M02G" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+		
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRAIN LOOPS" %}
+		{% assign study-technique-description-template = "Larger grains of an articulation source can be created using longer loop envelopes that retrigger at slower rates. Setting the retrigger <span style='color: CLR'>Rate</span> to half or quarter notes introduces space between each trigger. When MIDI notes are pressed at un-synced divisions, loops of strums or un-quantised melodies repeat in a tape-loop style, adding an organic sense of variation and repetition. Modulating the loop’s <span style='color: CLR'>Start</span> point can introduce subtle timbral shifts as manually pressed notes trigger and repeat from different points." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "jRvhJG5MkCA?si=43eA12wPxvTGHc7m" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+	
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRAIN NUDGING" %}
+		{% assign study-technique-description-template = "Dynamic grain generation can be introduced by locking the start and end loop points and modulating their positions with an <span style='color: CLR'>LFO</span> or a <span style='color: CLR'>Step Sequencer</span>. This results in continuously changing triggered voices as the loop points nudge the playhead to select grains from different positions. By keeping the loop size small and quantising the engine to time divisions, random grains are selectively extracted from the source articulation." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "Fms9_vdTogQ?si=UWnCjE3FibB_4v5t" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POLYRHYTHMIC GRAINS" %}
+		{% assign study-technique-description-template = "Each layer can be set to retrigger at different rates, creating cross rhythms between the grains and trigger patterns of each layer. This produces a dynamic interplay of timbres and harmonics, where the rhythmic interaction between the layers adds movement and energy to the patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "1bUWsUcuDZs?si=7VS1bovMn1-ErczA" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PHRASE REARRANGE" %}
+		{% assign study-technique-description-template = "SPECTRES can randomise the playback of an articulation by modulating the <span style='color: CLR'>Position</span> of the playback grain. By applying random modulation to a loop's locked <span style='color: CLR'>Start</span> and <span style='color: CLR'>End</span> points, the playback point shifts continuously, causing the playhead to move in a generative spiral of grain selection. This dynamic modulation creates a complex interplay, where each note becomes subtly unique, adding depth and variation to the patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "pmOhDe87Ulc?si=2K1V5DA5fk7oSUEm" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRAIN RECONSTRUCTION" %}
+		{% assign study-technique-description-template = "Using the <span style='color: CLR'>Loop Retrigger</span> function, SPECTRES reshapes articulations by continuously triggering envelopes across the entire loop range. By adjusting retrigger rates for each loop, playback subdivides differently as loop points shift. Disabling the loop's envelope sustain creates extended decay times, producing smeared re-triggers.<br><br>When holding chords, each note triggers its own playhead, moving through loops at different rates. Higher-pitched notes scrub faster, causing each chord note to independently navigate through loop points and retrigger rates. This multi-voice playback produces distinct re-triggered grains for each voice, reconfiguring the source articulation. Additionally, SPECTRES allows for manual rearrangement of loop points to further alter articulation playback." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "rDMWCPfSi-c?si=ptGpJ2PaRARWoHY1" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">LAYERS</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						At its core, SPECTRES functions as a polyphonic sampler, mapping selected articulations across the keyboard for seamless sample playback. The engine's two layers—<span style="color: {{ stc }}">Layer A</span> and <span style="color: {{ stc }}">Layer B</span>—allow two articulations to be played within a single patch, offering an interface that visualises the sample playback where sound shaping begins. On the left side of the interface, users can adjust controls for each layer’s waveform start point, playhead direction, and a coarse tune slider for fine-tuning each layer.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TONALITY TYPES" %}
+		{% assign study-technique-description-template = "The sample browser can be filtered to display only <span style='color: CLR'>Tonal</span>, <span style='color: CLR'>Atonal</span>, or <span style='color: CLR'>Non-tonal</span> articulations using the tonality selection tab. <span style='color: CLR'>Tonal</span> content includes pitched library material that can be transposed within quantise-locked scales and adjusted using the tune parameters. <span style='color: CLR'>Atonal</span> content consists of articulations that don't follow a specific tonal center or scale, often featuring dissonant overtones or dual tones. Pitch-shifting <span style='color: CLR'>Atonal</span> content causes the tonality to shift with each pitch change. <span style='color: CLR'>Non-tonal</span> content lacks a tonal center and includes textural sounds, such as blowing air through pipes or unconventional acoustic instrument uses." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "SJCAzLoK5xU?si=gcPmsx-YwUTCYrMM" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PLAYER EXPLORATIONS" %}
+		{% assign study-technique-description-template = "SPECTRES enables exploration of unique material from individual players via the <span style='color: CLR'>Instrument Selection</span> window. This filter uncovers both familiar textures and unconventional sounds created by each musician. Highlighted text identifies the musicians behind the recordings, adding depth and personal history to the library.<br><br>By focusing on each player's distinct timbre and phrasing, SPECTRES highlights specific moments from their performances. Configuring <span style='color: CLR'>Layer A</span> and <span style='color: CLR'>Layer B</span> to use a single instrument group within a patch lets users delve deeper into a player’s expressive vocabulary, allowing for manipulation and discovery of nuanced details." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "8Ra54_a-pF0?si=jp7WayJH366xiEKb" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PLAYHEAD STARTPOINT" %}
+		{% assign study-technique-description-template = "The <span style='color: CLR'>Start</span> point and <span style='color: CLR'>Direction</span> of a layer's playhead can be customised by selecting the layer <span style='color: CLR'>Start</span> button, choosing a direction, and moving the white playhead marker to the desired location on the waveform. Each layer can have its own unique start point and direction.<br><br>When the same articulation is loaded onto both layers, this allows for the creation of a patch with two distinct layers using identical material. Adjusting the <span style='color: CLR'>Start</span> point within the waveform creates unique attack variations for each layer. Additionally, reversing the playback <span style='color: CLR'>Direction</span> causes the articulation to play in reverse from the current position of the playhead." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "_kEVvZ9EMns?si=mQzcg011YQQE4VGF" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "LAYER ENVELOPES" %}
+		{% assign study-technique-description-template = "Both <span style='color: CLR'>Layer A</span> and <span style='color: CLR'>Layer B</span> feature independent <span style='color: CLR'>Amp</span> envelopes, enabling two articulations to blend into a unified phrase. For <span style='color: CLR'>Layer A</span>, a slow attack creates a gradual onset when a MIDI note is triggered. Increasing the <span style='color: CLR'>Sustain</span> parameter allows notes to ring out. For <span style='color: CLR'>Layer B</span>, selecting a percussive loop point triggers a short attack and decay, isolating the percussive element." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "-SR_I91FiZw?si=Dk-FMhowCkXuAsmh" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FILTER ENVELOPES" %}
+		{% assign study-technique-description-template = "SPECTRES also allows the addition of a <span style='color: CLR'>Filter Envelope</span> to each Layer. This envelope applies a low-pass sweep that opens fully as the <span style='color: CLR'>Attack</span> value reaches its peak. The <span style='color: CLR'>Depth</span> parameter controls the range of the filter sweep, with a more pronounced effect at higher values." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "PLYQtiQ1h9U?si=ommTOribMs6ySoqM" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "INSTRUMENT COMBINATIONS" %}
+		{% assign study-technique-description-template = "By assigning specific performers to each <span style='color: CLR'>Layer</span>, SPECTRES encourages exploration of unique instrument combinations. For example, loading baritone saxophone content in <span style='color: CLR'>Layer A</span> and flute content in <span style='color: CLR'>Layer B</span> allows for the blending of their textures to fill different parts of the frequency spectrum. Adjusting the tone parameters on each layer separates the instruments into their own frequency ranges, enhancing their interaction.<br><br>The SPECTRES engine enhances each musician’s material, inspiring new musical ideas from their articulations. By modulating the <span style='color: CLR'>Coarse</span> tune slider, pitch sequences and bass movements can be crafted from single-note articulations." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "HIV02nuWnBY?si=eSsVFGQqzdDc-659" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+	
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PEDAL GROWTH" %}
+		{% assign study-technique-description-template = "SPECTRES enables the creation of a gestural melodic movement by layering over a drone. This involves setting up a single-note drone on <span style='color: CLR'>Layer B</span> with subtle modulation applied to <span style='color: CLR'>Filter</span> movement and <span style='color: CLR'>Fine Tune</span> values, while <span style='color: CLR'>Layer A</span> is used to create a more complex pitch sequence. The melodic content of <span style='color: CLR'>Layer A</span> can be blended into the patch through <span style='color: CLR'>MIDI CC1</span>, which controls the amp volume of <span style='color: CLR'>Layer A</span>. This dynamic control adds expressive variations, allowing for a more engaging and responsive patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "Z01kNeg8q7g?si=OPEYPvU9YOo66VZf" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TAKE TURNS" %}
+		{% assign study-technique-description-template = "SPECTRES can transition smoothly between layers, switching between contrasting tonal content. This is achieved by modulating each of the layers' volumes with a sinusoidal LFO, inverting the phase of <span style='color: CLR'>Layer B’s</span> modulation, and syncing the LFO <span style='color: CLR'>Rates</span>. This creates a sharp crossfade between layers, allowing abrupt shifts between distinct musical textures. By adjusting the rates to dotted, triplet, or un-synced values, the crossfade becomes more unpredictable, adding complexity to tempo-synced performances.<br><br>When <span style='color: CLR'>Layer B</span> is set to a <span style='color: CLR'>Non-tonal</span> sample, SPECTRES facilitates transitions between melodic and textural elements, enabling rapid gated volume control. This can lead to aggressive, unpredictable cuts to noise or amplitude-modulated timbres sourced from the sample content." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "-42LyVuRihA?si=7YV5xCjbEcghFFkI" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POLYRHYTHMIC FILTERS" %}
+		{% assign study-technique-description-template = "Modulating the <span style='color: CLR'>Filter</span> at different rates on each layer generates sweeps with varying speeds, creating cross-rhythms. Experimenting with different LFO shapes and rates for each layer results in more complex rhythms and unique attack patterns in the filter sweeps. When combined with <span style='color: CLR'>Scale Quantisation</span> and slow, random modulation to the <span style='color: CLR'>Coarse Tune</span>, this approach introduces gradual diatonic shifts, adding a chordal movement to the patch." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "dbd8e_8YznE?si=mtk8rPuiasHnNBVk" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<!-- technique -->
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "STEREO BIPOLAR" %}
+		{% assign study-technique-description-template = "SPECTRES can create dynamic stereo effects by utilising the same articulation across both layers. <span style='color: CLR'>Layer A</span> plays the regular articulation, while reversing the loop playback on <span style='color: CLR'>Layer B</span> shifts the accent points. Hard-panning each layer to opposite sides spreads the forward-playing and reversed layers, transforming a dense central sound into a wide stereo field." %}
+		{% assign study-technique-description = study-technique-description-template | replace: "CLR", study-secondary-text-color %}
+		{% assign study-technique-youtube-id = "9udtYstq4ug?si=jXNwj2IR99fIEOVu" %}
+		{% render "study-technique-yt", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-youtube-id: study-technique-youtube-id %}
+
+		<div class="gap"></div>
+
+	</div>
+</html>

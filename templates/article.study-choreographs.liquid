@@ -1,0 +1,523 @@
+<!-- ------------------------------ html ------------------------------ -->
+
+<html>
+
+	<title>{{ article.title | upcase }} ← SLATE + ASH</title>
+
+	<!-- ------------------------------ header ------------------------------ -->
+
+	<div class="header-container" style="background-color: var(--white);">
+		<div class="header-logo title">
+			<a href="/"><span class="header-logo-plus">+</span>A</a> → <a href="/blogs/studies">STUDIES</a>
+			<br>
+			<a href="/"><span class="header-logo-s">S</span></a>
+		</div>
+		<div class="header-menu-button" id="menu-button">+ MENU</div>
+		<div class="header-title title">
+			{{ article.title | remove: "STUDIES: " | upcase }}
+		</div>
+	</div>
+
+	<div style="background-color: {{ article.metafields.custom.study_background_color }}; color: {{ article.metafields.custom.study_text_color }};">
+
+		<!-- ------------------------------ image ------------------------------ -->
+
+		<img class="feature-image scroll-fade-in" src="{{ article.image | img_url: "2500x" }}">
+		<div class="gap"></div>
+
+		<!-- ------------------------------ intro ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph paragraph scroll-fade-in">
+					Below is an encylopedia of sound design concepts and techniques. Use them to expand your knowledge of CHOREOGRAPHS and inspire new ways of working with it.
+				</div>		
+			</div>
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<!-- <div style="color: {{ article.metafields.custom.study_secondary_text_color }}">→ DOWNLOAD PATCHES</div> -->
+				</div>	
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		<!-- ------------------------------ variables ------------------------------ -->
+
+		<!-- variable to give each study technique with a new id (it is incremented each time a technique is rendered) -->
+		{% assign studyTechniqueCount = 0 %}
+		<!-- variable for secondary text color to be passed into render -->
+		{% assign study-secondary-text-color =  article.metafields.custom.study_secondary_text_color %}
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">VOICES</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CHOREOGRAPHS uses its library of analogue, digital and modular synth samples along with physical modelling, acoustic noise and transient attacks as basic tonal sources. By pressing the + in the VOICE window or 'sample' in the control menu, scroll through and assign new samples to VOICES. Adjust each VOICES' parameters in the control menu and utilise CHOREOGRAPHS’ modulation capabilities to form interweaving melodies, harmony and textures.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SOURCE SELECTION" %}
+		{% assign study-technique-description = "The CHOREOGRAPHS engine can blend sampled sources using its three VOICE windows. From left to right, each VOICE volume fader illuminates green, teal and blue when active. By clicking on a VOICE’s volume fader, a control menu appears in the bottom right of the CHOREOGRAPHS interface. Use the arrows either side of the menu to scroll through EQ, envelope, filter, convolution and other shaping parameters." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/4c51d4576cbf434aa6f1179e03176c43.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "VOICE COMBINATIONS" %}
+		{% assign study-technique-description = "By adjusting the parameters of individual sound sources, VOICES can live in their own space in the stereo field. Each VOICE has an envelope generator that smooths and shapes the amplitude of the gate before triggering the sound source. CHOREOGRAPHS has a master ADSR, labelled ‘all’ that controls the envelope shape for all VOICES.<br><br>VOICES can have completely different envelope shapes that give each sound source a different timbre, for example; one envelope can have a short attack and sustain, the other envelope can have a smooth and gradual attack. Pan VOICES to a space in the stereo image to aid either blending or separation.<br><br>By tuning each of the three VOICES to different intervals, chords made up of vastly different VOICE voices can sound from a single manually triggered note." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/0ca543e4a4c74485a5142075b4171072.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SEPERATE ENVELOPES" %}
+		{% assign study-technique-description = "As well as shaping amplitude, CHOREOGRAPHS’ uses envelopes to control filter cutoff and pitch, both with a master and individual ADSRs for all three VOICES. The filter envelope can create sharp and bright accents or a slow-moving swell to the front of a sound source, while the filter cutoff sets the start point level where the envelope begins and ends. The pitch envelope causes a VOICE’s pitch to jump up and drop back where it started. Each VOICE has a mix control that attenuates the pitch envelope intensity from 0% to 100%." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/77a355243c494407b7c681f216648fd6.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TRIGGER CYCLES" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can assign VOICES to trigger upon the release of a manually pressed note (trig rel). Release trigger VOICES use the same control menu parameters to shape the space after a note is released and to create interesting variations and responses to regularly triggered notes.<br><br>When used in conjunction with a regularly triggered VOICE, CHOREOGRAPHS can create dynamic, manually triggered patches that hold a contrast between the initial press and hold of a note and the release. Trigger release can be functional when crafting pads with long release tails, filling the space between slow-moving triggers and complex voices with expressive interval movement." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/153e97d724ad438f9ea93d4cbf79e31d.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RELEASE TRIGGER" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can assign LAYERS to trigger upon the release of a manually pressed note (trig rel). Release trigger LAYERS use the same control menu parameters to shape the space after a note is released and to create interesting variations and responses to regularly triggered notes.<br><br>When used in conjunction with a regularly triggered LAYER, CHOREOGRAPHS can create dynamic, manually triggered patches that hold a contrast between the initial press and hold of a note and the release. Trigger release can be functional when crafting pads with long release tails, filling the space between slow-moving triggers and complex voices with expressive interval movement." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/8d55179990a545bc8a2b664eb803129e.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SUB BASS" %}
+		{% assign study-technique-description = "VOICES can tune source material up to three octaves below the original pitch to create sub bass. Mono-ise CHOREOGRAPHS and filter the Sub VOICE to create a low and tight sonic that will sit in the centre and at the bottom of the stereo image. Modulate the Sub VOICE’s volume fader with slow moving LFOs or envelopes to craft subsonic swells in the bottom end." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/871128cc10f74150bd2414dff07096c9.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FILTERED NOISE" %}
+		{% assign study-technique-description = "CHOREOGRAPHS' physical modelling and noise samples can be driven into custom spectral and lofi sounds by blending an additional noise VOICE with a simple waveform. Modulating parameters in the VOICE control menu and in other effect modules will filter, shape and introduce movement to custom noise textures." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/bd5077a646b04962b2f62534add26b87.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">HARMONY</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CHOREOGRAPHS’ HARMONY module has the ability to add up to four harmonic voices to each manually triggered note. Harmonic formations are created by tuning each note up or down relatively from its source note.
+						<br><br>
+						Each additional voice can take an interval of up to three octaves above or below the manually triggered note. Harmonic voices can also be quantised to a specific scale, delayed in time (rhythmically or liquidly), volume-adjusted, and detuned up or down to reach the spaces between semitones.
+						<br><br>
+						By combining the HARMONY parameters, individual note triggers can be pushed into extended chords, dense harmonic clusters, or rhythmic patterns.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "BASIC HARMONISED CHORDS" %}
+		{% assign study-technique-description = "Four additional, tunable harmonic voices can be selected in the HARMONY module’s menu. CHOREOGRAPHS can design custom chord voicings by tuning each harmonic voice to a separate interval. The HARMONY engine plays the chosen interval structure, moving in parallel motion, as manually triggered notes are played up the scale. A single manually triggered note can form non-diatonic chord structures and plays the same static interval structure from any given triggered note. <br><br>Quantising the CHOREOGRAPHS engine causes the HARMONY to shift each additional voice to its closest scale note instead of statically stacking the four voices on top of the root note. Manually triggered notes will now play harmonised chords and due to the nature of the chosen quantised scale, CHOREOGRAPHS will play different chord voicings from each triggered note." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/bbeebed5a8834ff29e801f53f6283c0c.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "STRUM" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can design strums, arpeggios and fingerpicking-inspired patterns using the delay menu in the HARMONY module. In this menu delay times are displayed as fractions. By scrolling through each voice’s numerator value, the delay time is selected and mapped out over subdivisions of the grid. By selecting a denominator value, the delay time value is multiplied or divided to sound at precise subdivisions allowing the HARMONY module to stagger and arrange additional voices in any order.<br><br>The delay menu’s numerator has a free-time mode that staggers of voices in milliseconds, pushing harmonic formations into fluid strums or more clunky, stuttery rhythms. Tapping manually triggered notes causes a short rhythmic burst; holding a note creates a sustained and more liquid strum.<br><br>Combine the delay parameters with the TRIGGER rhythms for more complex sequences." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/8df4ab77257e42c79b1d5042d46ff435.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "STEP CHORD SEQUENCE" %}
+		{% assign study-technique-description = "By assigning each additional harmonic voice’s tune parameter to the step modulator and quantising CHOREOGRAPHS to a specific scale, the step modulator can create evolving chord progressions. Use the maximum and minimum modulation values to attenuate each tune control’s modulation width and intensity.<br><br>Selecting invert on a specific harmonised voice will cause the modulation to flip polarity giving it a different movement and adding variation to voice leading between other harmonic voices in the chord progression.<br><br>Draw custom shapes or generate randomised patterns (alt-click) with the step modulator to cause multiple instances of modulation to move at once." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/9f4d80ab5b8c4a1c938844060aa0e9b2.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CHORD FINDER" %}
+		{% assign study-technique-description = "Use CHOREOGRAPHS as a chord finder by quantising it to a specific scale and assign each additional harmonic voice’s tune control to CC1 (modwheel). Use the CC1 to modulate all the harmonic voice’s tune parameters with different values and directions and scan through the chord voicings.<br><br>CHOREOGRAPHS can prevent the chord voicing scanning from being audible when holding manually triggered notes and moving the mod wheel (MW) position by causing the HARMONY tuning to update upon every new trigger. Select LAYER and HARMONY tuning updates in the settings menu.<br><br>CHOREOGRAPHS can sequence chords by hand using the MW. By activating the trigger module and moving the MW, chord progressions will be generated. Settle on a specific voicing by leaving the MW in position. Quantise CHOREOGRAPHS to different scales and instantly switch between dense harmonies while only manually triggering one note." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/0568100d83894c89bef6f7e3bf6e0e64.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GESTURAL GLISSANDO" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can create gestual glissando sweeps with the MW and HARMONY control by activating the TRIGGER arpeggiator and envelope modulation. By setting the trigger to arp mode, CHOREOGRAPHS constantly fires bursts of arpeggiated notes rather than chords. By assigning the MW to the envelope decay, evolving 'chord finding' arpeggio voicings also change in timbre with the same CC1 expression." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/55dd52d3a3424364a9fc1b7fd7da3444.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "LFO TUNE + REPEAT" %}
+		{% assign study-technique-description = "Random and velocity modulation creates more abstract and less-directional patterns in the CHOREOGRAPHS engine. By assigning an LFO to one harmonic voice and triggering it against a consistent harmonic voice will bring unexpected movement and expression to controlled performances. By setting the TRIGGER mode to repeat and increasing the sweep value, the rate of trigger will increase fluidly." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/6bba2e48821e49589dc8b8d1948f6aa3.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "UNISON" %}
+		{% assign study-technique-description = "As well as using the HARMONY module as a chord and arpeggio generator, CHOREOGRAPHS can use it to make single notes sound fatter by adding up to four detuned, unison voices. <br><br>The HARMONY module can create a simple unison voice by selecting one additional harmonic voice and detuning its fine tune by 25 cents. The slight difference in pitch makes the two samples oscillate at a slightly different rate and move out of phase with each other. <br><br>By assigning CC1 to modulate two additional voice’s fine tune, the MW can control the intensity of modulation effects. A CC Supersaw can be made by setting the first voice’s maximum modulation value to +50 cents and the minimum value to 0 and inverting the second voice's maximum modulation value to 0 and the minimum to -50 cents. By increasing CC1, both harmonic voices will detune at the same rate, in opposite directions. <br><br>The same approach can be taken using other sources modulation to parameters in the HARMONY module to create densely shifting timbres. By using velocity modulation to control detune, performance dynamics impact the phase and pitch of each manually triggered note. LFOs can add a subtle movement to a voice's fine tune, injecting a patch with an ‘analogue’ tonality." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/36e285dbd1664d9aa6cdd15cfa6165b8.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TIDES" %}
+		{% assign study-technique-description = "The HARMONY module’s level controls can create unpredictable and unstable movement to each additional voice. By modulating the HARMONY module’s levels with separate, slow-moving LFOs, each harmonic voice moves in and out of the patch, matching the oscillating rate of its assigned LFO. Smoothed square, sawtooth and random LFO shapes generate asymmetrical and less obvious modulation that is inspired by real-world motions and can cause esoteric movement between the four harmonic voices." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/657cfabaf23445bbbdedb009cb1ef8ba.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">TRIGGER</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CHOREOGRAPHS’ TRIGGER module is a gate generator that fires at short intervals while a manually pressed note is engaged. The module can be synced to the clock or can fire in free time. TRIGGER has two modes, Arp and Repeat. Arp is a monophonic arpeggiator; Repeat is a polyphonic TRIGGER, where notes play on top of each other.
+						<br><br>
+						Gate patterns can be customised using the TRIGGER module’s control menu. Standard repeating arpeggios can be customised to fire at specific rhythms; subdivisions of the clock and with varying amounts of octave movement, strike repeat, random chance and swing.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "BASIC ARP + REPEAT" %}
+		{% assign study-technique-description = "CHOREOGRAPHS’ TRIGGER module can form a basic starting point for patches using its arpeggio and repeat patterns. Design TRIGGER sequences that move up and down; forwards and backwards; in random directions; and in a pendulum momentum." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/fecd7ad389a0475997e9efa646a3b22c.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ABSTRACTING THE ARP" %}
+		{% assign study-technique-description = "By combining the TRIGGER module’s controllable parameters, CHOREOGRAPHS can turn basic arpeggios into abstract patterns. In addition to firing continuous, evenly spaced gates, the TRIGGER module can produce 29 different gate rhythms. <br><br>An increased strike parameter will cause each gate to strike numerous times before moving on to the next step of the sequence; an increased octave parameter will cause one manually pressed note to TRIGGER multiple octaves of the voice.<br><br>The gate control sets the width of triggered notes. By assigning a modulation source, such as an LFO, to the gate control, the TRIGGERS will change size as the sequence fires." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/cbd5ba84f85c44a68e2d2b8e245c0055.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "REPEAT LOOPS" %}
+		{% assign study-technique-description = "The TRIGGER module’s repeat mode fires continuous gates polyphonically. Each manually pressed note uses the same selected TRIGGER setting; however, each note can fire the TRIGGER sequence individually. Offset the timing of a voice’s repeat pattern by delaying the press of each manually triggered note. <br><br>Create a tape loop-inspired TRIGGER sequence by setting the TRIGGER module’s rate to slow and gradually add notes to the sequence." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/442b59c89e13421da06c62c7cf0ad2e2.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "REPEAT SWARM" %}
+		{% assign study-technique-description = "The four different TRIGGER patterns send octave movement in specific directions. Using the ‘?’ pattern causes octave leaps to happen at random and the sequence to be different every time.<br><br>CHOREOGRAPHS begins to construct generative TRIGGER sequences using its chance control. This parameter sets the probability of the TRIGGER module firing a gate. Lowering this parameter will make the TRIGGER misfire and cause the pattern to change each time. The randomise window (top right) introduces more variation to LAYER parameters such as the envelope shape, pan and sample start point. Introduce increasing amounts of random to add more fluidity to abstract TRIGGER sequences." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/4382ed35692b44ef9e6bc0c8a0f97a25.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ODD PULSES" %}
+		{% assign study-technique-description = "Design odd grouped sequences using the TRIGGER module’s rhythms: for example, the TRIGGER state seven in twelve disguises the TRIGGER module from firing consistent gates, playing syncopated rhythms instead.<br><br>CHOREOGRAPHS can further shift the rhythm and feel of a sequence by using the HARMONY module to add more voices to TRIGGER sequences. The HARMONY module's delayed voices make the TRIGGER rhythms more complex, filling in the gaps where the TRIGGER rhythm does not fire a gate. Quantising the CHOREOGRAPHS engine causes the HARMONY module’s additional voices to lock to diatonic notes." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/2b4777453711486dbb800a61d7ebdd45.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CLOUD SWEEPS" %}
+		{% assign study-technique-description = "The TRIGGER module’s sweep control gradually increases or decreases the gate’s rate of fire. A higher positive sweep percentage will cause the sweep effect to occur faster; A higher negative percentage will cause the sweep effect to slow down sooner. <br><br>A fast TRIGGER rate combined with a negative sweep value causes an initial quick burst of notes that slow down quickly. This TRIGGER setting creates an unwinding effect, like a music box losing momentum.<br><br>By keeping CHOREOGRAPHS quantised to a scale and modulating the LAYER’s tune with a random source, each TRIGGER will sound random notes from the chosen scale. Increase the random release parameter to add variation in tail length to each note." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/f784d1724e284cf1969ca08bc2c293d3.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "HYPER GRAVITY" %}
+		{% assign study-technique-description = "Instead of setting the TRIGGER module to fire a static sequence, CC control provides each parameter with external performance and movement capabilities. <br><br>Deactivating the TRIGGER’s sync will cause the rate to move in free time between values giving the impression of gradual and fluid movement. Assign CC control or LFOs to modulate the TRIGGER rate to imbue a sense of gravity. Slowly increasing the TRIGGER rate will emulate the motion of a bouncing ball. <br><br>By CC assigning the mod wheel to the envelope release, the tails of notes get longer. Increase the random pan and tune parameters to cause release tails to move slightly out of phase with each other and live in separate spaces of the stereo field." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/8b2cd51f755848a7af3284a3705c0eb7.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">MODULATION</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CHOREOGRAPHS holds modulation at its core, routing movement across the engine's parameter controls in otherwise static patches. The MODULATION sources of CC control, LFOs and step modulators bring interfaces that design and trigger movement over chosen parameters, causing values to move, drift or jump in value over time.
+						<br><br>
+						Each MODULATION source can route to an unlimited number of destinations: such as envelope parameters, eq bands, filter resonance and randomisation controls. 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PITCH CIRCLES" %}
+		{% assign study-technique-description = "CHOREOGRAPHS has an expansive selection of LFOs that can be smoothed into other waveshapes. LFOs can sync to anything from slow subdivisions of the clock to fast triplet rates. For slower and more free-flowing rotations, deactivate sync and set an exact frequency for the LFO to oscillate. <br><br>Modulating the LAYER’s tune with LFO shapes will cause the pitch to sweep in a sequence. The CHOREOGRAPHS engine can be quantised to cause the LAYER tune parameters to lock to diatonic notes when swept by an LFO. Route different LFO shapes to each LAYER’s tune to create overlapping cyclic pitch sequences. " %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/e96a0975d09e4204a53b3af8fdf78048.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SHARED LFOS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can quickly set up complex but concise MODULATION pathways by routing a single MODULATION source to multiple parameters. Using the same LFOs that are applied to the pitch sequences on LAYER I and II, CHOREOGRAPHS can route identical MODULATION to parameters such as the filter cutoff and reverb mix.<br><br>Inspired by modular concepts, CHOREOGRAPHS aims to make single MODULATION sources go as far as possible. The invert button, below any controllable parameter, flips the MODULATION shape upside down, making it move in the opposite direction. The maximum and minimum value each side of any controllable parameter, offsets and attenuates a MODULATION sources range. " %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/eaf3b1c493fe4f9e8e39e391dd7e09a4.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "DRAWABLE LFOS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can draw custom waveshapes with the step modulator’s sixteen faders. Increasing the rate of the step modulator causes it to move quickly between values and act like an LFO. An increased smooth parameter evens the values between steps and changes the MODULATION signal from a step sequence to a curve. <br><br>By drawing a waveshape and assigning it to modulate a LAYER’s volume fader, a custom LFO will attenuate the level of the sound source." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/bd72f3c002dd474a894cc3a1ec126b94.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RANDOM INSTABILITY" %}
+		{% assign study-technique-description = "CHOREOGRAPHS has the ability to add a sense of chance to a patch using its random LFO shape. The engine's value-generating capabilities can add anything from erratic MODULATION jumps to precise tremors. The smooth control attenuates the MODULATION range; increasing it will create gradual curves between random values instead of harsh steps. Detailed movement can be assigned to parameters by attenuating the random LFOs with the smooth percentage parameter and the MODULATION range maximum and minimum values." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/671a74f7377d45ce9fd6feef0fc3a57c.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "FLIGHT PATTERNS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS utilises CC MODULATION to cause multiple parameters to move in value using one manually controlled motion. CC1 is assigned automatically to KONTAKTS' mod wheel (MW). Using the MIDI learn function, right-clicking any parameter and moving the MW will cause CC1 to gain control over it. MW CC control on multiple parameters can cause a patch to change drastically as the expression is increased.<br><br>Use MW expression to increase the filter envelope decay, random tune percentage and mix of the metallic feedback from the modal module." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/3655834b60234fcea20a3e04ce06b3c1.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GENERATIVE EVERYTHING" %}
+		{% assign study-technique-description = "Use the random MODULATION source to add an element of chance over any parameter control. The MODULATION source will generate a new value every time a note is triggered. Random MODULATION adds unexpected accents and variations to parameters in a patch. Build generative systems by adjusting the random MODULATION source’s maximum and minimum values across multiple parameters.<br><br>As the TRIGGER module sends out irregular gates, the random MODULATION source causes LAYER I’s tune, LAYER II’s fader volume and the reverb’s mix to inherit a new set of parameters. A never-ending generative patch is made from each parameter generating new values every time the TRIGGER fires." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/a5fc02d875fd446dbc9d08a23b567c1c.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "VELOCITY EXPRESSION" %}
+		{% assign study-technique-description = "The CHOREOGRAPHS engine can read MIDI velocity value and use it as a MODULATION source. Velocity is an inconsistent but dynamic MODULATION source that brings a sense of playability to a patch.<br><br>The MODULATION source captures human inconsistencies and subtle performance accents inside the CHOREOGRAPHS engine. As a performer plays with more power and hits MIDI notes harder, the velocity value can be used to modulate any source. <br><br>CHOREOGRAPHS can imitate both the expression of the performer and properties of acoustic instruments. By assigning velocity MODULATION to the envelope shape, the length of the envelope increases as the performer plays notes harder causing notes to sustain for longer and change timbre." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/3902fcd7f3ff4ce3a49de06a6a0cbda6.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">SEQUENCER</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CHOREOGRAPHS’ euclidean SEQUENCER generates patterns by mapping gate triggers around a circle. The SEQUENCER aims to use the euclidean algorithm to space gates equidistantly over a controlled amount of steps. Uneven gaps often appear between gates when the SEQUENCER maps an odd amount of gates to the circle grid. The uneven gaps give the euclidean rhythms a unique gravitational pull.
+						<br><br>
+						CHOREOGRAPHS’ has four euclidean lanes that distribute individual trigger patterns across the grid. A euclidean lane's pattern is signified by a manipulatable fraction symbol that displays the amount of gates against the amount of steps. By playing two lanes with differing step lengths against each other, CHOREOGRAPHS can create polyrhythmic sequences.
+						<br><br>
+						CHOREOGRAPHS' euclidean SEQUENCER behaves differently in Mono and Poly modes when two or more lanes share a step. Mono mode only plays one trigger at a time and prioritises the outer lane. Poly Mode plays all four lanes simultaneously, causing notes to overlap and share the same subdivision.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "ODD NUMBERS" %}
+		{% assign study-technique-description = "In Poly mode, by setting each euclidean lane’s steps to values that don’t mathematically relate, the SEQUENCER will map out rhythms that overlap and rarely meet back up at the same start point. Each of the four active lanes will continuously generate new patterns as they get increasingly out of sync with each other." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/cabf1b3665bb467689c04438477905b4.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POLY LOOPS" %}
+		{% assign study-technique-description = "The EUCLIDEAN SEQUENCER' can turn a generative euclidean pattern into shorter melodic loops and phrases. The length control assigns the SEQUENCER to travel a desired amount of steps until it resets the gate pattern. Long repeating loops and odd grouped patterns.<br><br>Change the speed that the gates are triggered by multiplying or dividing the rate of the SEQUENCER." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/048d07b48f02461eb3b4baaa8b8f9e79.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "MONO MELODIES" %}
+		{% assign study-technique-description = "Mono mode can only play one trigger at a time and prioritises the outer lane. Each lane will sound its manually triggered note creating single-note melodies, sounding one prioritised-lane for each subdivision. By making the outer lanes sparse of gates and the inner lanes dense, the SEQUENCER will form linear gate patterns that combine each of the four euclidean lanes." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/a99e91ff78fa4c71ae432530a6568d3a.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GENERATIVE PITCH RUNS" %}
+		{% assign study-technique-description = "Add an extra layer of movement to the EUCLIDEAN SEQUENCER by modulating each lane's tune parameter. The EUCLIDEAN Lane's pitch can be modulated independently with CHOREOGRAPHS LFOs or random source to make sequences more generative and intertwined. Quantise the CHOREOGRAPHS engine to scale lock the modulating pitch of each lane's triggered notes.<br><br>In poly mode, combining a physical pluck sound source with a short envelope with decay and release can give the EUCLIDEAN SEQUENCER a generative harp-like performance. " %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/daeca530064041c19db97864c88d5129.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SLOW MOTION" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can trigger sporadic generative gates by slowing down the rate of the EUCLIDEAN SEQUENCER. When the Euclidean lanes align, CHOREOGRAPHS' creates a slow-moving trigger that occasionally triggers lanes simultaneously. With each lane continuously modulating its tune, each chord voice will constantly change with every cycle of the EUCLIDEAN pattern. By increasing the sustain on the envelope, held chords will sustain in the gaps and emulate the characteristics of a sustain pedal." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/53df23ae834d45a785070c9363ea8435.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GENERATIVE DRUMS" %}
+		{% assign study-technique-description = "Replacing tonal samples with drum machine sample banks, transient attacks, and percussive noise can bring the EUCLIDEAN SEQUENCER’s generative qualities to drum grooves. In mono mode, CHOREOGRAPHS can sequence independent rhythmic patterns in each lane to make linear polyrhythmic drum grooves. By pressing combinations of multiple MIDI notes, CHOREOGRAPHS will constantly generate new drum patterns.<br><br>Using a drum sound source in poly mode causes the EUCLIDEAN SEQUENCER to behave as a four-channel drum SEQUENCER and mixer. Utilise the twenty-nine different rhythms to add further variation over a sequence's velocity, pan, octave and gate controls. <br><br>When assigned to a drum sample bank, the octave control behaves differently from when to a tonal sound source. Instead of mapping the same instrument across multiple MIDI notes, CHOREOGRAPH's drum banks have separate drum hits mapped across the keyboard. Assigning an octave rhythm to a drum sound source will cause the manually pressed sample and a new sample (located an octave above) to trigger in the chosen rhythm.<br><br>The velocity rhythms perform accent patterns over the euclidean lanes, adding further complexity and dynamics to the polyrhythmic nature of the EUCLIDEAN SEQUENCER. In CHOREOGRAPHS' preferences, the velocity percentage to control acts as an intensity mix for velocity patterns. When the velocity percentage is at 100%, the velocity pattern will act as an on/off gate; when gradually decreased, the SEQUENCER introduces subtle ghost notes that increase in dynamics as the percentage gets lower. " %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/70b052812a0a4b868ce1b3bc06cfd86a.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">STEP MODULATOR</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CHOREOGRAPHS has three STEP MODULATORS routable to any controllable parameter and operate as multifunctional modulation sources. 1-16 step patterns can be drawn in the fader bank or randomly generated (alt-click) to add movement to a patch. 
+						<br><br>
+						Set each of the STEP MODULATORS' sixteen faders to a value between 0-100% by vertically moving the fader. The sixteen faders can draw custom modulation routable anywhere in the engine.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "DIFFERENT SPEEDS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS’ three STEP MODULATORS can run at independent rates and directions. The STEP MODULATORS can move forward or backwards; in a pendulum motion and trigger at speeds from once every eight bars to 128th notes.<br><br>In their most audible form, STEP MODULATORS can be an independent pitch sequencer for the three VOICES. By drawing three separate pitch sequences and routing each to a different VOICE’s tune parameter, CHOREOGRAPHS will play the three drawn melodies as loops. Changing the speed at which each modulator runs will cause the three VOICES’ melodies to interweave and create overlapping pitch sequences. Scale quantising the CHOREOGRAPHS engine will cause the Step Modulation values to lock to diatonic notes." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/452c42dee2884399bfd7bdd915a3e25a.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TRIPLE STEP" %}
+		{% assign study-technique-description = "CHOREOGRAPHS' STEP MODULATORS can act as global compositional controllers. Route the STEP MODULATOR across the engine to generate modulation, melodies and trigger patterns from one source. STEP MODULATORS hold powerful macro movement when assigned to multiple parameters. STEP MODULATORS can cause a whole patch change by subtly moving faders in the sixteen-step sequence. Reset a STEP MODULATOR’s fader values to 50% by Cmnd-ctrl and clicking.<br><br>STEP MODULATOR can bring real-time sequencing and composition to a patch. By configuring CHOREOGRAPHS' three VOICES to be melody, bass and drums in a generative performance patch, the pitch of each VOICE can be assigned to a dedicated STEP MODULATOR allowing for real-time sequence customisation. <br><br>In order for CHOREOGRAPHS to access its bank of DRUM samples on a single VOICE, update CHOREOGRAPHS’ VOICE retune to every new trigger. Drum samples are accessible on a single VOICE by modulating its tune parameter.<br><br>CHOREOGRAPHS can have all three step sequences working as separate function generators. Use step sequencer I as a sixteen-step bass sequencer, II as a drum sample selector and III as a three-note recurring arpeggiator. Compose custom step sequences or generate random patterns (alt-click)." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/0a60ebfe003d4b598e2bda2bc23839aa.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "POLYSEQUENCES" %}
+		{% assign study-technique-description = "Separate STEP MODULATOR lengths cause modulation patterns to have their own loop point and move out of phase with each other. When applied to pitch, each VOICE begins to overlap and form new melodies and interval combinations. A complex modulation loop will only restart once all three STEP MODULATORS reach the same start point." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/734ea7fc1fa74b0da5766d616fa3e870.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "TRANSPOSER" %}
+		{% assign study-technique-description = "CHOREOGRAPHS’ STEP MODULATOR can act as a transposer, shifting chord voicings to separate pitches. When the CHOREOGRAPHS engine is scale-locked to a specific scale, step modulators transpose to the nearest voicing; When CHOREOGRAPHS scale lock is chromatic, the modulator transposes a static voicing." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/e43fb80578164a89be807a9e0fbf7c27.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "LEGATO SEQUENCES" %}
+		{% assign study-technique-description = "By triggering the STEP MODULATOR at a fast rate, CHOREOGRAPHS can design modulation sweeps as the rate quickly moves between values. CHOREOGRAPHS can create legato pitch runs by assigning the step modulation to a VOICE's tune parameter.<br><br>The STEP MODULATOR has a smooth function that, when increased, equally pulls the faders to 50% while maintaining the step sequence shape. As the smooth is increased, the stepped modulation is attenuated and gradually becomes a curved waveform shape.<br><br>STEP MODULATORS can gesturally draw directional patterns and quickly change a melody, creating new pitch runs with a legato feel. The shape of the line dictates the motion of the legato phrase." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/2181dc1809044859ba171ce5367ea48a.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "STEP DRUMS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS' can sculpt custom drum voices using heavy-handed EQ and filtering on the noise and attack samples.<br><br>By setting each VOICE to have a drum source, CHOREOGRAPHS can use its STEP MODULATORS as drum sequencers. With each voice's envelope sustain and decay set to 0ms, no sound will come through as the trigger fires 16th notes. No sound will come from the channel when the sixteen-step faders are at zero. <br><br>By assigning each STEP MODULATOR to a voice's envelope decay, each envelope will open up according to the modulation value of each step of the Modulator. Draw rhythmic drum patterns in the sequencer that change timbre depending on the modulation value.<br><br>For drum sounds that are attacks and transient heavy sounds, assign the envelope decay's step modulation to the envelope attack and invert it to reduce the harsh transient." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/eb11f1bf297e4aab99274393829699e9.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "STUMBLING TRIGGERS" %}
+		{% assign study-technique-description = "The STEP MODULATOR can automate the TRIGGER module rate of fire to design bespoke rhythms. Draw in up to sixteen steps that modulate the TRIGGER’s rate of fire to create different rhythmic subdivisions that shift each sequence step.<br><br>When the TRIGGER module's sync is on, its rate of fire is quantised to clock subdivisions. The STEP MODULATORS can draw a gestural rhythmic direction that will play the rhythmic subdivisions closest to the TRIGGER rate’s modulation value.<br><br>CHOREOGRAPHS can create stuttery and strum-like rhythms by assigning the STEP MODULATOR to the TRIGGER's rate and turning sync off. TRIGGER patterns become free-time according to the Step Modulation value and create shifting groupings of gates as the STEP MODULATOR moves between steps. No matter how unusual the gate subdivisions are, the overall TRIGGER pattern feels natural because of the repeating character of the STEP MODULATOR.<br><br>CHOREOGRAPHS can dictate the pulse of the repeating rhythmic phrase by adjusting the length of the 1-16 stepped sequence. As the stepped sequence repeats, the TRIGGER pattern will have a rhythmic feel no matter the rate of the individual steps." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/5a266486145143b78967f557561a6bd6.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+		<!-- ------------------------------ study section ------------------------------ -->
+
+		<div class="grid-container">
+			<div class="grid-item">
+				<div class="grid-paragraph title-small scroll-fade-in">
+					<div class="title">GRANULAR</div>
+					<div class="gap"></div>
+					<div class="paragraph">
+						CHOREOGRAPHS can scan sample start points in a GRANULAR manner. Combine the TRIGGER module with a VOICE’s start point parameter to design anything from glitchy rhythmic splices to interweaving layers of grains that overlap as the trigger consistently fires gates. Hone in on precise moments and unique grains inside CHOREOGRAPHS library’s long-form and modulating samples by shaping the amp envelope or TRIGGER’s gate size.
+						<br><br>
+						CHOREOGRAPHS’ pseudo GRANULAR techniques work particularly well with custom user drag-and-drop samples. Interchange the source material by dragging new material into the VOICE slots while maintaining the nature of the patch. Shaping the envelope dictates the character of the GRANULAR effect. 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gap-desktop"></div>
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "START SEQUENCE" %}
+		{% assign study-technique-description = "CHOREOGRAPHS outputs grains from new positions when the sample start point parameter is adjusted. Modulate the sample start point parameter with custom LFOs to construct grain sequence loops. As gates from the trigger consistently fire, changing the shape of the LFO will cause CHOREOGRAPHS to form morphing grain sequences." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/77dcb05e7f4a460f991a7c68cbae95ab.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "SAMPLE SCRUBBING" %}
+		{% assign study-technique-description = "Create a GRANULAR sample scrub effect by setting CHOREOGRAPHS’ amp envelope to have a slow attack and long sustain. The slow attack creates a delayed response from the VOICE and gives the impression that the sample is slowed down or falls behind as the trigger moves onto the next grain. Assign an LFO to the sample start point for cyclic sample scrubs; assign the mod wheel to the VOICE's sample start point for manual sample scrubs." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/e06075ed9696460f934003c47a32190f.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "RR GUITAR" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can blend up to three drag-and-drop samples in a GRANULAR manner by loading them into individual VOICE slots. By activating the trigger cycle in each VOICE's control menu, VOICE's will round robin upon each trigger. <br><br>Combining CHOREOGRAPHS’ TRIGGER module with an open envelope causes longer grains to come through. By assigning an LFO to the envelope decay, the grain size will change length as the LFO oscillates; longer phrases from the GRANULAR sample will come through as the envelope decay opens up. <br><br>Randomly modulate the VOICE’s sample start point parameter to cause different GRANULAR melodies to come through every time the LFO opens and closes the decay. CHOREOGRAPHS’ global random modulation can introduce an unstable nature to a patch and begin to introduce fluctuations of octave and pan amounts.<br><br>By setting CHOREOGRAPHS envelope to have a long decay and release, grains from the three drag-and-drop samples loaded into the VOICE will hang over each other and create a merging of timbres from up to three GRANULAR textures." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/698e463243c24683a0508e8a2b570168.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "PHRASE CHOPS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can use trigger cycling each VOICE to design stuttery phrase loops with a much closer, choppy GRANULAR sound. Setting the amp envelope to have a short attack and decay will cause gaps to appear between each grain; reducing the release will stop the grains from tailing over each other.<br><br>Modulate the sample start point with an LFO to form GRANULAR phrases. As CHOREOGRAPHS’ round robins its VOICES, choppy splices will be triggered in a repeating pattern from each voice. Use the HARMONY module to add layers of pitched voices to the GRANULAR phrase." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/7d39005501124e0097565203953ff685.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "CLOUDS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can create dense GRANULAR clouds by combining random modulation with the TRIGGER module set to a fast rate. Shaping the envelope with a long decay and release will cause the small grains to overlap. As the envelope release opens, grains will overlap, stack up and form a smear effect.<br><br>CHOREOGRAPHS can introduce its global random modulation to make each trigger unique. Randomised start point, filter cutoff, tune, pan and envelope modulation brings unpredictability to the patch. Use CHOREOGRAPHS’ noise or attack samples to add a consistent transient to every trigger." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/17001433c2814180933909ed8689885c.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		{% capture studyTechniqueCount %}{{ studyTechniqueCount | plus:1 }}{% endcapture %}
+		{% assign study-technique-id = studyTechniqueCount %}
+		{% assign study-technique-title = "GRANULAR BEATS" %}
+		{% assign study-technique-description = "CHOREOGRAPHS can splice a drum loop and control its start point with the STEP MODULATOR. Precisely chop beats that trigger specific start points with a drawn repeating step sequence. Instantly drag and drop new samples into the VOICE slot while maintaining the patch’s accent rhythm to change the timbre of the GRANULAR beat.<br><br>CHOREOGRAPHS can make beats from layered drum loops and tonal samples by drag-and-dropping them into all three VOICE slots. By drawing custom STEP MODULATOR values that control parameters on all three VOICES, CHOREOGRAPHS can design unique spliced sequences that merge multiple samples while triggering custom gate patterns." %}
+		{% assign study-technique-video-url = "https://cdn.shopify.com/videos/c/o/v/af0238454bb14136a687efcc94aaf161.mp4" %}
+		{% render "study-technique", study-technique-id: study-technique-id, study-technique-title: study-technique-title, study-technique-description: study-technique-description, study-secondary-text-color: study-secondary-text-color, study-technique-video-url: study-technique-video-url %}
+
+		<div class="gap"></div>
+
+	</div>
+</html>
