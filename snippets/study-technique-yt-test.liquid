@@ -23,7 +23,9 @@
 				<div class="grid-paragraph paragraph scroll-fade-in">
 					<div class="yt-container-outer">
 						<div class="yt-container">
-							<iframe class="yt-video" src="https://www.youtube.com/embed/{{ study-technique-youtube-id }}" frameborder="0" controls="0" rel="0"></iframe>
+							<!-- id: Used to target specific iframe for loading/unloading -->
+							<!-- data-src: Stores video URL without loading it immediately -->
+							<iframe class="yt-video" id="yt-video{{ study-technique-id }}" data-src="https://www.youtube.com/embed/{{ study-technique-youtube-id }}" frameborder="0" controls="0" rel="0"></iframe>
 						</div>
 					</div>
 				</div>
@@ -31,7 +33,7 @@
 		</div>
 		<div class="gap"></div>
 	</div>
-</div
+</div>
 
 <!-- ------------------------------ style ------------------------------ -->
 
@@ -77,24 +79,64 @@
 	studyPlusCross{{ study-technique-id }} = document.getElementById("study-plus-cross{{ study-technique-id }}");
 	studyDetail{{ study-technique-id }} = document.getElementById("study-detail{{ study-technique-id }}");
 	studyDetailMeasuringWrapper{{ study-technique-id }} = document.getElementById("study-detail-measuring-wrapper{{ study-technique-id }}");
+	ytVideo{{ study-technique-id }} = document.getElementById("yt-video{{ study-technique-id }}");
 
 	const studyReturnColor{{ study-technique-id }} = studyExpandButton{{ study-technique-id }}.style.color;
 	const secondaryTextColor{{ study-technique-id }} = "{{ study-secondary-text-color }}"
 
 	var studyDetailIsShown{{ study-technique-id }} = 0;
 
+	// Function to close this specific section
+	function closeSection{{ study-technique-id }}() {
+		studyDetailIsShown{{ study-technique-id }} = 0;
+		studyDetail{{ study-technique-id }}.style.height = "0px";
+		studyPlusCross{{ study-technique-id }}.innerHTML = "+";
+		studyExpandButton{{ study-technique-id }}.style.color = studyReturnColor{{ study-technique-id }};
+		ytVideo{{ study-technique-id }}.src = '';
+	}
+
 	studyExpandButton{{ study-technique-id }}.addEventListener("click", function() {
     	if(studyDetailIsShown{{ study-technique-id }} === 0) {
+			// Close all other sections before opening this one
+			closeAllOtherSections('study-detail{{ study-technique-id }}');
+			
     		studyDetailIsShown{{ study-technique-id }} = 1;
     		studyDetail{{ study-technique-id }}.style.height = studyDetailMeasuringWrapper{{ study-technique-id }}.clientHeight + "px";
     		studyPlusCross{{ study-technique-id }}.innerHTML = "✕"
     		studyExpandButton{{ study-technique-id }}.style.color = secondaryTextColor{{ study-technique-id }}
+			
+			// Unload other videos and load this one
+			unloadAllYoutubeIframes('yt-video{{ study-technique-id }}');
+			ytVideo{{ study-technique-id }}.src = ytVideo{{ study-technique-id }}.dataset.src;
+
+			// Wait for DOM to settle after closing other sections before scrolling
+			setTimeout(() => {
+				const elementPosition = studyExpandButton{{ study-technique-id }}.getBoundingClientRect().top;
+				const offsetPosition = elementPosition + window.pageYOffset - 50;
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: 'smooth'
+				});
+			}, 100);
     	} else {
-    		studyDetailIsShown{{ study-technique-id }} = 0;
-    		studyDetail{{ study-technique-id }}.style.height = "0px";
-    		studyPlusCross{{ study-technique-id }}.innerHTML = "+"
-    		studyExpandButton{{ study-technique-id }}.style.color = studyReturnColor{{ study-technique-id }}
+    		closeSection{{ study-technique-id }}();
     	}
     });
 
 </script>
+
+<!-- 
+	Recap of changes:
+	1. Changed from direct src to data-src to prevent immediate loading
+	2. Added functions to close other sections when opening a new one (moved to a file in templates/ dir to avoid duplicating code for each element)
+	3. Added functions to load/unload videos only when needed (moved to a file in templates/ dir to avoid duplicating code for each element)
+	4. Improved mobile performance by reducing simultaneous video loads
+	5. Scroll to the section being opened (this is to avoid things to go out of the viewport when things get closed in other places in the DOM)
+	
+	Goal:
+	- Only one video loads at a time
+	- Videos unload when their section is closed
+	- Only one section can be open at a time
+	- Better performance on mobile devices
+-->
+

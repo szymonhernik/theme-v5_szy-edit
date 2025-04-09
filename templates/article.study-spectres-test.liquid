@@ -19,6 +19,32 @@
 
 	<div style="background-color: {{ article.metafields.custom.study_background_color }}; color: {{ article.metafields.custom.study_text_color }};">
 
+		<!-- ------------------------------ shared functions ------------------------------ -->
+		<script>
+			// Unloads all YouTube iframes except the one being opened
+			function unloadAllYoutubeIframes(exceptId) {
+				const allIframes = document.querySelectorAll('.yt-video');
+				allIframes.forEach(iframe => {
+					if (iframe.id !== exceptId) {
+						iframe.src = '';
+					}
+				});
+			}
+
+			// Closes all sections except the one being opened
+			function closeAllOtherSections(currentId) {
+				const allSections = document.querySelectorAll('.study-detail');
+				allSections.forEach(section => {
+					if (section.id !== currentId) {
+						const sectionId = section.id.replace('study-detail', '');
+						if (window[`closeSection${sectionId}`]) {
+							window[`closeSection${sectionId}`]();
+						}
+					}
+				});
+			}
+		</script>
+
 		<!-- ------------------------------ image ------------------------------ -->
 
 		<img class="feature-image scroll-fade-in" src="{{ article.image | img_url: "2500x" }}">
